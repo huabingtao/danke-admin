@@ -20,17 +20,31 @@ function AppLayoutContent({ children }: { children: React.ReactNode }) {
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
-    if (user) {
-      const apiBase = process.env.NEXT_PUBLIC_CORE_API_URL || 'http://localhost:3000';
-      fetch(`${apiBase}/menus`)
-        .then((res) => res.json())
-        .then((data) => {
-          if (Array.isArray(data)) {
-            setCategories(data);
-          }
-        })
-        .catch((err) => console.error('Failed to load categories', err));
+    const fetchCategories = () => {
+      if (user) {
+        const apiBase = process.env.NEXT_PUBLIC_CORE_API_URL || 'http://localhost:3000';
+        fetch(`${apiBase}/menus`)
+          .then((res) => res.json())
+          .then((data) => {
+            if (Array.isArray(data)) {
+              setCategories(data);
+            }
+          })
+          .catch((err) => console.error('Failed to load categories', err));
+      }
+    };
+
+    fetchCategories();
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('menu-changed', fetchCategories);
     }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('menu-changed', fetchCategories);
+      }
+    };
   }, [user]);
 
   const navItems = [
@@ -39,6 +53,10 @@ function AppLayoutContent({ children }: { children: React.ReactNode }) {
     { name: '道具配置库', path: '/items' },
     { name: '限时活动库', path: '/events' },
   ];
+
+  if (user && user.role === 'ADMIN') {
+    navItems.push({ name: '导航菜单管理', path: '/menus' });
+  }
 
   if (isLoading) {
     return (

@@ -118,6 +118,16 @@ App 目录采用 Next.js App Router，具有 5 个主要页面：
     *   **danke-admin** (Next.js):
         - `[MODIFY]` [providers.tsx](file:///Users/hbt/my-project/apps/danke-admin/app/providers.tsx) (动态跨域拉取后端 /menus 数据渲染二级菜单)
         - `[MODIFY]` [page.tsx](file:///Users/hbt/my-project/apps/danke-admin/app/yields/page.tsx) (动态跨域拉取后端 /sources 数据)
-*   **说明**：完成了资产录入菜单完全动态化的重构设计。实现了在 MySQL 中新增 Menu 结构并完成了 Seed 数据导入，通过后端 NestJS 暴露了 CORS 授权的 `/menus` 服务；并在 Next.js 侧边栏和资产录入表格中全面对接后端 API，支持自动排序的高亮跳转和数据过滤逻辑。
+*   **说明**：完成了资产录入菜单完全动态化的重构设计。实现了在 MySQL 中新增 Menu 结构并完成了 Seed 数据导入，通过后端 NestJS 暴露了 CORS 授权 of `/menus` 服务；并在 Next.js 侧边栏和资产录入表格中全面对接后端 API，支持自动排序的高亮跳转和数据过滤逻辑。
 
+### 📅 2026-07-15 (第四次更新)
+*   **动作**：独立 Git 仓库初始化与本地忽略配置（/grill-me 规划实施）
+*   **修改文件**：
+    *   **danke-core**:
+        - `[MODIFY]` [.gitignore](file:///Users/hbt/my-project/apps/danke-core/.gitignore) (补充忽略 dist/, generated/ 及临时文件)
+*   **说明**：完成了在 `danke-admin` 和 `danke-core` 下分别初始化 Git 仓库的工作。丰富了后端的忽略项配置以避开运行编译文件，并对两个项目的工作区执行了首次 Git Add 与首个提交（`chore: initial project setup`）。
+
+### 📅 2026-07-15 (第五次更新)
+*   **动作**：danke-web 子项目 Git 仓库初始化
+*   **说明**：完成了对 `danke-web` (Next.js 前端应用) 的 Git 仓库初始化。配置并应用了其自带的忽略规则，并执行了首次暂存与首个 Commit 提交（`chore: initial project setup`）。
 
