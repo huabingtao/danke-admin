@@ -12,8 +12,8 @@ interface Item {
 }
 
 export default function ItemsPage() {
-  const { user } = useAuth();
-  const isAdmin = user?.role === 'ADMIN';
+  const { hasPermission } = useAuth();
+  const isAdmin = hasPermission('item:create');
 
   // Sample local state of items
   const [items, setItems] = useState<Item[]>([

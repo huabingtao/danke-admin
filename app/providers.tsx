@@ -12,51 +12,18 @@ interface Category {
 }
 
 function AppLayoutContent({ children }: { children: React.ReactNode }) {
-  const { user, logout, isLoading } = useAuth();
+  const { user, logout, isLoading, menuTree } = useAuth();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const currentType = searchParams ? searchParams.get('type') : null;
 
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [openFolders, setOpenFolders] = useState<{ [id: string]: boolean }>({});
 
-  useEffect(() => {
-    const fetchCategories = () => {
-      if (user) {
-        const apiBase = process.env.NEXT_PUBLIC_CORE_API_URL || 'http://localhost:3000';
-        fetch(`${apiBase}/menus`)
-          .then((res) => res.json())
-          .then((data) => {
-            if (Array.isArray(data)) {
-              setCategories(data);
-            }
-          })
-          .catch((err) => console.error('Failed to load categories', err));
-      }
-    };
-
-    fetchCategories();
-
-    if (typeof window !== 'undefined') {
-      window.addEventListener('menu-changed', fetchCategories);
-    }
-
-    return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('menu-changed', fetchCategories);
-      }
-    };
-  }, [user]);
-
-  const navItems = [
-    { name: '中盘大屏首页', path: '/' },
-    { name: '资产产出录入', path: '/yields' },
-    { name: '道具配置库', path: '/items' },
-    { name: '限时活动库', path: '/events' },
-  ];
-
-  if (user && user.role === 'ADMIN') {
-    navItems.push({ name: '导航菜单管理', path: '/menus' });
-  }
+  const toggleFolder = (folderId: string) => {
+    setOpenFolders((prev) => ({
+      ...prev,
+      [folderId]: prev[folderId] === false ? true : false,
+    }));
+  };
 
   if (isLoading) {
     return (
@@ -90,44 +57,79 @@ function AppLayoutContent({ children }: { children: React.ReactNode }) {
           </div>
 
           <nav className="flex flex-col space-y-1.5">
-            {navItems.map((item) => {
-              const isYields = item.path === '/yields';
-              const isActive = pathname === item.path && (!isYields || !currentType);
-              return (
-                <div key={item.path} className="flex flex-col space-y-1">
+            {menuTree.map((node) => {
+              // Option A: Leaf Link (direct route)
+              if (node.path !== null) {
+                const isActive = pathname === node.path;
+                return (
                   <Link
-                    href={item.path}
+                    key={node.id}
+                    href={node.path}
                     className={`px-4 py-2.5 rounded-xl text-xs font-bold border transition-all duration-300 ${
                       isActive
                         ? 'bg-orange-500/10 text-orange-400 border-orange-500/20'
                         : 'text-zinc-400 border-transparent hover:text-orange-300 hover:bg-zinc-900/40'
                     }`}
                   >
-                    {item.name}
+                    {node.name}
                   </Link>
+                );
+              }
 
-                  {/* Submenu for Yields */}
-                  {isYields && categories.length > 0 && (
-                    <div className="pl-4 pr-1 py-1 flex flex-col space-y-1 border-l border-zinc-900 ml-4 mt-1">
-                      {categories.map((cat) => {
-                        const targetType = cat.path.split('type=')[1] || null;
-                        const isSubActive = pathname === '/yields' && currentType === targetType;
+              // Option B: Folder (collapsible submenu)
+              const isOpen = openFolders[node.id] !== false; // defaults to true
+              return (
+                <div key={node.id} className="flex flex-col">
+                  <button
+                    onClick={() => toggleFolder(node.id)}
+                    className="px-4 py-2.5 rounded-xl text-xs font-bold text-zinc-400 hover:text-orange-300 hover:bg-zinc-900/40 border border-transparent flex items-center justify-between transition-all duration-300 cursor-pointer"
+                  >
+                    <span>{node.name}</span>
+                    <svg
+                      className={`w-3.5 h-3.5 transition-transform duration-300 ${
+                        isOpen ? 'rotate-180' : 'rotate-0'
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+
+                  <div
+                    className={`transition-all duration-300 overflow-hidden ${
+                      isOpen ? 'max-h-[500px] opacity-100 mt-1.5' : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <div className="pl-4 pr-1 py-1 flex flex-col space-y-1 border-l border-zinc-900/80 ml-4">
+                      {node.children.map((child: any) => {
+                        const searchCategory = child.path?.split('category=')[1] || null;
+                        const decodedCategory = searchCategory ? decodeURIComponent(searchCategory) : null;
+                        const currentCategoryParam = searchParams ? searchParams.get('category') : null;
+                        const isSubActive = pathname === '/yields' && currentCategoryParam === decodedCategory;
+
                         return (
                           <Link
-                            key={cat.id}
-                            href={cat.path}
+                            key={child.id}
+                            href={child.path || '#'}
                             className={`px-3 py-1.5 rounded-lg text-[11px] font-semibold border transition-all duration-200 ${
                               isSubActive
-                                ? 'bg-orange-500/5 text-orange-400 border-orange-500/10'
+                                ? 'bg-orange-500/5 text-orange-400 border-orange-500/10 font-bold'
                                 : 'text-zinc-500 border-transparent hover:text-orange-300 hover:bg-zinc-900/20'
                             }`}
                           >
-                            • {cat.name}
+                            • {child.name}
                           </Link>
                         );
                       })}
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}

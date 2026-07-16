@@ -22,17 +22,13 @@ export default function LoginPage() {
     setError('');
     setIsSubmitting(true);
 
-    // Simple password verification
-    if (password !== '123') {
-      setError('密匙错误，请使用测试密匙 123 登录');
-      setIsSubmitting(false);
-      return;
-    }
-
     try {
-      await login(username, selectedRole);
+      const success = await login(username, password);
+      if (!success) {
+        setError('登录失败：用户名或授权密匙错误');
+      }
     } catch {
-      setError('登录失败，请稍后重试');
+      setError('登录连接失败，请确保后台服务已启动');
     } finally {
       setIsSubmitting(false);
     }

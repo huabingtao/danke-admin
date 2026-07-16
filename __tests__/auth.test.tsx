@@ -16,6 +16,7 @@ describe('Items Page Role-Based Access Control (RBAC)', () => {
         username: '弹壳呱呱',
         role: 'ADMIN',
       },
+      hasPermission: () => true,
     });
 
     render(<ItemsPage />);
@@ -37,6 +38,7 @@ describe('Items Page Role-Based Access Control (RBAC)', () => {
         username: '助理小白',
         role: 'ASSISTANT',
       },
+      hasPermission: (code: string) => code !== 'item:create' && code !== 'item:delete',
     });
 
     render(<ItemsPage />);

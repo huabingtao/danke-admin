@@ -31,6 +31,7 @@ describe('Menus Page Role-Based Access Control (RBAC) & Render', () => {
         username: '助理小白',
         role: 'ASSISTANT',
       },
+      hasPermission: (code: string) => code !== 'menu:manage',
       isLoading: false,
     });
 
@@ -48,6 +49,7 @@ describe('Menus Page Role-Based Access Control (RBAC) & Render', () => {
         username: '弹壳呱呱',
         role: 'ADMIN',
       },
+      hasPermission: () => true,
       isLoading: false,
     });
 

@@ -12,8 +12,8 @@ interface GameEvent {
 }
 
 export default function EventsPage() {
-  const { user } = useAuth();
-  const isAdmin = user?.role === 'ADMIN';
+  const { hasPermission } = useAuth();
+  const isAdmin = hasPermission('event:create');
 
   const [events, setEvents] = useState<GameEvent[]>([
     {
