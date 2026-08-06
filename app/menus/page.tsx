@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
+import { getApiBase } from '@/lib/api';
 import {
   ChevronDown,
   ChevronRight,
@@ -92,8 +93,7 @@ export default function MenusPage() {
     return result;
   };
 
-  const apiBase = process.env.NEXT_PUBLIC_CORE_API_URL || 
-    (typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.hostname}:3000` : 'http://localhost:3000');
+  const apiBase = getApiBase();
 
   // Authorization Redirect
   useEffect(() => {

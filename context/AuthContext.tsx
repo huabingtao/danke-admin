@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { getApiBase } from '@/lib/api';
 
 export type UserRole = 'ADMIN' | 'ASSISTANT';
 
@@ -24,16 +25,6 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
-const getApiBase = () => {
-  if (process.env.NEXT_PUBLIC_CORE_API_URL) {
-    return process.env.NEXT_PUBLIC_CORE_API_URL;
-  }
-  if (typeof window !== 'undefined') {
-    return `${window.location.protocol}//${window.location.hostname}:3000`;
-  }
-  return 'http://localhost:3000';
-};
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);

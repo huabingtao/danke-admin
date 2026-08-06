@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
+import { getApiBase } from '@/lib/api';
 
 interface Source {
   id: string;
@@ -47,8 +48,7 @@ export default function YieldsPage() {
   const [editValue, setEditValue] = useState<string>('');
   const [saveStatus, setSaveStatus] = useState<string>('');
 
-  const apiBase = process.env.NEXT_PUBLIC_CORE_API_URL || 
-    (typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.hostname}:3000` : 'http://localhost:3000');
+  const apiBase = getApiBase();
 
   // 1. Fetch categories (menus)
   useEffect(() => {
