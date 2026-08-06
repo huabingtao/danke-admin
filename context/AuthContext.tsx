@@ -24,7 +24,16 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
-const apiBase = process.env.NEXT_PUBLIC_CORE_API_URL || 'http://localhost:3000';
+
+const getApiBase = () => {
+  if (process.env.NEXT_PUBLIC_CORE_API_URL) {
+    return process.env.NEXT_PUBLIC_CORE_API_URL;
+  }
+  if (typeof window !== 'undefined') {
+    return `${window.location.protocol}//${window.location.hostname}:3000`;
+  }
+  return 'http://localhost:3000';
+};
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
@@ -37,11 +46,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const loadProfile = async (authToken: string) => {
     try {
-      const res = await fetch(`${apiBase}/auth/profile`, {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+      const res = await fetch(`${getApiBase()}/auth/profile`, {
         headers: {
           'Authorization': `Bearer ${authToken}`,
         },
+        signal: controller.signal,
       });
+      clearTimeout(timeoutId);
+
       if (res.ok) {
         const data = await res.json();
         setUser(data.user);
@@ -55,7 +70,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (err) {
       console.error('Profile loading error:', err);
       // Clean up token if invalid
-      localStorage.removeItem('danke_admin_token');
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('danke_admin_token');
+      }
       setUser(null);
       setPermissions([]);
       setMenuTree([]);
@@ -66,11 +83,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const initializeAuth = async () => {
-      const storedToken = localStorage.getItem('danke_admin_token');
-      if (storedToken) {
-        await loadProfile(storedToken);
+      try {
+        const storedToken = typeof window !== 'undefined' ? localStorage.getItem('danke_admin_token') : null;
+        if (storedToken) {
+          await loadProfile(storedToken);
+        }
+      } catch (err) {
+        console.error('Initialize auth failed:', err);
+      } finally {
+        setIsLoading(false);
       }
-      setIsLoading(false);
     };
     initializeAuth();
   }, []);
@@ -89,7 +111,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (username: string, pass: string): Promise<boolean> => {
     try {
-      const res = await fetch(`${apiBase}/auth/login`, {
+      const res = await fetch(`${getApiBase()}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -141,7 +163,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useAuth() {
+export function useAuth(): AuthContextType {
   const context = useContext(AuthContext);
   if (context === undefined) {
     throw new Error('useAuth must be used within an AuthProvider');

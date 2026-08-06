@@ -10,9 +10,6 @@ import {
   FolderOpen,
   FileText,
   FolderPlus,
-  Plus,
-  Edit3,
-  Trash2,
   Shield,
 } from 'lucide-react';
 
@@ -95,7 +92,8 @@ export default function MenusPage() {
     return result;
   };
 
-  const apiBase = process.env.NEXT_PUBLIC_CORE_API_URL || 'http://localhost:3000';
+  const apiBase = process.env.NEXT_PUBLIC_CORE_API_URL || 
+    (typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.hostname}:3000` : 'http://localhost:3000');
 
   // Authorization Redirect
   useEffect(() => {
@@ -106,6 +104,7 @@ export default function MenusPage() {
         router.replace('/');
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, isLoading, router]);
 
   // Fetch menus list
@@ -130,8 +129,10 @@ export default function MenusPage() {
 
   useEffect(() => {
     if (user && hasPermission('menu:manage')) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       fetchMenus();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   // Folders for parent selection (menus that have null path)

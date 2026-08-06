@@ -47,8 +47,8 @@ export default function YieldsPage() {
   const [editValue, setEditValue] = useState<string>('');
   const [saveStatus, setSaveStatus] = useState<string>('');
 
-  const apiBase = process.env.NEXT_PUBLIC_CORE_API_URL || 'http://localhost:3000';
-  const apiKey = process.env.NEXT_PUBLIC_ADMIN_API_KEY || 'danke_super_secret_key_123';
+  const apiBase = process.env.NEXT_PUBLIC_CORE_API_URL || 
+    (typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.hostname}:3000` : 'http://localhost:3000');
 
   // 1. Fetch categories (menus)
   useEffect(() => {
@@ -100,6 +100,7 @@ export default function YieldsPage() {
 
   useEffect(() => {
     fetchYields();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [year, month, apiBase]);
 
   // Determine active category
@@ -126,6 +127,7 @@ export default function YieldsPage() {
       );
       if (subs.length > 0) {
         if (!activeTab || !subs.includes(activeTab)) {
+          // eslint-disable-next-line react-hooks/set-state-in-effect
           setActiveTab(subs[0]);
         }
       } else {

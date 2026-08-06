@@ -1,15 +1,10 @@
 'use client';
 
 import { AuthProvider, useAuth } from '@/context/AuthContext';
+import LoginPage from '@/app/login/page';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useState, useEffect, Suspense } from 'react';
-
-interface Category {
-  id: string;
-  name: string;
-  path: string;
-}
+import { useState, Suspense } from 'react';
 
 function AppLayoutContent({ children }: { children: React.ReactNode }) {
   const { user, logout, isLoading, menuTree } = useAuth();
@@ -33,8 +28,11 @@ function AppLayoutContent({ children }: { children: React.ReactNode }) {
     );
   }
 
-  // If not logged in, we render the page directly (it will be the login page)
+  // If not logged in, render LoginPage if not on /login route, or children if on /login
   if (!user) {
+    if (pathname !== '/login') {
+      return <LoginPage />;
+    }
     return <>{children}</>;
   }
 
