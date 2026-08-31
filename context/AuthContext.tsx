@@ -22,6 +22,7 @@ interface AuthContextType {
   logout: () => void;
   isLoading: boolean;
   hasPermission: (code: string) => boolean;
+  changePassword: (oldPass: string, newPass: string) => Promise<{ success: boolean; message?: string }>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -147,8 +148,33 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return permissions.includes(code);
   };
 
+  const changePassword = async (oldPass: string, newPass: string): Promise<{ success: boolean; message?: string }> => {
+    if (!token) {
+      return { success: false, message: '未登录' };
+    }
+    try {
+      const res = await fetch(`${getApiBase()}/auth/change-password`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({ oldPassword: oldPass, newPassword: newPass }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        return { success: true, message: data.message || '密码修改成功' };
+      } else {
+        return { success: false, message: data.message || '密码修改失败' };
+      }
+    } catch (err: any) {
+      return { success: false, message: err.message || '网络连接异常' };
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, permissions, menuTree, token, login, logout, isLoading, hasPermission }}>
+    <AuthContext.Provider value={{ user, permissions, menuTree, token, login, logout, isLoading, hasPermission, changePassword }}>
       {children}
     </AuthContext.Provider>
   );

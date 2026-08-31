@@ -411,85 +411,99 @@ export default function MenusPage() {
 
       {/* Edit / Add Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="w-full max-w-md bg-zinc-900 border border-zinc-800 p-6 rounded-3xl space-y-4 shadow-2xl relative overflow-hidden animate-zoomIn">
-            <h3 className="text-lg font-bold text-white">
-              {editingMenu ? '编辑导航菜单' : '新增导航菜单'}
-            </h3>
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="w-full max-w-md bg-zinc-900 border border-zinc-800 p-6 rounded-3xl max-h-[88vh] flex flex-col shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+            <div className="flex justify-between items-center pb-4 border-b border-zinc-800/80 shrink-0">
+              <h3 className="text-base font-bold text-white">
+                {editingMenu ? '编辑导航菜单' : '新增导航菜单'}
+              </h3>
+              <button
+                type="button"
+                onClick={() => setShowModal(false)}
+                className="text-zinc-500 hover:text-zinc-300 p-1.5 rounded-lg hover:bg-zinc-800 transition-colors cursor-pointer"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
             
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-1">
-                <label className="text-xs text-zinc-500 font-medium">菜单名称</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="如: 每日产出"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-zinc-200 focus:outline-none focus:border-orange-500/50"
-                />
+            <form onSubmit={handleSubmit} className="flex flex-col flex-1 min-h-0">
+              <div className="flex-1 overflow-y-auto custom-scrollbar pr-2 py-4 space-y-4">
+                <div className="space-y-1">
+                  <label className="text-xs text-zinc-400 font-medium">菜单名称</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="如: 每日产出"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-zinc-200 focus:outline-none focus:border-orange-500/50"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs text-zinc-400 font-medium">路由链接 (Path - 置空则作为目录)</label>
+                  <input
+                    type="text"
+                    placeholder="如: /yields?category=广告"
+                    value={path}
+                    onChange={(e) => setPath(e.target.value)}
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-zinc-200 font-mono focus:outline-none focus:border-orange-500/50"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs text-zinc-400 font-medium">所属父目录 (可选)</label>
+                  <select
+                    value={parentId}
+                    onChange={(e) => setParentId(e.target.value)}
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-zinc-200 focus:outline-none focus:border-orange-500/50 cursor-pointer"
+                  >
+                    <option value="">-- 无 (顶级菜单) --</option>
+                    {folders.map((f) => (
+                      <option key={f.id} value={f.id}>
+                        {f.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs text-zinc-400 font-medium">访问控制权限码 (可选)</label>
+                  <input
+                    type="text"
+                    placeholder="如: items:view (为空代表公开)"
+                    value={permissionCode}
+                    onChange={(e) => setPermissionCode(e.target.value)}
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-zinc-200 font-mono focus:outline-none focus:border-orange-500/50"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs text-zinc-400 font-medium">排序序号 (Sort)</label>
+                  <input
+                    type="number"
+                    required
+                    value={sort}
+                    onChange={(e) => setSort(e.target.value)}
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-zinc-200 font-mono focus:outline-none focus:border-orange-500/50"
+                  />
+                </div>
               </div>
 
-              <div className="space-y-1">
-                <label className="text-xs text-zinc-500 font-medium">路由链接 (Path - 置空则作为目录)</label>
-                <input
-                  type="text"
-                  placeholder="如: /yields?category=广告"
-                  value={path}
-                  onChange={(e) => setPath(e.target.value)}
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-zinc-200 font-mono focus:outline-none focus:border-orange-500/50"
-                />
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-xs text-zinc-500 font-medium">所属父目录 (可选)</label>
-                <select
-                  value={parentId}
-                  onChange={(e) => setParentId(e.target.value)}
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-zinc-200 focus:outline-none focus:border-orange-500/50 cursor-pointer"
-                >
-                  <option value="">-- 无 (顶级菜单) --</option>
-                  {folders.map((f) => (
-                    <option key={f.id} value={f.id}>
-                      {f.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-xs text-zinc-500 font-medium">访问控制权限权限码 (Optional Permission Code)</label>
-                <input
-                  type="text"
-                  placeholder="如: items:view (为空代表公开)"
-                  value={permissionCode}
-                  onChange={(e) => setPermissionCode(e.target.value)}
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-zinc-200 font-mono focus:outline-none focus:border-orange-500/50"
-                />
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-xs text-zinc-500 font-medium">排序序号 (Sort)</label>
-                <input
-                  type="number"
-                  required
-                  value={sort}
-                  onChange={(e) => setSort(e.target.value)}
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-zinc-200 font-mono focus:outline-none focus:border-orange-500/50"
-                />
-              </div>
-
-              <div className="flex space-x-3 pt-2">
+              {/* Modal Footer */}
+              <div className="flex space-x-3 pt-4 border-t border-zinc-800/80 shrink-0">
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="flex-1 py-2.5 bg-zinc-950 border border-zinc-800 text-zinc-400 hover:text-white rounded-xl text-xs font-bold transition-all"
+                  className="flex-1 py-2.5 bg-zinc-800 text-zinc-300 rounded-xl text-xs font-bold hover:bg-zinc-700 transition-all cursor-pointer"
                 >
                   取消
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 py-2.5 bg-orange-500 text-zinc-950 rounded-xl text-xs font-bold hover:bg-orange-400 transition-all"
+                  className="flex-1 py-2.5 bg-gradient-to-r from-orange-500 to-amber-500 text-zinc-950 rounded-xl text-xs font-black hover:from-orange-400 hover:to-amber-400 transition-all cursor-pointer shadow-[0_0_15px_rgba(249,115,22,0.15)]"
                 >
                   确认保存
                 </button>

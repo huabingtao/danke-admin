@@ -5,6 +5,7 @@ import LoginPage from '@/app/login/page';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useState, Suspense } from 'react';
+import ChangePasswordModal from '@/components/ChangePasswordModal';
 
 function AppLayoutContent({ children }: { children: React.ReactNode }) {
   const { user, logout, isLoading, menuTree } = useAuth();
@@ -12,6 +13,7 @@ function AppLayoutContent({ children }: { children: React.ReactNode }) {
   const searchParams = useSearchParams();
 
   const [openFolders, setOpenFolders] = useState<{ [id: string]: boolean }>({});
+  const [isChangePasswordOpen, setIsChangePasswordOpen] = useState(false);
 
   const toggleFolder = (folderId: string) => {
     setOpenFolders((prev) => ({
@@ -55,7 +57,15 @@ function AppLayoutContent({ children }: { children: React.ReactNode }) {
           </div>
 
           <nav className="flex flex-col space-y-1.5">
-            {menuTree.map((node) => {
+            {(menuTree.length > 0
+              ? menuTree
+              : [
+                  { id: 'default-1', name: '中盘大屏首页', path: '/' },
+                  { id: 'default-2', name: '道具配置库', path: '/items' },
+                  { id: 'default-4', name: '提醒规则', path: '/reminders' },
+                  { id: 'default-5', name: '导航菜单管理', path: '/menus' },
+                ]
+            ).map((node) => {
               // Option A: Leaf Link (direct route)
               if (node.path !== null) {
                 const isActive = pathname === node.path;
@@ -134,23 +144,67 @@ function AppLayoutContent({ children }: { children: React.ReactNode }) {
           </nav>
         </div>
 
-        {/* Sidebar Footer User info */}
+        {/* Sidebar Footer User info & Change Password / Logout */}
         <div className="border-t border-zinc-900 pt-4 space-y-3">
           <div className="flex items-center justify-between">
-            <div className="truncate pr-2">
-              <p className="text-xs font-bold text-white truncate">{user.username}</p>
-              <span className={`inline-block px-1.5 py-0.5 rounded text-[8px] font-semibold mt-0.5 ${
-                user.role === 'ADMIN' ? 'bg-orange-500/10 text-orange-400 border border-orange-500/20' : 'bg-blue-500/10 text-cyan-400 border border-blue-500/20'
-              }`}>
-                {user.role === 'ADMIN' ? '超级博主' : '录入助理'}
-              </span>
+            <div className="flex items-center space-x-2.5 truncate pr-2">
+              {/* Settings Gear Button opens Change Password Modal */}
+              <button
+                onClick={() => setIsChangePasswordOpen(true)}
+                title="修改密码 / 账户安全"
+                className="p-2 bg-zinc-900 border border-zinc-800 rounded-xl text-zinc-400 hover:text-orange-400 hover:border-orange-500/30 hover:bg-orange-500/10 transition-all duration-300 group cursor-pointer"
+              >
+                <svg
+                  className="w-4 h-4 group-hover:rotate-90 transition-transform duration-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </button>
+
+              <div
+                onClick={() => setIsChangePasswordOpen(true)}
+                className="truncate cursor-pointer group"
+                title="点击修改密码"
+              >
+                <p className="text-xs font-bold text-white truncate group-hover:text-orange-400 transition-colors">{user.username}</p>
+                <span className={`inline-block px-1.5 py-0.5 rounded text-[8px] font-semibold mt-0.5 ${
+                  user.role === 'ADMIN' ? 'bg-orange-500/10 text-orange-400 border border-orange-500/20' : 'bg-blue-500/10 text-cyan-400 border border-blue-500/20'
+                }`}>
+                  {user.role === 'ADMIN' ? '超级博主' : '录入助理'}
+                </span>
+              </div>
             </div>
-            <button
-              onClick={logout}
-              className="px-2.5 py-1 bg-zinc-900 border border-zinc-800 text-[10px] font-bold rounded-lg text-zinc-400 hover:text-white hover:border-zinc-700 transition-all cursor-pointer"
-            >
-              退出
-            </button>
+
+            <div className="flex items-center space-x-1.5">
+              <button
+                onClick={() => setIsChangePasswordOpen(true)}
+                title="修改密码"
+                className="px-2 py-1.5 bg-zinc-900 border border-zinc-800 text-[10px] font-bold rounded-xl text-zinc-400 hover:text-orange-400 hover:border-orange-500/30 hover:bg-orange-500/10 transition-all cursor-pointer"
+              >
+                改密
+              </button>
+              <button
+                onClick={logout}
+                title="退出登录"
+                className="px-2 py-1.5 bg-zinc-900 border border-zinc-800 text-[10px] font-bold rounded-xl text-zinc-400 hover:text-red-400 hover:border-red-500/30 hover:bg-red-500/10 transition-all cursor-pointer"
+              >
+                退出
+              </button>
+            </div>
           </div>
         </div>
       </aside>
@@ -159,6 +213,12 @@ function AppLayoutContent({ children }: { children: React.ReactNode }) {
       <main className="relative z-10 flex-grow p-8 overflow-y-auto max-w-7xl mx-auto w-full">
         {children}
       </main>
+
+      {/* Change Password Modal */}
+      <ChangePasswordModal
+        isOpen={isChangePasswordOpen}
+        onClose={() => setIsChangePasswordOpen(false)}
+      />
     </div>
   );
 }

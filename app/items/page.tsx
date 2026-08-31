@@ -1,168 +1,291 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/context/AuthContext';
+import { getApiBase } from '@/lib/api';
+import { Package, Search, Plus, Trash2, Edit3, X, CheckCircle2, AlertCircle } from 'lucide-react';
 
-interface Item {
+export interface Item {
   id: string;
   name: string;
-  type: string;
-  description: string;
-  stats: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export default function ItemsPage() {
-  const { hasPermission } = useAuth();
-  const isAdmin = hasPermission('item:create');
+  const { hasPermission, token, user } = useAuth();
+  const isAdmin = user?.role === 'ADMIN' || hasPermission('item:create');
 
-  // Sample local state of items
-  const [items, setItems] = useState<Item[]>([
-    { id: '1', name: 'S钥匙', type: 'KEY', description: '用于开启S级军备宝箱', stats: '{"description":"无直接战斗加成"}' },
-    { id: '2', name: '宝石', type: 'CURRENCY', description: '游戏内核心代币，用于购买各种资源', stats: '{"description":"游戏代币"}' },
-    { id: '3', name: '随机杰出装备', type: 'EQUIPMENT', description: '开启后随机获得一件杰出品质(紫色)装备', stats: '{"baseAtkAdd":200,"baseHpAdd":1000}' },
-    { id: '4', name: '随机精良配件', type: 'TECH_PART', description: '提供特定技能的额外攻击效果', stats: '{"skillName":"哨箭","bonusAtk":150}' },
-  ]);
+  const [items, setItems] = useState<Item[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [toastMessage, setToastMessage] = useState<{ text: string; type: 'success' | 'error' } | null>(null);
 
+  // Modal State
   const [showModal, setShowModal] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [name, setName] = useState('');
-  const [type, setType] = useState('EQUIPMENT');
-  const [description, setDescription] = useState('');
-  const [stats, setStats] = useState('{}');
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleAddItem = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!isAdmin) return; // double protection
+  const triggerToast = (text: string, type: 'success' | 'error' = 'success') => {
+    setToastMessage({ text, type });
+    setTimeout(() => setToastMessage(null), 2500);
+  };
 
-    const newItem: Item = {
-      id: Date.now().toString(),
-      name,
-      type,
-      description,
-      stats,
-    };
-    setItems([...items, newItem]);
-    setShowModal(false);
+  const fetchItems = useCallback(async () => {
+    try {
+      setLoading(true);
+      const res = await fetch(`${getApiBase()}/items`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setItems(data);
+      } else {
+        triggerToast('获取道具列表失败', 'error');
+      }
+    } catch (err) {
+      console.error('Failed to fetch items:', err);
+      triggerToast('网络错误，无法加载道具列表', 'error');
+    } finally {
+      setLoading(false);
+    }
+  }, [token]);
+
+  useEffect(() => {
+    fetchItems();
+  }, [fetchItems]);
+
+  const handleOpenAddModal = () => {
+    setEditingId(null);
     setName('');
-    setDescription('');
-    setStats('{}');
+    setShowModal(true);
   };
 
-  const handleDeleteItem = (id: string) => {
-    if (!isAdmin) return; // double protection
-    setItems(items.filter(item => item.id !== id));
+  const handleOpenEditModal = (item: Item) => {
+    setEditingId(item.id);
+    setName(item.name);
+    setShowModal(true);
   };
+
+  const handleSaveItem = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!isAdmin || submitting || !name.trim()) return;
+
+    try {
+      setSubmitting(true);
+      const url = editingId ? `${getApiBase()}/items/${editingId}` : `${getApiBase()}/items`;
+      const method = editingId ? 'PATCH' : 'POST';
+
+      const res = await fetch(url, {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify({ name: name.trim() }),
+      });
+
+      if (res.ok) {
+        setShowModal(false);
+        triggerToast(editingId ? `道具「${name}」修改成功！` : `道具「${name}」新增成功！`);
+        await fetchItems();
+      } else {
+        const errorData = await res.json().catch(() => ({}));
+        triggerToast(errorData.message || '操作失败，请重试', 'error');
+      }
+    } catch (err) {
+      console.error('Save item error:', err);
+      triggerToast('网络错误，保存失败', 'error');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleDeleteItem = async (id: string, itemName: string) => {
+    if (!isAdmin) return;
+    const confirmed = window.confirm(`确定要删除道具「${itemName}」吗？绑定的产出数据也将同步清理。`);
+    if (!confirmed) return;
+
+    try {
+      const res = await fetch(`${getApiBase()}/items/${id}`, {
+        method: 'DELETE',
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      });
+
+      if (res.ok) {
+        setItems((prev) => prev.filter((it) => it.id !== id));
+        triggerToast(`道具「${itemName}」已成功删除！`);
+      } else {
+        const err = await res.json().catch(() => ({}));
+        triggerToast(err.message || '删除失败', 'error');
+      }
+    } catch (err) {
+      console.error('Delete item error:', err);
+      triggerToast('网络错误，删除失败', 'error');
+    }
+  };
+
+  // Filter items by name search
+  const filteredItems = items.filter((item) =>
+    item.name.toLowerCase().includes(searchQuery.trim().toLowerCase())
+  );
 
   return (
-    <div className="space-y-6 animate-fadeIn">
+    <div className="space-y-6 animate-in fade-in duration-200">
+      {/* Toast Notification */}
+      {toastMessage && (
+        <div
+          className={`fixed top-6 right-6 z-50 px-4 py-2.5 rounded-2xl shadow-2xl flex items-center space-x-2 text-xs font-bold transition-all animate-in fade-in slide-in-from-top-4 ${
+            toastMessage.type === 'success'
+              ? 'bg-orange-500 text-zinc-950 shadow-orange-500/20'
+              : 'bg-red-500 text-white shadow-red-500/20'
+          }`}
+        >
+          {toastMessage.type === 'success' ? (
+            <CheckCircle2 className="w-4 h-4" />
+          ) : (
+            <AlertCircle className="w-4 h-4" />
+          )}
+          <span>{toastMessage.text}</span>
+        </div>
+      )}
+
       {/* Header */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="space-y-1">
-          <h1 className="text-2xl font-black text-white">道具配置库</h1>
-          <p className="text-xs text-zinc-500">配置《弹壳特攻队》游戏核心物品及未来计算器所需的伤害数值系数。</p>
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 rounded-2xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400">
+              <Package className="w-5 h-5" />
+            </div>
+            <div>
+              <h1 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
+                道具配置库
+                <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400">
+                  共 {filteredItems.length} 项
+                </span>
+              </h1>
+              <p className="text-xs text-zinc-500">
+                管理全站资源矩阵所引用的道具词条与基础定义。
+              </p>
+            </div>
+          </div>
         </div>
 
-        {isAdmin ? (
+        {isAdmin && (
           <button
-            onClick={() => setShowModal(true)}
-            data-testid="add-item-btn"
-            className="px-4 py-2 bg-orange-505 bg-orange-500 text-zinc-950 rounded-xl text-xs font-bold hover:bg-orange-400 transition-all cursor-pointer"
+            onClick={handleOpenAddModal}
+            className="px-4 py-2.5 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-zinc-950 rounded-2xl text-xs font-black transition-all cursor-pointer shadow-[0_0_20px_rgba(249,115,22,0.2)] flex items-center justify-center gap-1.5"
           >
-            + 新增配置道具
+            <Plus className="w-4 h-4" />
+            <span>新增道具</span>
           </button>
-        ) : (
-          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-zinc-900 border border-zinc-800 text-zinc-400">
-            🔒 助理只读模式
-          </span>
         )}
       </div>
 
-      {/* Grid items */}
-      <div className="border border-zinc-900 bg-zinc-900/10 rounded-2xl overflow-hidden">
-        <table className="w-full text-left border-collapse text-xs">
-          <thead>
-            <tr className="border-b border-zinc-800 text-zinc-500 font-bold bg-zinc-950/40">
-              <th className="p-4">物品名称</th>
-              <th className="p-4">道具类别</th>
-              <th className="p-4">描述说明</th>
-              <th className="p-4">属性数值 (JSON Stats)</th>
-              {isAdmin && <th className="p-4 text-right">操作</th>}
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((item) => (
-              <tr key={item.id} className="border-b border-zinc-900/60 hover:bg-zinc-900/20 text-zinc-300">
-                <td className="p-4 font-bold text-white">{item.name}</td>
-                <td className="p-4">
-                  <span className="px-2 py-0.5 rounded text-[10px] bg-zinc-800 text-zinc-400 border border-zinc-700">
-                    {item.type}
-                  </span>
-                </td>
-                <td className="p-4 text-zinc-400 max-w-xs truncate">{item.description}</td>
-                <td className="p-4 font-mono text-[10px] text-zinc-500 truncate max-w-xs">{item.stats}</td>
-                {isAdmin && (
-                  <td className="p-4 text-right">
-                    <button
-                      onClick={() => handleDeleteItem(item.id)}
-                      data-testid={`delete-btn-${item.id}`}
-                      className="px-2.5 py-1 bg-red-950/20 text-red-400 border border-red-500/25 rounded-lg hover:bg-red-500 hover:text-white transition-all cursor-pointer"
-                    >
-                      删除
-                    </button>
-                  </td>
-                )}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {/* Search Bar */}
+      <div className="relative max-w-md">
+        <Search className="w-4 h-4 text-zinc-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="搜索道具名称..."
+          className="w-full bg-zinc-900/60 border border-zinc-800 rounded-2xl pl-10 pr-4 py-2.5 text-xs text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-orange-500/50 transition-all"
+        />
       </div>
 
-      {/* Add Item Modal */}
+      {/* Simplified Items Table */}
+      <div className="bg-zinc-900/70 border border-zinc-800/80 rounded-3xl overflow-hidden shadow-xl">
+        <div className="overflow-x-auto custom-scrollbar">
+          <table className="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr className="border-b border-zinc-800/80 text-zinc-400 font-bold bg-zinc-950/80">
+                <th className="py-3.5 px-5 w-16 text-center">#</th>
+                <th className="py-3.5 px-5">道具名称</th>
+                <th className="py-3.5 px-5 text-right w-44">操作</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-zinc-800/50">
+              {loading ? (
+                <tr>
+                  <td colSpan={3} className="py-16 text-center text-zinc-500 font-mono">
+                    <div className="inline-block animate-spin w-5 h-5 border-2 border-orange-500 border-t-transparent rounded-full mb-2" />
+                    <div>正在加载道具列表...</div>
+                  </td>
+                </tr>
+              ) : filteredItems.length === 0 ? (
+                <tr>
+                  <td colSpan={3} className="py-16 text-center text-zinc-500">
+                    {searchQuery ? '未找到匹配的道具' : '暂无道具数据'}
+                  </td>
+                </tr>
+              ) : (
+                filteredItems.map((item, idx) => (
+                  <tr key={item.id} className="hover:bg-zinc-800/40 transition-colors group">
+                    <td className="py-3.5 px-5 text-center font-mono text-zinc-500 text-xs">
+                      {idx + 1}
+                    </td>
+                    <td className="py-3.5 px-5">
+                      <span className="font-bold text-zinc-100 group-hover:text-orange-400 transition-colors text-sm">
+                        {item.name}
+                      </span>
+                    </td>
+                    <td className="py-3.5 px-5 text-right space-x-2">
+                      {isAdmin && (
+                        <>
+                          <button
+                            onClick={() => handleOpenEditModal(item)}
+                            className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white rounded-xl text-xs font-bold transition-all cursor-pointer inline-flex items-center gap-1"
+                          >
+                            <Edit3 className="w-3.5 h-3.5" /> 编辑
+                          </button>
+                          <button
+                            onClick={() => handleDeleteItem(item.id, item.name)}
+                            className="px-3 py-1.5 bg-red-950/20 hover:bg-red-500/20 text-red-400 border border-red-500/30 rounded-xl text-xs font-bold transition-all cursor-pointer inline-flex items-center gap-1"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" /> 删除
+                          </button>
+                        </>
+                      )}
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Add / Edit Minimal Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="w-full max-w-md bg-zinc-900 border border-zinc-800 p-6 rounded-3xl space-y-4">
-            <h3 className="text-lg font-bold text-white">新增道具配置</h3>
-            <form onSubmit={handleAddItem} className="space-y-4">
-              <div className="space-y-1">
-                <label className="text-xs text-zinc-500 font-medium">物品名称</label>
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="w-full max-w-sm bg-zinc-900 border border-zinc-800 p-6 rounded-3xl shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+            <div className="flex justify-between items-center pb-4 border-b border-zinc-800/80">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <Package className="w-4 h-4 text-orange-400" />
+                {editingId ? '编辑道具名称' : '新增道具'}
+              </h3>
+              <button
+                type="button"
+                onClick={() => setShowModal(false)}
+                className="text-zinc-500 hover:text-zinc-300 p-1 rounded-lg hover:bg-zinc-800 transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveItem} className="pt-4 space-y-4">
+              <div className="space-y-1.5">
+                <label className="text-xs text-zinc-400 font-medium">道具名称 *</label>
                 <input
                   type="text"
                   required
+                  autoFocus
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  placeholder="如：S钥匙、自选核心、S特工碎片..."
                   className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-zinc-200 focus:outline-none focus:border-orange-500/50"
-                />
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-xs text-zinc-500 font-medium">道具类别</label>
-                <select
-                  value={type}
-                  onChange={(e) => setType(e.target.value)}
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-zinc-200 focus:outline-none focus:border-orange-500/50"
-                >
-                  <option value="KEY">KEY (钥匙)</option>
-                  <option value="CURRENCY">CURRENCY (代币)</option>
-                  <option value="EQUIPMENT">EQUIPMENT (装备/武器)</option>
-                  <option value="TECH_PART">TECH_PART (配件)</option>
-                </select>
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-xs text-zinc-500 font-medium">描述说明</label>
-                <textarea
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-zinc-200 focus:outline-none focus:border-orange-500/50 h-20 resize-none"
-                />
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-xs text-zinc-500 font-medium">属性数值 (JSON Stats)</label>
-                <input
-                  type="text"
-                  value={stats}
-                  onChange={(e) => setStats(e.target.value)}
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-zinc-200 font-mono focus:outline-none focus:border-orange-500/50"
                 />
               </div>
 
@@ -170,15 +293,16 @@ export default function ItemsPage() {
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="flex-1 py-2.5 bg-zinc-950 border border-zinc-800 text-zinc-400 hover:text-white rounded-xl text-xs font-bold transition-all"
+                  className="flex-1 py-2.5 bg-zinc-800 text-zinc-300 rounded-xl text-xs font-bold hover:bg-zinc-700 transition-all cursor-pointer"
                 >
                   取消
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 py-2.5 bg-orange-500 text-zinc-950 rounded-xl text-xs font-bold hover:bg-orange-400 transition-all"
+                  disabled={submitting}
+                  className="flex-1 py-2.5 bg-gradient-to-r from-orange-500 to-amber-500 text-zinc-950 rounded-xl text-xs font-black hover:from-orange-400 hover:to-amber-400 transition-all cursor-pointer disabled:opacity-50 shadow-[0_0_15px_rgba(249,115,22,0.15)]"
                 >
-                  确认保存
+                  {submitting ? '保存中...' : '确认保存'}
                 </button>
               </div>
             </form>

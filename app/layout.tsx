@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Providers } from './providers';
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: '呱呱弹壳空间 · 数据中台',
@@ -13,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className="bg-zinc-950 text-zinc-100">
+    <html lang="zh-CN" className={cn("bg-zinc-950 text-zinc-100", "font-sans", geist.variable)}>
       <body className="min-h-screen bg-zinc-950 text-zinc-100 antialiased font-sans">
         <Providers>{children}</Providers>
       </body>
