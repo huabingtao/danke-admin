@@ -210,7 +210,7 @@ function AppLayoutContent({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* Right Content */}
-      <main className="relative z-10 flex-grow p-8 overflow-y-auto max-w-7xl mx-auto w-full">
+      <main className="relative z-10 flex-grow px-5 py-5 sm:px-6 sm:py-6 overflow-y-auto max-w-7xl mx-auto w-full">
         {children}
       </main>
 

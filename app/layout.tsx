@@ -17,8 +17,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className={cn("bg-zinc-950 text-zinc-100", "font-sans", geist.variable)}>
-      <body className="min-h-screen bg-zinc-950 text-zinc-100 antialiased font-sans">
+    <html
+      lang="zh-CN"
+      suppressHydrationWarning
+      className={cn("bg-zinc-950 text-zinc-100", "font-sans", geist.variable)}
+    >
+      <body
+        suppressHydrationWarning
+        className="min-h-screen bg-zinc-950 text-zinc-100 antialiased font-sans"
+      >
         <Providers>{children}</Providers>
       </body>
     </html>

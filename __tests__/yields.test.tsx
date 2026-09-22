@@ -1,14 +1,6 @@
 import { describe, test, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import YieldsPage from '../app/yields/page';
-
-// Mock next/navigation searchParams
-const mockGet = vi.fn();
-vi.mock('next/navigation', () => ({
-  useSearchParams: () => ({
-    get: mockGet,
-  }),
-}));
+import YieldsPage, { getItemIconUrl } from '../app/yields/page';
 
 // Mock Auth Context
 const mockUseAuth = vi.fn();
@@ -20,7 +12,24 @@ vi.mock('../context/AuthContext', () => ({
 const mockFetch = vi.fn();
 global.fetch = mockFetch;
 
-describe('Yields Page Categorization & Tab Filtering', () => {
+describe('Yields Page Enhancements & Interactivity', () => {
+  const mockItems = [
+    { id: 'item_crystal', name: '觉醒水晶', type: 'CURRENCY', description: null },
+    { id: 'item_keys', name: '高级钥匙', type: 'KEY', description: null },
+  ];
+
+  const mockSources = [
+    { id: 's_guangao', name: '广告', type: 'DAILY', category: '广告收益', subcategory: null, description: null },
+    { id: 's_gonghui', name: '工会探索', type: 'WEEKLY', category: '工会系统', subcategory: null, description: null },
+    { id: 's_richang', name: '日常挑战', type: 'DAILY', category: '日常挑战', subcategory: null, description: null },
+  ];
+
+  const mockYields = [
+    { id: 'y1', itemId: 'item_crystal', sourceId: 's_gonghui', amount: 50, year: 2026, month: 8, notes: null },
+    { id: 'y2', itemId: 'item_crystal', sourceId: 's_richang', amount: 200, year: 2026, month: 8, notes: null },
+    { id: 'y3', itemId: 'item_crystal', sourceId: 's_guangao', amount: 10, year: 2026, month: 8, notes: null },
+  ];
+
   beforeEach(() => {
     vi.clearAllMocks();
     mockUseAuth.mockReturnValue({
@@ -28,176 +37,135 @@ describe('Yields Page Categorization & Tab Filtering', () => {
       token: 'mock-token',
       hasPermission: () => true,
     });
-  });
 
-  test('loads dynamic categories, items, and filters columns by active subcategory tab', async () => {
-    // 1. Mock URL query parameter `category=广告`
-    mockGet.mockImplementation((key: string) => {
-      if (key === 'category') return '广告';
-      return null;
-    });
-
-    // 2. Setup mock fetch data for menus, items, sources, and yields
-    mockFetch.mockImplementation(async (url: string) => {
-      if (url.includes('/menus')) {
-        return {
-          ok: true,
-          json: async () => [
-            { id: 'm1', name: '广告', path: '/yields?category=广告', sort: 1 },
-            { id: 'm2', name: '日常挑战', path: '/yields?category=日常挑战', sort: 2 },
-          ],
-        };
-      }
+    mockFetch.mockImplementation(async (url: string, options?: any) => {
       if (url.includes('/items')) {
-        return {
-          ok: true,
-          json: async () => [
-            { id: 'item_gems', name: '宝石', type: 'CURRENCY' },
-            { id: 'item_keys', name: 'S钥匙', type: 'KEY' },
-          ],
-        };
+        return { ok: true, json: async () => mockItems };
       }
-      if (url.includes('/sources')) {
+      if (url.includes('/sources') && (!options || options.method === 'GET' || !options.method)) {
+        return { ok: true, json: async () => mockSources };
+      }
+      if (url.includes('/sources/') && options?.method === 'PATCH') {
+        const body = JSON.parse(options.body);
         return {
           ok: true,
-          json: async () => [
-            { id: 's1', name: '每日广告', type: 'AD', category: '广告', subcategory: '每日' },
-            { id: 's2', name: '每周广告', type: 'AD', category: '广告', subcategory: '每周' },
-            { id: 's3', name: '日常挑战通关', type: 'DAILY_CHALLENGE', category: '日常挑战', subcategory: null },
-          ],
+          json: async () => ({ id: 's_guangao', name: body.name }),
         };
       }
       if (url.includes('/yields')) {
-        return {
-          ok: true,
-          json: async () => [
-            { id: 'y1', itemId: 'item_gems', sourceId: 's1', amount: 300, year: 2026, month: 7 },
-            { id: 'y2', itemId: 'item_gems', sourceId: 's2', amount: 100, year: 2026, month: 7 },
-          ],
-        };
+        return { ok: true, json: async () => mockYields };
       }
       return { ok: false, json: async () => [] };
     });
-
-    render(<YieldsPage />);
-
-    // 3. Verify loading states clear and elements render by waiting for the dynamic columns to load
-    await waitFor(() => {
-      expect(screen.getByText('每日广告')).toBeInTheDocument();
-    });
-
-    // Verify subcategory tabs exist for '广告'
-    expect(screen.getByText('每日')).toBeInTheDocument();
-    expect(screen.getByText('每周')).toBeInTheDocument();
-
-    // Verify '每周广告' column is initially NOT visible
-    expect(screen.queryByText('每周广告')).not.toBeInTheDocument();
-
-    // Verify initial values render correctly
-    expect(screen.getAllByText('300').length).toBe(2);
-
-    // 4. Click '每周' tab
-    const weeklyTab = screen.getByText('每周');
-    fireEvent.click(weeklyTab);
-
-    // Verify '每周广告' column is now visible, and '每日广告' is hidden
-    await waitFor(() => {
-      expect(screen.getByText('每周广告')).toBeInTheDocument();
-    });
-    expect(screen.queryByText('每日广告')).not.toBeInTheDocument();
-
-    // Verify Weekly value '100' is displayed
-    expect(screen.getAllByText('100').length).toBe(2);
   });
 
-  test('groups three mines under "矿洞挑战" tab and applies 3-choose-1 exclusion logic', async () => {
-    // 1. Mock URL query parameter `category=每日活动`
-    mockGet.mockImplementation((key: string) => {
-      if (key === 'category') return '每日活动';
-      return null;
-    });
+  test('getItemIconUrl generates correct path for item icons', () => {
+    expect(getItemIconUrl('觉醒水晶')).toBe('/icons/items/%E8%A7%89%E9%86%92%E6%B0%B4%E6%99%B6.png');
+    expect(getItemIconUrl('高级钥匙')).toBe('/icons/items/%E9%AB%98%E7%BA%A7%E9%92%A5%E5%8C%99.png');
+  });
 
-    // 2. Setup mock fetch data
-    mockFetch.mockImplementation(async (url: string) => {
-      if (url.includes('/menus')) {
-        return {
-          ok: true,
-          json: async () => [
-            { id: 'm1', name: '每日活动', path: '/yields?category=每日活动', sort: 1 },
-          ],
-        };
-      }
-      if (url.includes('/items')) {
-        return {
-          ok: true,
-          json: async () => [
-            { id: 'item_gems', name: '宝石', type: 'CURRENCY' },
-          ],
-        };
-      }
-      if (url.includes('/sources')) {
-        return {
-          ok: true,
-          json: async () => [
-            { id: 's_cookie', name: '饼干矿洞', type: 'DAILY_EVENT', category: '每日活动', subcategory: '矿洞挑战' },
-            { id: 's_essence', name: '精华矿洞', type: 'DAILY_EVENT', category: '每日活动', subcategory: '矿洞挑战' },
-            { id: 's_gold', name: '黄金矿洞', type: 'DAILY_EVENT', category: '每日活动', subcategory: '矿洞挑战' },
-          ],
-        };
-      }
-      if (url.includes('/yields')) {
-        return {
-          ok: true,
-          json: async () => [
-            // Gem has 200 in cookie mine, 0 in the others
-            { id: 'y1', itemId: 'item_gems', sourceId: 's_cookie', amount: 200, year: 2026, month: 7 },
-          ],
-        };
-      }
-      return { ok: false, json: async () => [] };
-    });
-
+  test('does NOT display 派对/连锁礼包 in the sources table', async () => {
     render(<YieldsPage />);
 
-    // 3. Wait for columns to load (indicating '矿洞挑战' subcategory is loaded)
     await waitFor(() => {
-      expect(screen.getByText('饼干矿洞')).toBeInTheDocument();
+      expect(screen.getByText('工会探索')).toBeInTheDocument();
     });
 
-    expect(screen.getByText('精华矿洞')).toBeInTheDocument();
-    expect(screen.getByText('黄金矿洞')).toBeInTheDocument();
+    expect(screen.queryByText('派对/连锁礼包')).not.toBeInTheDocument();
+  });
 
-    // 4. Verify that cookie mine has editable value "200"
-    expect(screen.getAllByText('200').length).toBe(2);
+  test('renders item icons in table headers', async () => {
+    render(<YieldsPage />);
 
-    // 5. Verify that essence mine and gold mine cells render lock icons 🔒 because cookie mine has value > 0
-    const locks = screen.getAllByText('🔒');
-    expect(locks.length).toBe(2);
-
-    // Verify cell values for locked cells contain "0" and the lock icon
-    locks.forEach(lock => {
-      const cell = lock.closest('td');
-      expect(cell?.textContent).toContain('0');
+    await waitFor(() => {
+      expect(screen.getByText('觉醒水晶')).toBeInTheDocument();
     });
 
-    // 6. Verify that double-clicking a locked cell (e.g. essence mine) does NOT trigger input field
-    const essenceCell = locks[0].closest('td');
-    expect(essenceCell).not.toBeNull();
-    
-    if (essenceCell) {
-      fireEvent.doubleClick(essenceCell);
-      const input = essenceCell.querySelector('input');
-      expect(input).toBeNull(); // Input field should not render (locked)
-    }
+    const crystalImg = screen.getByAltText('觉醒水晶');
+    expect(crystalImg).toBeInTheDocument();
+    expect(crystalImg).toHaveAttribute('src', getItemIconUrl('觉醒水晶'));
+  });
 
-    // 7. Verify that double-clicking the unlocked cell (cookie mine) DOES trigger input field
-    const cookieCell = screen.getAllByText('200')[0].closest('td');
-    expect(cookieCell).not.toBeNull();
+  test('supports double-clicking source name to edit and persist to database via PATCH /sources/:id', async () => {
+    render(<YieldsPage />);
 
-    if (cookieCell) {
-      fireEvent.doubleClick(cookieCell);
-      const input = cookieCell.querySelector('input');
-      expect(input).not.toBeNull(); // Input field should render (unlocked)
-    }
+    await waitFor(() => {
+      expect(screen.getByText('广告')).toBeInTheDocument();
+    });
+
+    // 1. Double click on the cell containing '广告'
+    const sourceText = screen.getByText('广告');
+    const sourceCell = sourceText.closest('td');
+    expect(sourceCell).not.toBeNull();
+
+    fireEvent.doubleClick(sourceCell!);
+
+    // 2. An input should now appear in the cell
+    const input = sourceCell!.querySelector('input');
+    expect(input).not.toBeNull();
+    expect(input?.value).toBe('广告');
+
+    // 3. Type new name and press Enter to save
+    fireEvent.change(input!, { target: { value: '超值广告福利' } });
+    fireEvent.keyDown(input!, { key: 'Enter' });
+
+    // 4. Verify PATCH API was called with the updated source name and authorization header
+    await waitFor(() => {
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.stringContaining('/sources/s_guangao'),
+        expect.objectContaining({
+          method: 'PATCH',
+          headers: expect.objectContaining({
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer mock-token',
+          }),
+          body: JSON.stringify({ name: '超值广告福利' }),
+        })
+      );
+    });
+  });
+
+  test('sorts sources by Chinese Pinyin first letter by default and toggles A-Z / Z-A', async () => {
+    render(<YieldsPage />);
+
+    await waitFor(() => {
+      expect(screen.getByText('工会探索')).toBeInTheDocument();
+    });
+
+    // Pinyin order:
+    // 工会探索 (G) -> 广告 (G) -> 日常挑战 (R)
+    // Verify initial A-Z indicator
+    expect(screen.getByText(/A-Z/)).toBeInTheDocument();
+
+    // Click "获取途径 / 来源" header to toggle to Z-A
+    const sourceHeader = screen.getByTitle(/点击切换途径名称拼音首字母排序/);
+    fireEvent.click(sourceHeader);
+
+    // After toggle, indicator should change to Z-A
+    await waitFor(() => {
+      expect(screen.getByText(/Z-A/)).toBeInTheDocument();
+    });
+  });
+
+  test('allows sorting sources by resource column quantity when clicking header', async () => {
+    render(<YieldsPage />);
+
+    await waitFor(() => {
+      expect(screen.getByText('觉醒水晶')).toBeInTheDocument();
+    });
+
+    // Click '觉醒水晶' header to sort by quantity descending
+    const crystalHeader = screen.getByTitle(/点击按【觉醒水晶】产出数量排序/);
+    fireEvent.click(crystalHeader);
+
+    // Verify indicator shows sort active (from多到少)
+    await waitFor(() => {
+      expect(crystalHeader.getAttribute('title')).toContain('数量从多到少');
+    });
+
+    // Rows should be ordered by amount descending: 日常挑战(200) -> 工会探索(50) -> 广告(10)
+    const rows = screen.getAllByRole('row');
+    // First data row should have 日常挑战
+    expect(rows[1].textContent).toContain('日常挑战');
   });
 });

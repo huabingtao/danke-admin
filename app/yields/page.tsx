@@ -15,6 +15,10 @@ import {
   Shield,
   Layers,
   Key,
+  ArrowUp,
+  ArrowDown,
+  ArrowUpDown,
+  Edit3,
 } from 'lucide-react';
 
 interface Source {
@@ -29,6 +33,7 @@ interface Source {
 interface Item {
   id: string;
   name: string;
+  icon?: string | null;
   type: string;
   description: string | null;
 }
@@ -42,6 +47,14 @@ interface MonthlyYieldRecord {
   year: number;
   notes: string | null;
 }
+
+// 道具图标获取工具（优先使用数据库配置的 icon，支持 OSS 路径，若无则回退到默认文件名）
+export const getItemIconUrl = (itemName: string, iconUrl?: string | null): string => {
+  if (iconUrl && iconUrl.trim()) {
+    return iconUrl.trim();
+  }
+  return `/icons/items/${encodeURIComponent(itemName)}.png`;
+};
 
 // 26 项标准资源排序规则 (含细分 8 类钥匙)
 const STANDARD_ITEM_NAMES = [
@@ -68,12 +81,12 @@ const STANDARD_ITEM_NAMES = [
   '高级宠物箱钥匙',
   '神器核心',
   '异宠核心',
-  '配件核心',
+  '谐振芯片',
   '特工核心',
   '自选核心',
 ];
 
-// 27 个标准获取途径排序规则
+// 26 个标准获取途径排序规则 (已剔除非通用道具的派对/连锁礼包)
 const STANDARD_SOURCE_NAMES = [
   '工会远征第一阶段难度12以上',
   '工会远征第二阶段',
@@ -91,7 +104,6 @@ const STANDARD_SOURCE_NAMES = [
   '通行证免费',
   '任务好礼',
   '限时好礼',
-  '派对/连锁礼包',
   '联机挑战',
   '特别行动',
   '工会神秘商人',
@@ -144,7 +156,7 @@ const ITEM_CATEGORY_TABS = [
   {
     id: 'TECH',
     label: '⚙️ 配件',
-    items: ['史诗配件', '杰出配件', '配件宝箱钥匙', '配件核心', '自选核心'],
+    items: ['史诗配件', '杰出配件', '配件宝箱钥匙', '谐振芯片', '自选核心'],
   },
   {
     id: 'COLLECT',
@@ -154,7 +166,7 @@ const ITEM_CATEGORY_TABS = [
   {
     id: 'CORE',
     label: '🔮 核心',
-    items: ['神器核心', '异宠核心', '配件核心', '特工核心', '自选核心'],
+    items: ['神器核心', '异宠核心', '谐振芯片', '特工核心', '自选核心'],
   },
 ];
 
@@ -180,6 +192,17 @@ export default function YieldsPage() {
   const [editValue, setEditValue] = useState<string>('');
   const [saveStatus, setSaveStatus] = useState<string>('');
   const [copiedMd, setCopiedMd] = useState(false);
+
+  // 途径名称就地双击编辑状态
+  const [editingSourceId, setEditingSourceId] = useState<string | null>(null);
+  const [editSourceName, setEditSourceName] = useState<string>('');
+  const [savingSource, setSavingSource] = useState(false);
+
+  // 排序状态
+  // 1. 获取途径按名称拼音首字母排序: 'ASC' (A-Z) | 'DESC' (Z-A)
+  const [sourceSortOrder, setSourceSortOrder] = useState<'ASC' | 'DESC'>('ASC');
+  // 2. 资源列按产出数量排序: { itemId, direction: 'DESC' | 'ASC' } | null
+  const [quantitySort, setQuantitySort] = useState<{ itemId: string; direction: 'DESC' | 'ASC' } | null>(null);
 
   // 1. Fetch Items
   useEffect(() => {
@@ -218,6 +241,15 @@ export default function YieldsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [year, month, apiBase]);
 
+  // Yield lookup map: key = `${sourceId}_${itemId}` -> amount
+  const yieldLookup = useMemo(() => {
+    const map = new Map<string, number>();
+    yields.forEach((y) => {
+      map.set(`${y.sourceId}_${y.itemId}`, y.amount);
+    });
+    return map;
+  }, [yields]);
+
   // Sort and filter columns (Items)
   const sortedItems = useMemo(() => {
     const list = [...items].sort((a, b) => {
@@ -226,7 +258,7 @@ export default function YieldsPage() {
       if (idxA !== -1 && idxB !== -1) return idxA - idxB;
       if (idxA !== -1) return -1;
       if (idxB !== -1) return 1;
-      return a.name.localeCompare(b.name);
+      return a.name.localeCompare(b.name, 'zh-CN');
     });
 
     if (activeItemTab === 'ALL') return list;
@@ -237,14 +269,7 @@ export default function YieldsPage() {
 
   // Sort and filter rows (Sources)
   const sortedSources = useMemo(() => {
-    let list = [...sources].sort((a, b) => {
-      const idxA = STANDARD_SOURCE_NAMES.indexOf(a.name);
-      const idxB = STANDARD_SOURCE_NAMES.indexOf(b.name);
-      if (idxA !== -1 && idxB !== -1) return idxA - idxB;
-      if (idxA !== -1) return -1;
-      if (idxB !== -1) return 1;
-      return a.name.localeCompare(b.name);
-    });
+    let list = [...sources];
 
     if (searchQuery.trim()) {
       const q = searchQuery.trim().toLowerCase();
@@ -262,17 +287,95 @@ export default function YieldsPage() {
       });
     }
 
-    return list;
-  }, [sources, searchQuery, hideEmptySources, yields]);
+    // 排序优先级：如果指定了资源数量列排序，则按该资源的产出数量排；否则默认按途径拼音首字母排序
+    if (quantitySort) {
+      list.sort((a, b) => {
+        const amtA = yieldLookup.get(`${a.id}_${quantitySort.itemId}`) || 0;
+        const amtB = yieldLookup.get(`${b.id}_${quantitySort.itemId}`) || 0;
+        if (amtA !== amtB) {
+          return quantitySort.direction === 'DESC' ? amtB - amtA : amtA - amtB;
+        }
+        // 产出数量相同时按拼音首字母次要排序
+        return a.name.localeCompare(b.name, 'zh-CN');
+      });
+    } else {
+      // 严格按途径名称首字母 (中文拼音) 排序
+      list.sort((a, b) => {
+        const comp = a.name.localeCompare(b.name, 'zh-CN');
+        return sourceSortOrder === 'ASC' ? comp : -comp;
+      });
+    }
 
-  // Yield lookup map: key = `${sourceId}_${itemId}` -> amount
-  const yieldLookup = useMemo(() => {
-    const map = new Map<string, number>();
-    yields.forEach((y) => {
-      map.set(`${y.sourceId}_${y.itemId}`, y.amount);
-    });
-    return map;
-  }, [yields]);
+    return list;
+  }, [sources, searchQuery, hideEmptySources, yields, yieldLookup, quantitySort, sourceSortOrder]);
+
+  // 排序切换处理
+  const handleToggleSourceSort = () => {
+    // 切换途径名称拼音首字母排序时，清除资源数量列排序
+    setQuantitySort(null);
+    setSourceSortOrder((prev) => (prev === 'ASC' ? 'DESC' : 'ASC'));
+  };
+
+  const handleToggleQuantitySort = (itemId: string) => {
+    if (quantitySort?.itemId === itemId) {
+      if (quantitySort.direction === 'DESC') {
+        // 从降序切换为升序
+        setQuantitySort({ itemId, direction: 'ASC' });
+      } else {
+        // 从升序重置回途径名称首字母默认排序
+        setQuantitySort(null);
+      }
+    } else {
+      // 点击新列首次默认为降序 (数量从高到低)
+      setQuantitySort({ itemId, direction: 'DESC' });
+    }
+  };
+
+  // 途径名称就地双击修改处理器 (保存到数据库)
+  const handleSourceDoubleClick = (source: Source) => {
+    setEditingSourceId(source.id);
+    setEditSourceName(source.name);
+  };
+
+  const handleSaveSourceName = async (sourceId: string) => {
+    const trimmed = editSourceName.trim();
+    const current = sources.find((s) => s.id === sourceId);
+    if (!trimmed || trimmed === current?.name) {
+      setEditingSourceId(null);
+      return;
+    }
+
+    setSavingSource(true);
+    try {
+      const res = await fetch(`${apiBase}/sources/${sourceId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify({ name: trimmed }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.message || '更新途径名称失败');
+      }
+
+      const updated = await res.json();
+      setSources((prev) =>
+        prev.map((s) => (s.id === sourceId ? { ...s, name: updated.name } : s))
+      );
+      setSaveStatus('✅ 途径名称已同步保存');
+      setTimeout(() => setSaveStatus(''), 2500);
+    } catch (err: any) {
+      console.error('Failed to update source name', err);
+      setSaveStatus(`❌ ${err.message || '更新途径名称失败'}`);
+      setTimeout(() => setSaveStatus(''), 3000);
+    } finally {
+      setSavingSource(false);
+      setEditingSourceId(null);
+    }
+  };
 
   // Compute column totals
   const columnTotals = useMemo(() => {
@@ -305,7 +408,7 @@ export default function YieldsPage() {
     const coreItemNames = [
       '神器核心',
       '异宠核心',
-      '配件核心',
+      '谐振芯片',
       '特工核心',
       '自选核心',
     ];
@@ -414,7 +517,7 @@ export default function YieldsPage() {
                 </span>
               </h1>
               <p className="text-xs text-zinc-500">
-                27 大获取途径 × 26 项核心资源全矩阵统计 · 双击单元格直接就地修改
+                共 {sources.length} 大获取途径 × {items.length} 项核心资源全矩阵统计 · 双击途径名称/单元格就地修改保存 · 点击表头智能排序
               </p>
             </div>
           </div>
@@ -553,29 +656,92 @@ export default function YieldsPage() {
             {/* 表头 (Sticky) */}
             <thead className="bg-zinc-950/95 sticky top-0 z-30 backdrop-blur-md border-b border-zinc-800">
               <tr>
-                {/* 途径名称 (双向固定: Sticky Top + Sticky Left) */}
-                <th className="py-3.5 px-4 font-extrabold text-zinc-300 min-w-[200px] sticky left-0 z-40 bg-zinc-950/95 border-r border-zinc-800">
+                {/* 途径名称 (双向固定: Sticky Top + Sticky Left) - 支持拼音首字母排序 */}
+                <th
+                  onClick={handleToggleSourceSort}
+                  className="py-3 px-4 font-extrabold text-zinc-300 min-w-[210px] sticky left-0 z-40 bg-zinc-950/95 border-r border-zinc-800 cursor-pointer select-none hover:bg-zinc-900 transition-colors group"
+                  title="点击切换途径名称拼音首字母排序 (A-Z / Z-A)"
+                >
                   <div className="flex items-center justify-between">
-                    <span>获取途径 / 来源</span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="group-hover:text-orange-400 transition-colors">获取途径 / 来源</span>
+                      {!quantitySort && (
+                        <span className="text-[10px] text-orange-400 font-mono font-bold flex items-center bg-orange-500/10 px-1.5 py-0.5 rounded border border-orange-500/20">
+                          {sourceSortOrder === 'ASC' ? (
+                            <>
+                              A-Z <ArrowUp className="w-3 h-3 ml-0.5 inline" />
+                            </>
+                          ) : (
+                            <>
+                              Z-A <ArrowDown className="w-3 h-3 ml-0.5 inline" />
+                            </>
+                          )}
+                        </span>
+                      )}
+                    </div>
                     <span className="text-[10px] text-zinc-500 font-normal">
                       共 {sortedSources.length} 途径
                     </span>
                   </div>
                 </th>
 
-                {/* 20 项资源列头 */}
-                {sortedItems.map((item, idx) => (
-                  <th
-                    key={item.id}
-                    className="py-3.5 px-3 font-bold text-zinc-300 text-center min-w-[105px] border-r border-zinc-800/50 whitespace-nowrap"
-                  >
-                    <div className="flex flex-col items-center">
-                      <span className="text-[11px] text-zinc-300 font-bold truncate max-w-[100px]" title={item.name}>
-                        {item.name}
-                      </span>
-                    </div>
-                  </th>
-                ))}
+                {/* 资源列头 (含道具真实图标与产出数量排序) */}
+                {sortedItems.map((item) => {
+                  const isSorted = quantitySort?.itemId === item.id;
+                  return (
+                    <th
+                      key={item.id}
+                      onClick={() => handleToggleQuantitySort(item.id)}
+                      className={`py-2 px-2 font-bold text-center min-w-[110px] border-r border-zinc-800/50 whitespace-nowrap cursor-pointer select-none transition-colors group ${
+                        isSorted
+                          ? 'bg-orange-500/15 text-orange-400 border-b-2 border-orange-500'
+                          : 'text-zinc-300 hover:bg-zinc-900/90'
+                      }`}
+                      title={`点击按【${item.name}】产出数量排序 (当前: ${
+                        isSorted
+                          ? quantitySort.direction === 'DESC'
+                            ? '数量从多到少'
+                            : '数量从少到多'
+                          : '未排序，点击按数量从高到低'
+                      })`}
+                    >
+                      <div className="flex flex-col items-center gap-1 py-0.5">
+                        {/* 道具图标 */}
+                        <div className="w-7 h-7 rounded-lg bg-zinc-900/90 border border-zinc-700/60 p-0.5 flex items-center justify-center shadow-sm shrink-0 group-hover:border-orange-500/60 group-hover:scale-105 transition-all">
+                          <img
+                            src={getItemIconUrl(item.name, item.icon)}
+                            alt={item.name}
+                            className="w-full h-full object-contain drop-shadow-sm"
+                            onError={(e) => {
+                              (e.target as HTMLElement).style.display = 'none';
+                            }}
+                          />
+                        </div>
+
+                        {/* 道具名称与排序指示器 */}
+                        <div className="flex items-center gap-1">
+                          <span
+                            className={`text-[11px] font-bold truncate max-w-[80px] ${
+                              isSorted ? 'text-orange-400' : 'text-zinc-300 group-hover:text-white'
+                            }`}
+                            title={item.name}
+                          >
+                            {item.name}
+                          </span>
+                          {isSorted ? (
+                            quantitySort.direction === 'DESC' ? (
+                              <ArrowDown className="w-3 h-3 text-orange-400 shrink-0" />
+                            ) : (
+                              <ArrowUp className="w-3 h-3 text-orange-400 shrink-0" />
+                            )
+                          ) : (
+                            <ArrowUpDown className="w-2.5 h-2.5 text-zinc-600 opacity-60 group-hover:opacity-100 shrink-0 transition-opacity" />
+                          )}
+                        </div>
+                      </div>
+                    </th>
+                  );
+                })}
               </tr>
             </thead>
 
@@ -601,21 +767,49 @@ export default function YieldsPage() {
                 </tr>
               ) : (
                 sortedSources.map((source, rIdx) => {
+                  const isEditingSource = editingSourceId === source.id;
                   return (
                     <tr
                       key={source.id}
                       className="hover:bg-zinc-800/40 transition-colors group"
                     >
-                      {/* 途径名称 (Sticky Left) */}
-                      <td className="py-2.5 px-4 sticky left-0 z-20 bg-zinc-900/95 group-hover:bg-zinc-850 border-r border-zinc-800">
-                        <div className="flex items-center space-x-2">
-                          <span className="text-[10px] font-mono text-zinc-500 w-4">
-                            {rIdx + 1}
-                          </span>
-                          <span className="font-semibold text-zinc-200 group-hover:text-orange-400 transition-colors">
-                            {source.name}
-                          </span>
-                        </div>
+                      {/* 途径名称 (Sticky Left) - 支持双击就地修改并保存至数据库 */}
+                      <td
+                        className="py-2 px-4 sticky left-0 z-20 bg-zinc-900/95 group-hover:bg-zinc-850 border-r border-zinc-800 transition-colors"
+                        onDoubleClick={() => handleSourceDoubleClick(source)}
+                        title="双击就地修改途径名称"
+                      >
+                        {isEditingSource ? (
+                          <div className="flex items-center space-x-1.5 py-0.5">
+                            <input
+                              autoFocus
+                              type="text"
+                              value={editSourceName}
+                              onChange={(e) => setEditSourceName(e.target.value)}
+                              onBlur={() => handleSaveSourceName(source.id)}
+                              onKeyDown={(e) => {
+                                if (e.key === 'Enter') handleSaveSourceName(source.id);
+                                if (e.key === 'Escape') setEditingSourceId(null);
+                              }}
+                              disabled={savingSource}
+                              className="w-full bg-zinc-950 border border-orange-500 rounded px-2 py-0.5 text-xs text-orange-400 font-bold focus:outline-none shadow-sm"
+                            />
+                          </div>
+                        ) : (
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center space-x-2 truncate">
+                              <span className="text-[10px] font-mono text-zinc-500 w-4 shrink-0">
+                                {rIdx + 1}
+                              </span>
+                              <span className="font-semibold text-zinc-200 group-hover:text-orange-400 transition-colors truncate cursor-pointer">
+                                {source.name}
+                              </span>
+                            </div>
+                            <span className="text-[10px] text-zinc-600 opacity-0 group-hover:opacity-100 transition-opacity ml-1 shrink-0 font-normal">
+                              双击修改
+                            </span>
+                          </div>
+                        )}
                       </td>
 
                       {/* 资源数值单元格 */}
@@ -746,7 +940,7 @@ export default function YieldsPage() {
         <div className="flex items-center space-x-2">
           <Sparkles className="w-4 h-4 text-orange-400 shrink-0" />
           <span>
-            提示：表格支持<strong>双击任意单元格直接编辑</strong>并回车即时保存；顶部支持按大类筛选和一键导出 Markdown 表格。
+            提示：表格支持<strong>双击途径名称或任意数值单元格就地编辑</strong>并回车即时保存至数据库；支持点击「获取途径」按拼音首字母排序，点击任意道具列头按产出数量升降序排序。
           </span>
         </div>
         <div className="font-mono text-zinc-600">
