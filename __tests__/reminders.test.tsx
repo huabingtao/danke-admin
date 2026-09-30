@@ -1,6 +1,7 @@
 import { describe, test, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import RemindersPage, { computeRuleStatus, getTodayStr } from '../app/reminders/page';
+import RemindersPage from '../app/reminders/page';
+import { computeRuleStatus, getTodayStr } from '../lib/reminder-status';
 
 const mockUseAuth = vi.fn();
 vi.mock('../context/AuthContext', () => ({
@@ -207,14 +208,14 @@ describe('RemindersPage UI & Form Workflow Tests', () => {
     fireEvent.click(screen.getByTestId('add-rule-btn'));
 
     expect(screen.getByText('✨ 新增提醒规则')).toBeInTheDocument();
-    expect(screen.getByText('持续天数 (天) *')).toBeInTheDocument();
+    expect(screen.getByText('完整周期（含兑换日，天）*')).toBeInTheDocument();
     expect(screen.queryByText('完整循环周期天数')).not.toBeInTheDocument();
 
     // Verify category select does NOT contain REDEEM_DEADLINE
     expect(screen.queryByText('兑换截止提醒')).not.toBeInTheDocument();
 
     // Verify redeem checkbox toggles the user-customizable prompt box
-    const redeemCheckbox = screen.getByLabelText('设有专属兑换日（活动结束后第 +1 天进行兑换）');
+    const redeemCheckbox = screen.getByLabelText('最后一天仅兑换（已包含在完整周期内，不可游玩）');
     expect(screen.queryByText('🎁 专属兑换日文案（用户自定义）')).not.toBeInTheDocument();
 
     fireEvent.click(redeemCheckbox);
@@ -254,4 +255,73 @@ describe('RemindersPage UI & Form Workflow Tests', () => {
     fireEvent.click(countdownHeader); // trigger sort
     expect(screen.getByText('公会探索')).toBeInTheDocument();
   });
+});
+
+describe('29-day complete cycle regression', () => {
+  const rule = { name: '逃离行动', ruleType: 'CYCLE', startDate: '2026-08-12',
+    durationDays: 28, cycleDays: 29, hasRedeemDay: true };
+  test.each([
+    [2026, 8, 30, 'ACTIVE', 9, 8],
+    [2026, 9, 7, 'ACTIVE', 2, 1],
+    [2026, 9, 8, 'REDEEM', 1, 0],
+    [2026, 9, 9, 'ACTIVE', 29, 28],
+  ])('preview at %i-%i-%i counts the final exchange day', (y, m, d, status, total, playable) => {
+    const result = computeRuleStatus(rule, new Date(y as number, m as number, d as number));
+    expect(result).toMatchObject({status, daysRemaining: total, playableDaysRemaining: playable});
+    if (status === 'REDEEM') expect(result.text).toContain('不可游玩');
+  });
+
+  test('does not wrap dates before the first cycle', () => {
+    expect(computeRuleStatus(rule, new Date(2026, 7, 11)).status).toBe('UPCOMING');
+  });
+
+  test('saving 29 total days sends 28 playable days and a 29-day cycle', async () => {
+    mockUseAuth.mockReturnValue({user:{role:'ADMIN'}, hasPermission:()=>true, token:'test'});
+    const fetchMock = vi.fn().mockResolvedValue({ok:true,json:async()=>mockRules});
+    vi.stubGlobal('fetch', fetchMock);
+    render(<RemindersPage />);
+    await screen.findByText('公会探索');
+    fireEvent.click(screen.getByTestId('add-rule-btn'));
+    const form = screen.getByRole('button', {name:'创建规则'}).closest('form')!;
+    const nameInput = form.querySelector('input[type="text"]')!;
+    fireEvent.change(nameInput, {target:{value:'逃离行动'}});
+    fireEvent.change(screen.getByLabelText('完整周期（含兑换日，天）*'), {target:{value:'29'}});
+    fireEvent.click(screen.getByLabelText('最后一天仅兑换（已包含在完整周期内，不可游玩）'));
+    expect(screen.getByText('每轮共 29 天：前 28 天可游玩，第 29 天仅兑换。倒计时包含兑换日。')).toBeInTheDocument();
+    fireEvent.submit(form);
+    await waitFor(() => expect(fetchMock.mock.calls.some(([,init]) => init?.method === 'POST')).toBe(true));
+    const [,request] = fetchMock.mock.calls.find(([,init]) => init?.method === 'POST')!;
+    expect(JSON.parse(request.body)).toMatchObject({durationDays:28,cycleDays:29,hasRedeemDay:true});
+  });
+
+  test('editing an existing 28+1 rule shows 29 and preserves its saved duration', async () => {
+    mockUseAuth.mockReturnValue({user:{role:'ADMIN'}, hasPermission:()=>true, token:'test'});
+    const saved = {...mockRules[0],...rule,id:'escape'};
+    const fetchMock = vi.fn().mockResolvedValue({ok:true,json:async()=>[saved]});
+    vi.stubGlobal('fetch', fetchMock);
+    render(<RemindersPage />);
+    await screen.findByText('逃离行动');
+    fireEvent.click(screen.getByRole('button',{name:'编辑'}));
+    expect(screen.getByLabelText('完整周期（含兑换日，天）*')).toHaveValue(29);
+    fireEvent.submit(screen.getByRole('button',{name:'保存修改'}).closest('form')!);
+    await waitFor(() => expect(fetchMock.mock.calls.some(([,init]) => init?.method === 'PATCH')).toBe(true));
+    const [,request] = fetchMock.mock.calls.find(([,init]) => init?.method === 'PATCH')!;
+    expect(JSON.parse(request.body)).toMatchObject({durationDays:28,cycleDays:29,hasRedeemDay:true});
+  });
+  test('rejects a redemption period with no playable day', async () => {
+    mockUseAuth.mockReturnValue({user:{role:'ADMIN'}, hasPermission:()=>true, token:'test'});
+    const fetchMock = vi.fn().mockResolvedValue({ok:true,json:async()=>mockRules});
+    vi.stubGlobal('fetch', fetchMock);
+    render(<RemindersPage />);
+    await screen.findByText('公会探索');
+    fireEvent.click(screen.getByTestId('add-rule-btn'));
+    const form = screen.getByRole('button', {name:'创建规则'}).closest('form')!;
+    fireEvent.change(form.querySelector('input[type="text"]')!, {target:{value:'逃离行动'}});
+    fireEvent.click(screen.getByLabelText('最后一天仅兑换（已包含在完整周期内，不可游玩）'));
+    fireEvent.change(screen.getByLabelText('完整周期（含兑换日，天）*'), {target:{value:'1'}});
+    fireEvent.submit(form);
+    expect(fetchMock.mock.calls.some(([,init]) => init?.method === 'POST')).toBe(false);
+    expect(screen.getByLabelText('完整周期（含兑换日，天）*')).toBeInvalid();
+  });
+
 });

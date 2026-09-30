@@ -3,6 +3,8 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { getApiBase } from '@/lib/api';
+import { computeRuleStatus, getTodayStr, WEEKDAY_NAMES } from '@/lib/reminder-status';
+import { Input } from '@/components/ui/input';
 
 const SortIcon = ({ active, order }: { active: boolean; order: 'asc' | 'desc' }) => {
   if (!active) {
@@ -34,150 +36,6 @@ export interface ReminderRule {
   enabled: boolean;
 }
 
-const WEEKDAY_NAMES = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-
-/**
- * 获取本地今日日期 YYYY-MM-DD
- */
-export const getTodayStr = (): string => {
-  const now = new Date();
-  const y = now.getFullYear();
-  const m = String(now.getMonth() + 1).padStart(2, '0');
-  const d = String(now.getDate()).padStart(2, '0');
-  return `${y}-${m}-${d}`;
-};
-
-/**
- * 动态精准计算提醒规则在目标日期的实际状态与倒计时天数
- */
-export function computeRuleStatus(
-  rule: {
-    name: string;
-    ruleType: string;
-    routineType?: string | null;
-    weeklyDay?: number | null;
-    startDate?: string | null;
-    durationDays?: number | null;
-    cycleDays?: number | null;
-    hasRedeemDay?: boolean | null;
-    digestTemplate?: string | null;
-    redeemTemplate?: string | null;
-    routineTemplate?: string | null;
-  },
-  targetDate: Date = new Date()
-) {
-  const currentYear = targetDate.getFullYear();
-  const currentMonth = targetDate.getMonth();
-  const currentDate = targetDate.getDate();
-  const normalizedTarget = new Date(currentYear, currentMonth, currentDate, 0, 0, 0, 0);
-
-  if (rule.ruleType === 'CYCLE' && rule.startDate) {
-    const parts = rule.startDate.substring(0, 10).split('-');
-    if (parts.length === 3) {
-      const startYear = parseInt(parts[0], 10);
-      const startMonth = parseInt(parts[1], 10) - 1;
-      const startDay = parseInt(parts[2], 10);
-      const normalizedStart = new Date(startYear, startMonth, startDay, 0, 0, 0, 0);
-
-      const diffTime = normalizedTarget.getTime() - normalizedStart.getTime();
-      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-      const duration = Number(rule.durationDays) || 7;
-      const cycle = Number(rule.cycleDays) || (rule.hasRedeemDay ? duration + 1 : duration);
-
-      if (diffDays < 0) {
-        const daysToStart = Math.abs(diffDays);
-        return {
-          status: 'UPCOMING',
-          daysRemaining: daysToStart,
-          text: `距首期【${rule.name || '活动'}】开始还剩 ${daysToStart} 天`,
-          isRedeemDay: false,
-          dayInCycle: 0,
-        };
-      }
-
-      const dayInCycle = ((diffDays % cycle) + cycle) % cycle;
-
-      if (dayInCycle < duration) {
-        const daysLeft = duration - dayInCycle;
-        const tpl = rule.digestTemplate?.trim() || '离本轮【{name}】结束还剩 {days} 天';
-        const text = tpl.replace(/\{name\}/g, rule.name || '活动名称').replace(/\{days\}/g, String(daysLeft));
-        return {
-          status: 'ACTIVE',
-          daysRemaining: daysLeft,
-          text,
-          isRedeemDay: false,
-          dayInCycle,
-        };
-      } else if (rule.hasRedeemDay && dayInCycle === duration) {
-        const tpl = rule.redeemTemplate?.trim() || '今天是【{name}】专属兑换日，别忘了兑换奖励！';
-        const text = tpl.replace(/\{name\}/g, rule.name || '活动名称').replace(/\{days\}/g, '0');
-        return {
-          status: 'REDEEM',
-          daysRemaining: 0,
-          text,
-          isRedeemDay: true,
-          dayInCycle,
-        };
-      } else {
-        const daysUntilNext = cycle - dayInCycle;
-        return {
-          status: 'COOLDOWN',
-          daysRemaining: daysUntilNext,
-          text: `距离下轮【${rule.name || '活动'}】开始还剩 ${daysUntilNext} 天`,
-          isRedeemDay: false,
-          dayInCycle,
-        };
-      }
-    }
-  } else if (rule.ruleType === 'ROUTINE') {
-    if (rule.routineType === 'DAILY') {
-      const tpl = rule.routineTemplate?.trim() || '今日【{name}】记得打卡';
-      const text = tpl.replace(/\{name\}/g, rule.name || '打卡项目').replace(/\{days\}/g, '0');
-      return {
-        status: 'ACTIVE',
-        daysRemaining: 0,
-        text,
-        isRedeemDay: false,
-        dayInCycle: 0,
-      };
-    } else if (rule.routineType === 'WEEKLY' && rule.weeklyDay !== undefined && rule.weeklyDay !== null) {
-      const currentWeekday = normalizedTarget.getDay();
-      if (currentWeekday === rule.weeklyDay) {
-        const tpl = rule.routineTemplate?.trim() || '今天是【{name}】打卡日';
-        const text = tpl.replace(/\{name\}/g, rule.name || '打卡项目').replace(/\{days\}/g, '0');
-        return {
-          status: 'ACTIVE',
-          daysRemaining: 0,
-          text,
-          isRedeemDay: false,
-          dayInCycle: 0,
-        };
-      } else {
-        const daysUntil = (rule.weeklyDay - currentWeekday + 7) % 7;
-        const tpl = rule.digestTemplate?.trim() || '离本周【{name}】打卡还剩 {days} 天';
-        const text = tpl.replace(/\{name\}/g, rule.name || '打卡项目').replace(/\{days\}/g, String(daysUntil));
-        return {
-          status: 'ACTIVE',
-          daysRemaining: daysUntil,
-          text,
-          isRedeemDay: false,
-          dayInCycle: 0,
-        };
-      }
-    }
-  }
-
-  const tpl = rule.digestTemplate?.trim() || '离本轮【{name}】结束还剩 {days} 天';
-  return {
-    status: 'ACTIVE',
-    daysRemaining: 3,
-    text: tpl.replace(/\{name\}/g, rule.name || '活动名称').replace(/\{days\}/g, '3'),
-    isRedeemDay: false,
-    dayInCycle: 0,
-  };
-}
-
 export default function RemindersPage() {
   const { user, hasPermission, token } = useAuth();
   const isAdmin = user?.role === 'ADMIN' || hasPermission('reminders:manage');
@@ -203,9 +61,9 @@ export default function RemindersPage() {
   const [routineType, setRoutineType] = useState<'DAILY' | 'WEEKLY'>('WEEKLY');
   const [weeklyDay, setWeeklyDay] = useState<number>(0);
 
-  // Cycle Form Fields (统一持续天数，移除冗余 cycleDays 输入)
+  // Complete period includes the optional redemption-only final day.
   const [startDate, setStartDate] = useState<string>(getTodayStr());
-  const [durationDays, setDurationDays] = useState<number>(7);
+  const [totalDays, setTotalDays] = useState<number>(7);
   const [hasRedeemDay, setHasRedeemDay] = useState(false);
 
   // Editable Template States
@@ -300,7 +158,7 @@ export default function RemindersPage() {
     setRoutineType('WEEKLY');
     setWeeklyDay(0);
     setStartDate(getTodayStr());
-    setDurationDays(7);
+    setTotalDays(7);
     setHasRedeemDay(false);
     setDigestTemplate('');
     setRedeemTemplate('');
@@ -318,7 +176,7 @@ export default function RemindersPage() {
     setRoutineType(rule.routineType || 'WEEKLY');
     setWeeklyDay(rule.weeklyDay ?? 0);
     setStartDate(rule.startDate ? rule.startDate.substring(0, 10) : getTodayStr());
-    setDurationDays(rule.durationDays ?? 7);
+    setTotalDays((rule.durationDays ?? 7) + (rule.hasRedeemDay ? 1 : 0));
     setHasRedeemDay(rule.hasRedeemDay ?? false);
     setDigestTemplate(rule.digestTemplate || '');
     setRedeemTemplate(rule.redeemTemplate || '');
@@ -332,8 +190,12 @@ export default function RemindersPage() {
     e.preventDefault();
     if (!name.trim()) return;
 
-    const dur = Number(durationDays) || 7;
-    const cyc = hasRedeemDay ? dur + 1 : dur;
+    const cyc = Number(totalDays);
+    if (ruleType === 'CYCLE' && (!Number.isInteger(cyc) || cyc < (hasRedeemDay ? 2 : 1) || cyc > 365)) {
+      setError('完整周期须为 1–365 的整数；含兑换日时至少为 2 天。');
+      return;
+    }
+    const dur = cyc - (hasRedeemDay ? 1 : 0);
 
     const payload = {
       name: name.trim(),
@@ -491,8 +353,8 @@ export default function RemindersPage() {
     routineType,
     weeklyDay,
     startDate,
-    durationDays,
-    cycleDays: hasRedeemDay ? Number(durationDays) + 1 : Number(durationDays),
+    durationDays: Number(totalDays) - (hasRedeemDay ? 1 : 0),
+    cycleDays: Number(totalDays),
     hasRedeemDay,
     digestTemplate,
     redeemTemplate,
@@ -913,7 +775,7 @@ export default function RemindersPage() {
                 </div>
               </div>
 
-              {/* CYCLE Fields (统一持续天数) */}
+              {/* CYCLE fields: complete event period, including redemption */}
               {ruleType === 'CYCLE' && (
                 <div className="p-3 bg-zinc-950/70 border border-zinc-800/80 rounded-xl space-y-2.5">
                   <div className="text-[11px] font-bold text-amber-400 flex items-center justify-between">
@@ -935,15 +797,17 @@ export default function RemindersPage() {
                       />
                     </div>
                     <div className="flex flex-col gap-1">
-                      <label className="text-zinc-400 text-[11px]">持续天数 (天) *</label>
-                      <input
+                      <label htmlFor="totalDays" className="text-zinc-400 text-[11px]">完整周期（含兑换日，天）*</label>
+                      <Input
+                        id="totalDays"
                         type="number"
-                        min={1}
+                        min={hasRedeemDay ? 2 : 1}
                         max={365}
+                        step={1}
                         required
-                        value={durationDays}
-                        onChange={(e) => setDurationDays(Math.max(1, Number(e.target.value)))}
-                        placeholder="例如: 7 或 28"
+                        value={totalDays}
+                        onChange={(e) => setTotalDays(Number(e.target.value))}
+                        placeholder="例如: 7 或 29"
                         className="w-full bg-zinc-900 border border-zinc-700 rounded-lg py-1.5 px-2.5 text-white focus:outline-none focus:border-amber-500 text-xs"
                       />
                     </div>
@@ -956,17 +820,25 @@ export default function RemindersPage() {
                         type="checkbox"
                         id="hasRedeemDay"
                         checked={hasRedeemDay}
-                        onChange={(e) => setHasRedeemDay(e.target.checked)}
+                        onChange={(e) => {
+                          setHasRedeemDay(e.target.checked);
+                          if (e.target.checked && totalDays < 2) setTotalDays(2);
+                        }}
                         className="w-3.5 h-3.5 rounded bg-zinc-900 border-zinc-700 text-purple-500 focus:ring-0 cursor-pointer"
                       />
                       <label
                         htmlFor="hasRedeemDay"
                         className="text-xs text-purple-300 font-medium cursor-pointer"
                       >
-                        设有专属兑换日（活动结束后第 +1 天进行兑换）
+                        最后一天仅兑换（已包含在完整周期内，不可游玩）
                       </label>
                     </div>
 
+                    <p className="text-[11px] text-zinc-500">
+                      {hasRedeemDay
+                        ? `每轮共 ${totalDays} 天：前 ${Math.max(0, totalDays - 1)} 天可游玩，第 ${totalDays} 天仅兑换。倒计时包含兑换日。`
+                        : `每轮共 ${totalDays} 天，均可游玩。`}
+                    </p>
                     {/* Redeem Template Box (Only when hasRedeemDay is checked) */}
                     {hasRedeemDay && (
                       <div className="p-2.5 bg-purple-950/20 border border-purple-500/30 rounded-lg flex flex-col gap-1 animate-in fade-in duration-150">
@@ -986,7 +858,7 @@ export default function RemindersPage() {
                           type="text"
                           value={redeemTemplate}
                           onChange={(e) => setRedeemTemplate(e.target.value)}
-                          placeholder="今天是【{name}】专属兑换日，别忘了兑换奖励！"
+                          placeholder="今天是【{name}】专属兑换日，仅可兑换奖励，不可游玩。"
                           className="w-full bg-zinc-900 border border-purple-500/40 rounded-lg py-1.5 px-2.5 text-white placeholder-zinc-600 focus:outline-none focus:border-purple-400 text-xs"
                         />
                         <p className="text-[10px] text-purple-400/80">
@@ -1128,7 +1000,7 @@ export default function RemindersPage() {
                       <span className="text-purple-200 font-medium truncate">
                         {(
                           redeemTemplate.trim() ||
-                          '今天是【{name}】专属兑换日，别忘了兑换奖励！'
+                          '今天是【{name}】专属兑换日，仅可兑换奖励，不可游玩。'
                         ).replace(/\{name\}/g, name || '活动名称')}
                       </span>
                     </div>
