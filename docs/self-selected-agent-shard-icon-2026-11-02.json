@@ -1,0 +1,24 @@
+{
+  "itemId": "af8c977c-e6da-427e-9e31-2b87573d9fb1",
+  "name": "自选特工碎片",
+  "previousIcon": "/uploads/item-icons/5f6e56a8f430ab2e805213ff.png",
+  "icon": "/uploads/item-icons/c12ff9dab58e545b2a378adf.png",
+  "sha256": "c12ff9dab58e545b2a378adf1bc57067be5fc94cff59aa9d54caa524f16492b9",
+  "source": "user supplied clipboard image",
+  "previousCatalog": {
+    "name": "自选特工碎片",
+    "icon": "/uploads/item-icons/5f6e56a8f430ab2e805213ff.png",
+    "preview": "/icons/web-items/5f6e56a8f430ab2e805213ff.png"
+  },
+  "previousProvenance": {
+    "name": "自选特工碎片",
+    "source": "/home/guagua/workspace/project/danke-web/public/wiki-assets/碎片/自选特工碎片.png",
+    "icon": "/uploads/item-icons/5f6e56a8f430ab2e805213ff.png",
+    "sha256": "5f6e56a8f430ab2e805213ffd15560dc74240139c3a4283660d71ae139b3249f"
+  },
+  "backup": "/home/guagua/workspace/backups/danke-core/before-shard-icon-20261102-143742.db",
+  "apiReadbackVerified": true,
+  "coreAndAdminImageBytesVerified": true,
+  "otherItemFieldsUnchanged": true,
+  "seconds": 0.12
+}

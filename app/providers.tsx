@@ -45,7 +45,7 @@ function AppLayoutContent({ children }: { children: React.ReactNode }) {
       <div className="absolute bottom-[10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-blue-600/5 blur-[120px] pointer-events-none z-0" />
 
       {/* Left Sidebar */}
-      <aside className="relative z-10 w-64 bg-zinc-950 border-r border-zinc-900 flex flex-col justify-between p-6">
+      <aside className="relative z-10 w-64 shrink-0 bg-zinc-950 border-r border-zinc-900 flex flex-col justify-between p-6">
         <div className="space-y-8">
           <div>
             <Link href="/" className="font-extrabold text-lg text-orange-500 tracking-wider">
@@ -210,7 +210,7 @@ function AppLayoutContent({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* Right Content */}
-      <main className="relative z-10 flex-grow px-5 py-5 sm:px-6 sm:py-6 overflow-y-auto max-w-7xl mx-auto w-full">
+      <main className="relative z-10 min-w-0 flex-1 px-4 py-5 sm:px-5 sm:py-6 xl:px-6 overflow-y-auto w-full max-w-none">
         {children}
       </main>
 

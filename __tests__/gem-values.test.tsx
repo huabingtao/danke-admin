@@ -1,0 +1,46 @@
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
+import { beforeEach, expect, test, vi } from 'vitest';
+import GemValuesPage from '../app/gem-values/page';
+import { GemValueEditor } from '../components/GemValueEditor';
+import { dictionary } from './fixtures/classifications';
+import { apiFetch } from '../lib/api-client';
+const permission = vi.fn(() => true);
+vi.mock('../context/AuthContext', () => ({ useAuth: () => ({ token: 'token', user: { id: 'owner', role: 'ASSISTANT' }, hasPermission: permission }) }));
+vi.mock('../lib/api-client', () => ({ apiFetch: vi.fn() }));
+const request = vi.mocked(apiFetch);
+const item = { id: 'a', name: '特工宠物核心箱', categoryIds: ['core', 'agent', 'pet'], gemValuation: { prices: [{ id: 'default', label: '默认单价', value: 0.12, referenceValue: 0.12 }], sourceUrl: 'https://sio-tools.exp0.dev/gems', capturedAt: '2026-11-02', manuallyModified: false } };
+beforeEach(() => { request.mockReset(); permission.mockReturnValue(true); });
+test('shared multi-category price updates all cards only after review and reloads from response', async () => {
+ request.mockImplementation(async (path, options) => ({ ok: true, json: async () => path === '/item-classifications' ? dictionary : options?.method === 'PATCH' ? { ...item, gemValuation: { ...item.gemValuation, manuallyModified: true, prices: [{ id: 'default', label: '默认单价', value: 0.025 }] } } : [item] }) as Response);
+ render(<GemValuesPage />);
+ await screen.findByRole('region', { name: '核心估值' });
+ expect(screen.getAllByText('特工宠物核心箱')).toHaveLength(3);
+ fireEvent.click(within(screen.getByRole('region', { name: '核心估值' })).getByRole('button', { name: '编辑特工宠物核心箱价值' }));
+ fireEvent.change(screen.getByLabelText('单价'), { target: { value: '0.025' } });
+ fireEvent.click(screen.getByRole('button', { name: '下一步确认' }));
+ expect(request.mock.calls.some(([, options]) => options?.method === 'PATCH')).toBe(false);
+ expect(screen.getByText('0.12 → 0.025 钻石')).toBeInTheDocument();
+ fireEvent.click(screen.getByRole('button', { name: '确认保存价值' }));
+ await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
+ expect(screen.getAllByText('0.025')).toHaveLength(3);
+ expect(screen.queryByText(/参考快照/)).not.toBeInTheDocument();
+ expect(screen.queryByRole('link', { name: '参考来源' })).not.toBeInTheDocument();
+ expect(request).toHaveBeenCalledWith('/items/a', expect.objectContaining({ body: JSON.stringify({ gemValuation: { prices: [{ id: 'default', value: 0.025 }] } }) }));
+});
+test('empty and invalid prices do not submit; save errors retain values for retry; cancel never saves', async () => {
+ request.mockRejectedValue(new Error('没有权限'));
+ const close=vi.fn();render(<GemValueEditor item={{ ...item, gemValuation: null }} token="token" onClose={close} onSaved={vi.fn()} />);
+ fireEvent.click(screen.getByRole('button', { name: '下一步确认' }));
+ expect(await screen.findByRole('alert')).toHaveTextContent('非负');expect(request).not.toHaveBeenCalled();
+ fireEvent.change(screen.getByLabelText('单价'), { target: { value: '0' } });
+ fireEvent.click(screen.getByRole('button', { name: '下一步确认' }));fireEvent.click(screen.getByRole('button', { name: '确认保存价值' }));
+ await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent('没有权限'));
+ fireEvent.click(screen.getByRole('button', { name: '返回修改' }));expect(screen.getByLabelText('单价')).toHaveValue(0);
+ fireEvent.click(screen.getByRole('button', { name: '取消' }));expect(close).toHaveBeenCalledTimes(1);
+});
+test('readonly users can search and see unconfigured values without edit actions', async () => {
+ permission.mockReturnValue(false);
+ request.mockImplementation(async (path) => ({ ok:true,json:async()=>path==='/item-classifications'?dictionary:[item,{id:'b',name:'尚未估值',categoryIds:['general']}] }) as Response);
+ render(<GemValuesPage />);await screen.findByText('尚未估值');expect(screen.queryByRole('button',{name:/编辑.*价值/})).not.toBeInTheDocument();
+ expect(screen.getByText('未配置')).toBeInTheDocument();fireEvent.change(screen.getByLabelText('搜索估值道具'),{target:{value:'不存在'}});expect(screen.getByRole('status')).toHaveTextContent('没有匹配');
+});

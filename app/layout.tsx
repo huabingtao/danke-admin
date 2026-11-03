@@ -20,7 +20,7 @@ export default function RootLayout({
     <html
       lang="zh-CN"
       suppressHydrationWarning
-      className={cn("bg-zinc-950 text-zinc-100", "font-sans", geist.variable)}
+      className={cn("dark bg-background text-foreground", "font-sans", geist.variable)}
     >
       <body
         suppressHydrationWarning

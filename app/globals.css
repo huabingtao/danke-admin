@@ -89,12 +89,12 @@
     --card-foreground: oklch(0.985 0 0);
     --popover: oklch(0.205 0 0);
     --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
+    --primary: oklch(0.705 0.187 47.604);
+    --primary-foreground: oklch(0.145 0 0);
     --secondary: oklch(0.269 0 0);
     --secondary-foreground: oklch(0.985 0 0);
     --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
+    --muted-foreground: oklch(0.78 0 0);
     --accent: oklch(0.269 0 0);
     --accent-foreground: oklch(0.985 0 0);
     --destructive: oklch(0.704 0.191 22.216);
@@ -190,4 +190,32 @@ textarea::-webkit-scrollbar-thumb:hover {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* The wide resource matrix needs a draggable scrollbar, overriding the legacy 4px rule. */
+.yield-matrix-scroll {
+  scrollbar-width: auto;
+  scrollbar-color: auto;
+  scrollbar-gutter: stable;
+}
+.yield-matrix-scroll::-webkit-scrollbar {
+  width: 18px !important;
+  height: 18px !important;
+}
+.yield-matrix-scroll::-webkit-scrollbar-track {
+  background: #18181b !important;
+}
+.yield-matrix-scroll::-webkit-scrollbar-thumb {
+  background: #71717a !important;
+  border: 3px solid #18181b;
+  border-radius: 9px !important;
+  min-height: 44px;
+  min-width: 44px;
+}
+.yield-matrix-scroll::-webkit-scrollbar-thumb:hover,
+.yield-matrix-scroll::-webkit-scrollbar-thumb:active {
+  background: #fb923c !important;
+}
+.yield-matrix-scroll::-webkit-scrollbar-corner {
+  background: #18181b !important;
 }

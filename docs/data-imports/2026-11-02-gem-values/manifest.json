@@ -1,0 +1,3125 @@
+{
+  "sourceUrl": "https://sio-tools.exp0.dev/gems",
+  "capturedAt": "2026-11-02",
+  "entries": [
+    {
+      "referenceKey": "5ab95351a879cbd6",
+      "referenceName": "Relic Core",
+      "eventName": null,
+      "group": "Core Equivalents",
+      "referenceValue": 15100.0,
+      "originalPrice": "15100",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/equip_ssstone.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/equip_ssstone.webp",
+      "existingItemIds": [
+        "e75700c8-8aee-41a1-956c-21ab59744ea1"
+      ],
+      "existingNames": [
+        "神器核心"
+      ],
+      "name": "Relic Core",
+      "categoryIds": [
+        "core",
+        "equipment"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/34dbf59ff6b0c33695aa86a6.png",
+        "sha256": "34dbf59ff6b0c33695aa86a68929895b0a56405c92206eb1bc946d44c9e77308",
+        "width": 88,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "aa11950eacaacbee",
+      "referenceName": "Awakening Core",
+      "eventName": null,
+      "group": "Core Equivalents",
+      "referenceValue": 15200.0,
+      "originalPrice": "15200",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/player_icon_ui/wake_core.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/player_icon_ui/wake_core.webp",
+      "existingItemIds": [
+        "11f6d296-c6f8-4091-b74c-5102fee98990",
+        "cb6c286b-32e2-4770-a32c-a3a037828c28"
+      ],
+      "existingNames": [
+        "特工核心",
+        "特工觉醒核心"
+      ],
+      "name": "Awakening Core",
+      "categoryIds": [
+        "core",
+        "agent"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/bdeadb6c2d0fd4d18bba590c.png",
+        "sha256": "bdeadb6c2d0fd4d18bba590c3aa2ecd05d1f4a9f2b89d6197d6de355ec634991",
+        "width": 93,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "2bd204b849483876",
+      "referenceName": "Resonance Chip",
+      "eventName": null,
+      "group": "Core Equivalents",
+      "referenceValue": 16300.0,
+      "originalPrice": "16300",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/harmony_chip.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/harmony_chip.webp",
+      "existingItemIds": [
+        "08d226e6-8e65-4ac1-8c4f-ca04a1057b4e"
+      ],
+      "existingNames": [
+        "谐振芯片"
+      ],
+      "name": "Resonance Chip",
+      "categoryIds": [
+        "core",
+        "tech"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/b84ef43cfa028cb1a03428db.png",
+        "sha256": "b84ef43cfa028cb1a03428db19b001173b8d21b08dc86c8eb36f7ac2d3b6c985",
+        "width": 88,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "f46fbcdc6962eaea",
+      "referenceName": "Legendary Collectible Selector",
+      "eventName": null,
+      "group": "Core Equivalents",
+      "referenceValue": 17000.0,
+      "originalPrice": "17000",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_collection/collection_choose_11.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_collection/collection_choose_11.webp",
+      "existingItemIds": [
+        "e4b2965f-f04d-4e96-97c8-b55658921c4b",
+        "e042db30-cd81-4c16-b6f2-0b7baa48b9c8"
+      ],
+      "existingNames": [
+        "传奇收藏品",
+        "传奇收藏品宝箱"
+      ],
+      "name": "Legendary Collectible Selector",
+      "categoryIds": [
+        "collection"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/60b2d00ad6b97f1df3aea874.png",
+        "sha256": "60b2d00ad6b97f1df3aea874bbffb22b5e796d0adb84347b0a5f284d526fe5ce",
+        "width": 90,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "5478953f5477244e",
+      "referenceName": "Xeno Pet Core",
+      "eventName": null,
+      "group": "Core Equivalents",
+      "referenceValue": 17200.0,
+      "originalPrice": "17200",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/spet_core.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/spet_core.webp",
+      "existingItemIds": [
+        "7f95f73b-dc5d-42b1-b596-4e4f19497b00"
+      ],
+      "existingNames": [
+        "异宠核心"
+      ],
+      "name": "Xeno Pet Core",
+      "categoryIds": [
+        "core",
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/607f34a11902fb18d20c84ab.png",
+        "sha256": "607f34a11902fb18d20c84abeae1cc495a304b8586f363d4b1f5423ed525b505",
+        "width": 95,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "95ba747698093cba",
+      "referenceName": "Core Chest",
+      "eventName": null,
+      "group": "Core Equivalents",
+      "referenceValue": 17200.0,
+      "originalPrice": "17200",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/seniorselect_box1.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/seniorselect_box1.webp",
+      "existingItemIds": [
+        "d001906f-e94b-4e84-9a42-378df58a79ee",
+        "5d42f7e8-a8aa-4b7e-ae15-107ecbc422c7"
+      ],
+      "existingNames": [
+        "核心自选宝箱",
+        "自选核心"
+      ],
+      "name": "Core Chest",
+      "categoryIds": [
+        "core"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/ada1e4ecefcaef7a1410aa88.png",
+        "sha256": "ada1e4ecefcaef7a1410aa88d416446b7c9653c06acf9a29c6356a5b2e9efd37",
+        "width": 95,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "e780b7f795dc903f",
+      "referenceName": "Core Chest Essence",
+      "eventName": null,
+      "group": "Core Equivalents",
+      "referenceValue": 1720.0,
+      "originalPrice": "1720",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/seniorselect_box1_shard.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/seniorselect_box1_shard.webp",
+      "existingItemIds": [
+        "d51f171c-6544-48a7-90a1-b2a73dcd6276"
+      ],
+      "existingNames": [
+        "核心自选宝箱精华"
+      ],
+      "name": "Core Chest Essence",
+      "categoryIds": [
+        "core"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/5ccb8fb124321a551849eaf5.png",
+        "sha256": "5ccb8fb124321a551849eaf54cfe188b612af5d172ad51a74a93a9ca40aee960",
+        "width": 96,
+        "height": 79
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "e78a40db6d4d82ed",
+      "referenceName": "Xeno Transmute Core",
+      "eventName": null,
+      "group": "Core Equivalents",
+      "referenceValue": 21200.0,
+      "originalPrice": "21200",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/equip_refinement/surpass_core.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/equip_refinement/surpass_core.webp",
+      "existingItemIds": [
+        "403b9b55-5450-455c-89dc-d40cd43ae910"
+      ],
+      "existingNames": [
+        "神炼核心"
+      ],
+      "name": "Xeno Transmute Core",
+      "categoryIds": [
+        "core",
+        "equipment"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/74450bdd72620efe705ca8b1.png",
+        "sha256": "74450bdd72620efe705ca8b1a130a008e6a41b3363f8c9ae424e1d4d4e790102",
+        "width": 84,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "397582b76858fe4e",
+      "referenceName": "S Choice",
+      "eventName": null,
+      "group": "S Gear",
+      "referenceValue": 2000.0,
+      "originalPrice": "2000",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_choose_s_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_choose_s_4.webp",
+      "existingItemIds": [
+        "dcd1f97b-8b24-49f1-865b-b59defbf7a0a"
+      ],
+      "existingNames": [
+        "s杰出装备"
+      ],
+      "name": "S Choice",
+      "categoryIds": [
+        "equipment"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/4188e01626e2412a9abde889.png",
+        "sha256": "4188e01626e2412a9abde88911889f2a4ec546c6652a362ac23fdcb413a29e89",
+        "width": 96,
+        "height": 95
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "1d8bbd6fae9e9da2",
+      "referenceName": "Eternal Selector",
+      "eventName": null,
+      "group": "S Gear",
+      "referenceValue": 1700.0,
+      "originalPrice": "1700",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_choose_s1_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_choose_s1_4.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Eternal Selector",
+      "categoryIds": [
+        "equipment"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/6ccbeb1b90df980e9507db45.png",
+        "sha256": "6ccbeb1b90df980e9507db45b39d649beb32aab04441ee0374cd4956ec62181c",
+        "width": 94,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "9237b863e615a0d2",
+      "referenceName": "Void Selector",
+      "eventName": null,
+      "group": "S Gear",
+      "referenceValue": 1700.0,
+      "originalPrice": "1700",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_choose_s2_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_choose_s2_4.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Void Selector",
+      "categoryIds": [
+        "equipment"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/efbf0818974b68d8a1e536fc.png",
+        "sha256": "efbf0818974b68d8a1e536fc585372aa0a41be1673c669f5b0ff8dd5463d6565",
+        "width": 95,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "c35de20a041464c8",
+      "referenceName": "Chaos Selector",
+      "eventName": null,
+      "group": "S Gear",
+      "referenceValue": 1900.0,
+      "originalPrice": "1900",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_choose_s3_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_choose_s3_4.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Chaos Selector",
+      "categoryIds": [
+        "equipment"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/3838ee95beee2ca8e3ca9d9f.png",
+        "sha256": "3838ee95beee2ca8e3ca9d9f81163d3d02255e08b14e0ea0c8de0afa6d4f7679",
+        "width": 95,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "6b78d03938cbdb32",
+      "referenceName": "Random S",
+      "eventName": null,
+      "group": "S Gear",
+      "referenceValue": 1600.0,
+      "originalPrice": "1600",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_drop_s.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_drop_s.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Random S",
+      "categoryIds": [
+        "equipment"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/59ebfc53b572e27c6a03ff4a.png",
+        "sha256": "59ebfc53b572e27c6a03ff4afe897c5e700e8dd3c5b889be8b93fb955a45856b",
+        "width": 96,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "aad5615bc0ad5116",
+      "referenceName": "Eternal Core",
+      "eventName": null,
+      "group": "S Gear",
+      "referenceValue": 170.0,
+      "originalPrice": "170",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/equip_remould_eternity_stone.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/equip_remould_eternity_stone.webp",
+      "existingItemIds": [
+        "059e2379-700d-416e-9fd8-1f3f446c66db"
+      ],
+      "existingNames": [
+        "永恒之石"
+      ],
+      "name": "Eternal Core",
+      "categoryIds": [
+        "equipment"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/137d3785535a6727587b2bcb.png",
+        "sha256": "137d3785535a6727587b2bcb82b27a171eb81c092f2f2cffd459e30b8ffaa9ee",
+        "width": 91,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "414f508c887ee529",
+      "referenceName": "Void Core",
+      "eventName": null,
+      "group": "S Gear",
+      "referenceValue": 170.0,
+      "originalPrice": "170",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/equip_remould_destory_stone.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/equip_remould_destory_stone.webp",
+      "existingItemIds": [
+        "8349ba3f-82e3-41e3-8f1c-4eb33a8f5480"
+      ],
+      "existingNames": [
+        "破坏之石"
+      ],
+      "name": "Void Core",
+      "categoryIds": [
+        "equipment"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/c536cb264b6241b8349e097c.png",
+        "sha256": "c536cb264b6241b8349e097c3877f2ca2a8ab7b1f6143e4aeccdb71481345c37",
+        "width": 94,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "0200871af5927781",
+      "referenceName": "Chaos Core",
+      "eventName": null,
+      "group": "S Gear",
+      "referenceValue": 180.0,
+      "originalPrice": "180",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/equip_remould_chaosl_stone.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/equip_remould_chaosl_stone.webp",
+      "existingItemIds": [
+        "5b1b7e55-4ffd-48cf-ae97-98e04926b738"
+      ],
+      "existingNames": [
+        "混沌之石"
+      ],
+      "name": "Chaos Core",
+      "categoryIds": [
+        "equipment"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/07e4f39da70ad0e1fc68bb80.png",
+        "sha256": "07e4f39da70ad0e1fc68bb800bcb9b1656733664a32a589f94b71f269f7056fc",
+        "width": 96,
+        "height": 87
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "61f36263b1c1f9cb",
+      "referenceName": "Red Resonance Core Choice",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 17000.0,
+      "originalPrice": "17000",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/select_box1_resonance_accessory.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/select_box1_resonance_accessory.webp",
+      "existingItemIds": [
+        "33c17721-424b-47fc-ab82-21f4baa7a3a1"
+      ],
+      "existingNames": [
+        "谐振芯片与传奇收藏品自选宝箱"
+      ],
+      "name": "Red Resonance Core Choice",
+      "categoryIds": [
+        "core",
+        "tech",
+        "collection"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/f8c182ae0d3f15b0edcedc7a.png",
+        "sha256": "f8c182ae0d3f15b0edcedc7acb57917a4e12d3a91b6184ee8a1a56a0da31a9f0",
+        "width": 96,
+        "height": 95
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "b582430c25639664",
+      "referenceName": "Resonance Chip Choice",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 16300.0,
+      "originalPrice": "16300",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/select_box_resonance_accessory.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/select_box_resonance_accessory.webp",
+      "existingItemIds": [
+        "a2acc9d0-4edb-4f44-a567-a041135bd4ab"
+      ],
+      "existingNames": [
+        "谐振芯片自选宝箱"
+      ],
+      "name": "Resonance Chip Choice",
+      "categoryIds": [
+        "core",
+        "tech"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/14c4995ccd7390f4e264b75c.png",
+        "sha256": "14c4995ccd7390f4e264b75c545da20eeec112c46289c7feea2cc2d8570556de",
+        "width": 96,
+        "height": 95
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "7e92600e08f3a615",
+      "referenceName": "Epic Choice",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 2500.0,
+      "originalPrice": "2500",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_choose_7.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_choose_7.webp",
+      "existingItemIds": [
+        "db755159-d911-43c8-bba5-f64726ccd9db",
+        "574cb3db-6c45-428a-b11f-937d00dbef8e"
+      ],
+      "existingNames": [
+        "史诗配件",
+        "史诗配件自选宝箱"
+      ],
+      "name": "Epic Choice",
+      "categoryIds": [
+        "tech"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/c39262b940494c37393c8ca2.png",
+        "sha256": "c39262b940494c37393c8ca281926f634e9f929a4b2a912432745e2bbd80a17c",
+        "width": 96,
+        "height": 95
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "f70df8db010de907",
+      "referenceName": "Random Epic Part",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 2000.0,
+      "originalPrice": "2000",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Random Epic Part",
+      "categoryIds": [
+        "tech"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/b908bba641914fa85f05a6da.png",
+        "sha256": "b908bba641914fa85f05a6da7c3a415d52ed49c9fc07260ab86bc58edd3a1caf",
+        "width": 95,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "d0a5821f72f386cd",
+      "referenceName": "Excellent Tech Selector",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 500.0,
+      "originalPrice": "500",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_choose_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_choose_4.webp",
+      "existingItemIds": [
+        "72fa0a3a-c3fa-41e3-8b4f-497867c75851",
+        "68ea270d-85d4-4c2f-8d71-331234d8d114"
+      ],
+      "existingNames": [
+        "杰出配件",
+        "杰出配件自选宝箱"
+      ],
+      "name": "Excellent Tech Selector",
+      "categoryIds": [
+        "tech"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/5d3381f58e475004ca97c584.png",
+        "sha256": "5d3381f58e475004ca97c58431a428b1b15eaa61268030929844044481a476bc",
+        "width": 96,
+        "height": 95
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "a8b6b6393fdda76d",
+      "referenceName": "Random Excellent Tech",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 420.0,
+      "originalPrice": "420",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Random Excellent Tech",
+      "categoryIds": [
+        "tech"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/b908bba641914fa85f05a6da.png",
+        "sha256": "b908bba641914fa85f05a6da7c3a415d52ed49c9fc07260ab86bc58edd3a1caf",
+        "width": 95,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "8de54c432c3f0889",
+      "referenceName": "Random Blue Tech",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 140.0,
+      "originalPrice": "140",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Random Blue Tech",
+      "categoryIds": [
+        "tech"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/b908bba641914fa85f05a6da.png",
+        "sha256": "b908bba641914fa85f05a6da7c3a415d52ed49c9fc07260ab86bc58edd3a1caf",
+        "width": 95,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "a93a4f485f310f93",
+      "referenceName": "Random Green Tech",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 46.0,
+      "originalPrice": "46",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Random Green Tech",
+      "categoryIds": [
+        "tech"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/b908bba641914fa85f05a6da.png",
+        "sha256": "b908bba641914fa85f05a6da7c3a415d52ed49c9fc07260ab86bc58edd3a1caf",
+        "width": 95,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "a2efc011fc1371c8",
+      "referenceName": "Random Parts Crate (Master)",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 230.0,
+      "originalPrice": "230",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop3.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop3.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Random Parts Crate (Master)",
+      "categoryIds": [
+        "tech"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/23049a8ae57ee6c31277a946.png",
+        "sha256": "23049a8ae57ee6c31277a9463056660865a2e9aff1221b1a98060cb2964c114a",
+        "width": 94,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "bca63a9bca8a0971",
+      "referenceName": "Advanced Collectors Heart",
+      "eventName": null,
+      "group": "Collectibles",
+      "referenceValue": 500.0,
+      "originalPrice": "500",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/collection_piece/shoucangpinhuangxin.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/collection_piece/shoucangpinhuangxin.webp",
+      "existingItemIds": [
+        "9500c871-f06a-47e1-a5ff-92f727999a72"
+      ],
+      "existingNames": [
+        "高级收藏之心"
+      ],
+      "name": "Advanced Collectors Heart",
+      "categoryIds": [
+        "collection"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/85b041814654b979579d6127.png",
+        "sha256": "85b041814654b979579d6127a9a5b05191487032bc1b62011f378eabde909755",
+        "width": 84,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "86cb5254fef755bb",
+      "referenceName": "Specific Legendary Collectible",
+      "eventName": null,
+      "group": "Collectibles",
+      "referenceValue": 15100.0,
+      "originalPrice": "15100",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_collection/collection_drop_11.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_collection/collection_drop_11.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Specific Legendary Collectible",
+      "categoryIds": [
+        "collection"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/e0cdca5a8ebcb9013a54e588.png",
+        "sha256": "e0cdca5a8ebcb9013a54e5887d5a4aa5cf1447ea0f7983416e56e490cafc289e",
+        "width": 90,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "39aca68d60ec55d7",
+      "referenceName": "Epic Collectible Selector",
+      "eventName": null,
+      "group": "Collectibles",
+      "referenceValue": 2000.0,
+      "originalPrice": "2000",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_collection/collection_choose_7.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_collection/collection_choose_7.webp",
+      "existingItemIds": [
+        "cbc00d67-8336-4efb-b3eb-dcfa8b4b4449",
+        "77f42275-e656-4e25-b1de-1f3af1c9d751"
+      ],
+      "existingNames": [
+        "史诗收藏品",
+        "史诗收藏品宝箱"
+      ],
+      "name": "Epic Collectible Selector",
+      "categoryIds": [
+        "collection"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/44549262b22cdb98529b4b4b.png",
+        "sha256": "44549262b22cdb98529b4b4b6a89001482e0bbd80de1881e03b1ea0b543dafc1",
+        "width": 90,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "90fccbc3be31482c",
+      "referenceName": "Random Epic Collectible",
+      "eventName": null,
+      "group": "Collectibles",
+      "referenceValue": 1750.0,
+      "originalPrice": "1750",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_collection/collection_drop_7.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_collection/collection_drop_7.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Random Epic Collectible",
+      "categoryIds": [
+        "collection"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/0ff22583e9fb7274729367f2.png",
+        "sha256": "0ff22583e9fb7274729367f24dbf26ab6672a375a4067179a637c2cb7ce1ead0",
+        "width": 90,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "7496305b4ac4e227",
+      "referenceName": "Event Collectible",
+      "eventName": null,
+      "group": "Collectibles",
+      "referenceValue": 630.0,
+      "originalPrice": "630",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/collection_icon/34_shenmixing.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/collection_icon/34_shenmixing.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Event Collectible",
+      "categoryIds": [
+        "collection"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/84bff607285e9ebd6399e192.png",
+        "sha256": "84bff607285e9ebd6399e192e28a9f634e944dfd546c50af78edbddc45d275d6",
+        "width": 96,
+        "height": 94
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "b84948f5fff459af",
+      "referenceName": "Excellent Collectible Selector",
+      "eventName": null,
+      "group": "Collectibles",
+      "referenceValue": 330.0,
+      "originalPrice": "330",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_collection/collection_choose_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_collection/collection_choose_4.webp",
+      "existingItemIds": [
+        "b736c3a2-c86f-4d7c-ac83-aae8b5416106",
+        "8a6ea1fc-1b4d-45b8-8859-91cafcf27598"
+      ],
+      "existingNames": [
+        "杰出收藏品",
+        "杰出收藏品自选宝箱"
+      ],
+      "name": "Excellent Collectible Selector",
+      "categoryIds": [
+        "collection"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/c247cc4e689a1078049358a2.png",
+        "sha256": "c247cc4e689a1078049358a2024aea232972825fc42142e2eb0bdcc376b1cf44",
+        "width": 90,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "2103494dd92e998e",
+      "referenceName": "Random Excellent Collectible",
+      "eventName": null,
+      "group": "Collectibles",
+      "referenceValue": 330.0,
+      "originalPrice": "330",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_collection/collection_drop_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_collection/collection_drop_4.webp",
+      "existingItemIds": [
+        "9dee770a-f5df-43c6-a246-23e881a1315b"
+      ],
+      "existingNames": [
+        "杰出收藏品宝箱"
+      ],
+      "name": "Random Excellent Collectible",
+      "categoryIds": [
+        "collection"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/dce031a7297cfd4ee665788d.png",
+        "sha256": "dce031a7297cfd4ee665788d2d54067d4a02ba594b165d1777929be7364a9a9e",
+        "width": 90,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "bc7123985e0e6c4f",
+      "referenceName": "Legend Collectible Deconstructor",
+      "eventName": null,
+      "group": "Collectibles",
+      "referenceValue": 10000.0,
+      "originalPrice": "10000",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/collection_piece/collection_red_reset.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/collection_piece/collection_red_reset.webp",
+      "existingItemIds": [
+        "cff6ee9f-88b3-42da-9c51-ec73842a8b79"
+      ],
+      "existingNames": [
+        "传奇收藏品解构机"
+      ],
+      "name": "Legend Collectible Deconstructor",
+      "categoryIds": [
+        "collection"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/1cbb393f904548594a99fddb.png",
+        "sha256": "1cbb393f904548594a99fddb2447062dcdd19c1c631e9bddd7e9b23d33842e46",
+        "width": 86,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "3c6f01091387d1a3",
+      "referenceName": "Awakening Core Chest",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 15200.0,
+      "originalPrice": "15200",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/select_box_agent_awaken.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/select_box_agent_awaken.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Awakening Core Chest",
+      "categoryIds": [
+        "core",
+        "agent"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/bc67c91c5f5b5418bf723d7c.png",
+        "sha256": "bc67c91c5f5b5418bf723d7c088a84d1f55eaf6be406ac15b2cc1dd52c9d7b6c",
+        "width": 96,
+        "height": 95
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "98aaf5038e643971",
+      "referenceName": "S Shard",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 100.0,
+      "originalPrice": "100",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/player_icon_ui/frag_9.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/player_icon_ui/frag_9.webp",
+      "existingItemIds": [
+        "02efbef7-d9a3-4dd1-8ee1-7f80c7e14fdd"
+      ],
+      "existingNames": [
+        "s特工碎片"
+      ],
+      "name": "S Shard",
+      "categoryIds": [
+        "agent"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/91cec7cb07783ed2f23254d5.png",
+        "sha256": "91cec7cb07783ed2f23254d5f0db8ba7afb8660b52e16422ecf1ee9c1c6baf66",
+        "width": 96,
+        "height": 93
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "6250b93751693eb6",
+      "referenceName": "SP Survivor Omnishard",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 260.0,
+      "originalPrice": "260",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/player_icon_ui/frag_21.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/player_icon_ui/frag_21.webp",
+      "existingItemIds": [
+        "6f28747e-2ffe-407b-97b8-06d3556425f4"
+      ],
+      "existingNames": [
+        "sp特工万能碎片"
+      ],
+      "name": "SP Survivor Omnishard",
+      "categoryIds": [
+        "agent"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/752136d3b5200e4af287479b.png",
+        "sha256": "752136d3b5200e4af287479bda6dd3b6afab6069d0f13f38d193967f81914719",
+        "width": 96,
+        "height": 91
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "f2d5b60bafb37ad2",
+      "referenceName": "Reset Vial",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 1800.0,
+      "originalPrice": "1800",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/hero_reset.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/hero_reset.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Reset Vial",
+      "categoryIds": [
+        "agent"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/6dd26f96564112dda64f6d18.png",
+        "sha256": "6dd26f96564112dda64f6d18a360127cc7ee137b014c8d32e7e622e3ffd87510",
+        "width": 95,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "a3fab19dee75aba4",
+      "referenceName": "Survivor Shard Selector",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 40.0,
+      "originalPrice": "40",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/player_icon_ui/frag_s.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/player_icon_ui/frag_s.webp",
+      "existingItemIds": [
+        "af8c977c-e6da-427e-9e31-2b87573d9fb1"
+      ],
+      "existingNames": [
+        "自选特工碎片"
+      ],
+      "name": "Survivor Shard Selector",
+      "categoryIds": [
+        "agent"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/82801c08e243edca5d06483a.png",
+        "sha256": "82801c08e243edca5d06483a2abe10f155b93a812bdca9b86741a682ee5cdc42",
+        "width": 96,
+        "height": 94
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "4b7bd7c22c655434",
+      "referenceName": "Random Survivor Shard",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 20.0,
+      "originalPrice": "20",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/player_icon_ui/frag_r.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/player_icon_ui/frag_r.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Random Survivor Shard",
+      "categoryIds": [
+        "agent"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/f0804f7957eb29528718be6f.png",
+        "sha256": "f0804f7957eb29528718be6f694e18375ebe15a62a78191d494efdb03134a38a",
+        "width": 96,
+        "height": 93
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "4437b601584a802d",
+      "referenceName": "Oil (Pre-Synergy)",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 0.12,
+      "originalPrice": "0.12",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/hero_exp.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/hero_exp.webp",
+      "existingItemIds": [
+        "935c6c85-9cd9-4205-95a7-4408a6ed7ab0"
+      ],
+      "existingNames": [
+        "特工升级精油_经验"
+      ],
+      "name": "Oil (Pre-Synergy)",
+      "categoryIds": [
+        "agent"
+      ],
+      "schemeId": "4437b601584a802d",
+      "schemeLabel": "协同前",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/6a771f852181ccb6477a6e35.png",
+        "sha256": "6a771f852181ccb6477a6e3527071683e60a2864b8025a930d15666b622f6aea",
+        "width": 76,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "89a6cc1b3cf5d303",
+      "referenceName": "Oil (Post-Synergy)",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 0.02,
+      "originalPrice": "0.02",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/hero_exp.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/hero_exp.webp",
+      "existingItemIds": [
+        "935c6c85-9cd9-4205-95a7-4408a6ed7ab0"
+      ],
+      "existingNames": [
+        "特工升级精油_经验"
+      ],
+      "name": "Oil (Post-Synergy)",
+      "categoryIds": [
+        "agent"
+      ],
+      "schemeId": "89a6cc1b3cf5d303",
+      "schemeLabel": "协同后",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/6a771f852181ccb6477a6e35.png",
+        "sha256": "6a771f852181ccb6477a6e3527071683e60a2864b8025a930d15666b622f6aea",
+        "width": 76,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "de1d571450a0028c",
+      "referenceName": "Survivor Outfit (Full Set)",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 1300.0,
+      "originalPrice": "1300",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/attachment_ui/head_5091.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/attachment_ui/head_5091.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Survivor Outfit (Full Set)",
+      "categoryIds": [
+        "agent"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/dfb98c2bd9ea576f3a9fa7a8.png",
+        "sha256": "dfb98c2bd9ea576f3a9fa7a84870c5da92ca847467dd32d3fd350b524cdd6936",
+        "width": 96,
+        "height": 74
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "1162174aa135a418",
+      "referenceName": "Army Crate Key",
+      "eventName": null,
+      "group": "Keys",
+      "referenceValue": 35.0,
+      "originalPrice": "35",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_common/currency_diamond_box_small.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_common/currency_diamond_box_small.webp",
+      "existingItemIds": [
+        "07391bda-cca0-46f6-8fc1-6a8f2c713dc7"
+      ],
+      "existingNames": [
+        "普通钥匙"
+      ],
+      "name": "Army Crate Key",
+      "categoryIds": [
+        "key",
+        "equipment"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/db21c117d4602bfb51858fa6.png",
+        "sha256": "db21c117d4602bfb51858fa68492a7a9c99a621d6780b51ba8ccd21c01048e55",
+        "width": 96,
+        "height": 94
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "90e046a8c644c62f",
+      "referenceName": "S Key",
+      "eventName": null,
+      "group": "Keys",
+      "referenceValue": 68.0,
+      "originalPrice": "68",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_common/currency_diamond_box_special.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_common/currency_diamond_box_special.webp",
+      "existingItemIds": [
+        "e70fc54d-f393-4e4b-aa73-0303b1e5691a"
+      ],
+      "existingNames": [
+        "s级军备钥匙"
+      ],
+      "name": "S Key",
+      "categoryIds": [
+        "key",
+        "equipment"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/9224d50ec140d415b7f28341.png",
+        "sha256": "9224d50ec140d415b7f283414fc61b685e8a764d9c406ac6cb18962c8caa6078",
+        "width": 96,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "74dde80f5cd09b79",
+      "referenceName": "Collectible Key",
+      "eventName": null,
+      "group": "Keys",
+      "referenceValue": 170.0,
+      "originalPrice": "170",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_common/collection_key.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_common/collection_key.webp",
+      "existingItemIds": [
+        "786d73fb-7237-410b-af03-0b22650db980"
+      ],
+      "existingNames": [
+        "收藏品宝箱钥匙"
+      ],
+      "name": "Collectible Key",
+      "categoryIds": [
+        "key",
+        "collection"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/04ceb41909603d45edcba643.png",
+        "sha256": "04ceb41909603d45edcba643cc805fcd73aef9153d59f1e33e056b6f80208962",
+        "width": 83,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "e92c4125bc9d369f",
+      "referenceName": "Tech Part Key",
+      "eventName": null,
+      "group": "Keys",
+      "referenceValue": 190.0,
+      "originalPrice": "190",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_common/accessory_key.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_common/accessory_key.webp",
+      "existingItemIds": [
+        "0ef97418-0303-40ee-9f22-ac410874a450"
+      ],
+      "existingNames": [
+        "配件宝箱钥匙"
+      ],
+      "name": "Tech Part Key",
+      "categoryIds": [
+        "key",
+        "tech"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/0eae9cb1e83afb9be90f8ffa.png",
+        "sha256": "0eae9cb1e83afb9be90f8ffaaddcb1f3accd32db4a64d9fb6b90e3efbde73965",
+        "width": 83,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "36408d2cb66d1460",
+      "referenceName": "EDF Key",
+      "eventName": null,
+      "group": "Keys",
+      "referenceValue": 40.0,
+      "originalPrice": "40",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_common/currency_diamond_box_large.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_common/currency_diamond_box_large.webp",
+      "existingItemIds": [
+        "300b257c-461f-4c77-90d8-3ec2808db8d5"
+      ],
+      "existingNames": [
+        "高级钥匙"
+      ],
+      "name": "EDF Key",
+      "categoryIds": [
+        "key",
+        "equipment"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/4685e1b4a1f633486fd1a8ec.png",
+        "sha256": "4685e1b4a1f633486fd1a8ec0303e111d1730027a50d858732bd1169c4581cfc",
+        "width": 96,
+        "height": 94
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "4d13325213a918fe",
+      "referenceName": "Pet Key",
+      "eventName": null,
+      "group": "Keys",
+      "referenceValue": 65.0,
+      "originalPrice": "65",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_common/pet_key_small.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_common/pet_key_small.webp",
+      "existingItemIds": [
+        "0c9cbfc6-7288-4e91-a1fe-77c3f9a56a8d",
+        "810ebfcf-3b51-475f-8505-65279a0cfc2a"
+      ],
+      "existingNames": [
+        "宠物钥匙",
+        "普通宠物钥匙"
+      ],
+      "name": "Pet Key",
+      "categoryIds": [
+        "key",
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/6ac83465182bac28640972d5.png",
+        "sha256": "6ac83465182bac28640972d5624855dbbaf39fc242b731e65617a9e1067ef4ae",
+        "width": 96,
+        "height": 94
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "5befcadd5dcb1a9e",
+      "referenceName": "Pawerful Pet Key",
+      "eventName": null,
+      "group": "Keys",
+      "referenceValue": 140.0,
+      "originalPrice": "140",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_common/pet_key_large.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_common/pet_key_large.webp",
+      "existingItemIds": [
+        "b6d98def-2a6b-490c-8684-2d3b55346c31"
+      ],
+      "existingNames": [
+        "高级宠物箱钥匙"
+      ],
+      "name": "Pawerful Pet Key",
+      "categoryIds": [
+        "key",
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/cba2a7b63aac260384be3b61.png",
+        "sha256": "cba2a7b63aac260384be3b6103ef23186c8990312281b5fc006f3d89f8b20152",
+        "width": 96,
+        "height": 94
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "2d8760b6a193f7d4",
+      "referenceName": "Xeno Pet Elixir",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 10000.0,
+      "originalPrice": "10000",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/spet_assist_reset.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/spet_assist_reset.webp",
+      "existingItemIds": [
+        "f4140866-95fc-4734-934d-5da593d2c20d"
+      ],
+      "existingNames": [
+        "异宠灵药"
+      ],
+      "name": "Xeno Pet Elixir",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/7681e3fa8a4963554ae285ba.png",
+        "sha256": "7681e3fa8a4963554ae285ba8b1832724bf7d0f13bda8e4e79394f6589975ef3",
+        "width": 95,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "a53fa42af28dad49",
+      "referenceName": "Xeno Core Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 17200.0,
+      "originalPrice": "17200",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/hero_petselect_box.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/hero_petselect_box.webp",
+      "existingItemIds": [
+        "c8470f26-d18e-4037-bb9e-2e05353166b6"
+      ],
+      "existingNames": [
+        "特工和异宠核心自选宝箱"
+      ],
+      "name": "Xeno Core Chest",
+      "categoryIds": [
+        "core",
+        "agent",
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/6de9929d588d00277cb52d67.png",
+        "sha256": "6de9929d588d00277cb52d674ca9ae1c7fe7706904f823aad39a219a8d2989c6",
+        "width": 96,
+        "height": 86
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "9af9318f8ebae5ed",
+      "referenceName": "Awakening Crystal Choice Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 4400.0,
+      "originalPrice": "4400",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/select_box_pet_awaken.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/select_box_pet_awaken.webp",
+      "existingItemIds": [
+        "9fb820e5-01bc-486a-87a5-0fc133c2dfff"
+      ],
+      "existingNames": [
+        "觉醒水晶自选宝箱"
+      ],
+      "name": "Awakening Crystal Choice Chest",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/0d4ca32059fec23185036954.png",
+        "sha256": "0d4ca32059fec231850369544ca79292f575a6b99c2529c2fe7696a89b11f85c",
+        "width": 96,
+        "height": 95
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "8fa02ffb4448eafd",
+      "referenceName": "Xeno Pet Crystal",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 1.7,
+      "originalPrice": "1.7",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/spet_gem.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/spet_gem.webp",
+      "existingItemIds": [
+        "a2035351-a0d1-4dd9-bbca-2810a301f5ed"
+      ],
+      "existingNames": [
+        "异宠晶石"
+      ],
+      "name": "Xeno Pet Crystal",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/90c5dea7129ac414ef72161a.png",
+        "sha256": "90c5dea7129ac414ef72161a89484acaf1bca2bb8cc6f2f0370b9567ce490aa5",
+        "width": 96,
+        "height": 91
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "c4a7d23f0c76bb2a",
+      "referenceName": "Awakening Crystal",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 400.0,
+      "originalPrice": "400",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/pet_icon/pet_stone.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/pet_icon/pet_stone.webp",
+      "existingItemIds": [
+        "a3d13eb7-f45b-4de0-b020-d1b59157ad47"
+      ],
+      "existingNames": [
+        "觉醒水晶"
+      ],
+      "name": "Awakening Crystal",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/f357684a992cdc6a5fcaa3a6.png",
+        "sha256": "f357684a992cdc6a5fcaa3a623744d451a3ba4fb00dc7247d21db5ba1a438292",
+        "width": 96,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "601095d04da3dc5a",
+      "referenceName": "Xeno Pet Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 1400.0,
+      "originalPrice": "1400",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_choose_16.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_choose_16.webp",
+      "existingItemIds": [
+        "aa671460-ba10-4bea-bc48-7f2351661e02"
+      ],
+      "existingNames": [
+        "异世宠物自选宝箱"
+      ],
+      "name": "Xeno Pet Chest",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/561c9962b4976ce406b72b78.png",
+        "sha256": "561c9962b4976ce406b72b78717d33cbb784947cfb8a6831808eebdddd95dd86",
+        "width": 96,
+        "height": 95
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "8fdea2348953a528",
+      "referenceName": "Epic Pet Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 1500.0,
+      "originalPrice": "1500",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_choose_7.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_choose_7.webp",
+      "existingItemIds": [
+        "5b0fc228-4a22-4055-a048-bed9d9141dcd",
+        "20eba2fc-6424-466a-b12a-237383374aff"
+      ],
+      "existingNames": [
+        "史诗宠物自选宝箱",
+        "史诗宠物宝箱"
+      ],
+      "name": "Epic Pet Chest",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/80a63212aaa7ee82195aa758.png",
+        "sha256": "80a63212aaa7ee82195aa758e776381e4051d59002f79f90d68038ee2c8c6527",
+        "width": 96,
+        "height": 94
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "ec6d38c4d78c8ea7",
+      "referenceName": "Random Epic Pet",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 1500.0,
+      "originalPrice": "1500",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_drop_0.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_drop_0.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Random Epic Pet",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/c52bafd2603c8b520ea57303.png",
+        "sha256": "c52bafd2603c8b520ea5730369f99af5fb326cd9f4279a823bdb852593b69a76",
+        "width": 96,
+        "height": 94
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对",
+      "pendingReason": "现有史诗宠物名称未区分随机/自选，保留待核对，避免重复创建"
+    },
+    {
+      "referenceKey": "5a2d65ac37477c0c",
+      "referenceName": "Excellent Pet Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 275.0,
+      "originalPrice": "275",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_choose_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_choose_4.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Excellent Pet Chest",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/66c7ae6d3f22dc7fad8a0414.png",
+        "sha256": "66c7ae6d3f22dc7fad8a04146c8c729eee1e75ec7e8d85b3b274807ff1b1a80c",
+        "width": 96,
+        "height": 94
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "d0791b80d7fe158e",
+      "referenceName": "Random Better Pet",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 87.0,
+      "originalPrice": "87",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_drop_0.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_drop_0.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Random Better Pet",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/c52bafd2603c8b520ea57303.png",
+        "sha256": "c52bafd2603c8b520ea5730369f99af5fb326cd9f4279a823bdb852593b69a76",
+        "width": 96,
+        "height": 94
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "97bd3252f6f39abc",
+      "referenceName": "Random Good Pet",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 29.0,
+      "originalPrice": "29",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_drop_0.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_drop_0.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Random Good Pet",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/c52bafd2603c8b520ea57303.png",
+        "sha256": "c52bafd2603c8b520ea5730369f99af5fb326cd9f4279a823bdb852593b69a76",
+        "width": 96,
+        "height": 94
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "59c4190e9a08ea60",
+      "referenceName": "Better Pet Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 92.0,
+      "originalPrice": "92",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_choose_3.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_choose_3.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Better Pet Chest",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/8f0f8a9a876808b32c5ba4e5.png",
+        "sha256": "8f0f8a9a876808b32c5ba4e54ee07b9d23a66117f70fb78362a01b7a38df0e50",
+        "width": 96,
+        "height": 94
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "c5baeed71ada9ef2",
+      "referenceName": "Random Excellent Pet",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 275.0,
+      "originalPrice": "275",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_drop_0.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_drop_0.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Random Excellent Pet",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/c52bafd2603c8b520ea57303.png",
+        "sha256": "c52bafd2603c8b520ea5730369f99af5fb326cd9f4279a823bdb852593b69a76",
+        "width": 96,
+        "height": 94
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "9c04396fe6d1b06b",
+      "referenceName": "Pet Cookie",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 0.06,
+      "originalPrice": "0.06",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/peti_ui_merchant_pet_exp_item1.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/peti_ui_merchant_pet_exp_item1.webp",
+      "existingItemIds": [
+        "1214a30c-2f38-4e66-bb10-d9defcb097e4"
+      ],
+      "existingNames": [
+        "宠物饼干"
+      ],
+      "name": "Pet Cookie",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/532bf149b7d6d1e0b8c881ed.png",
+        "sha256": "532bf149b7d6d1e0b8c881edbd0bb2b5f7b5c1a7f51fa25b8a3b2f5c54f800dc",
+        "width": 95,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "27f4437518b5ec89",
+      "referenceName": "Epic Pet Toy Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 30.0,
+      "originalPrice": "30",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_choose_7.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_choose_7.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Epic Pet Toy Chest",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/83ca54e6149ad0f71fe494b1.png",
+        "sha256": "83ca54e6149ad0f71fe494b114b0d2a485beca6cb192884fbe29020da0a0dff9",
+        "width": 96,
+        "height": 83
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "ca5b0f8741a12edc",
+      "referenceName": "Random Epic Pet Toy",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 30.0,
+      "originalPrice": "30",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_drop_7.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_drop_7.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Random Epic Pet Toy",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/8d25e0133f5321ea35b3736e.png",
+        "sha256": "8d25e0133f5321ea35b3736e72fc44e80713da12c1f5c4872a5b8b3db8665541",
+        "width": 96,
+        "height": 91
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "8d1f6975ecf5f5d4",
+      "referenceName": "Random Pet Toy (Master)",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 6.3,
+      "originalPrice": "6.3",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_drop.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_drop.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Random Pet Toy (Master)",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/5af4980ffecc9ef5bfb838bd.png",
+        "sha256": "5af4980ffecc9ef5bfb838bd98efba3f6c9c8edac139908e077f5eacab6d6f19",
+        "width": 96,
+        "height": 91
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "49e3313290eb6d3f",
+      "referenceName": "Excellent Pet Toy Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 10.0,
+      "originalPrice": "10",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_choose_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_choose_4.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Excellent Pet Toy Chest",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/c6cbcc6fc5ae6940abf41d3a.png",
+        "sha256": "c6cbcc6fc5ae6940abf41d3ad55811e263883ea7d4f603cc829c0ad3cd00ae95",
+        "width": 96,
+        "height": 83
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "6cbfc667f554af5f",
+      "referenceName": "Random Excellent Pet Toy",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 10.0,
+      "originalPrice": "10",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_drop_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_drop_4.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Random Excellent Pet Toy",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/89b642e49b94ae752165501c.png",
+        "sha256": "89b642e49b94ae752165501c9e2dc42bb6fbac900fc273d033f0e7e21c2627b4",
+        "width": 96,
+        "height": 91
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "c5499c3b658a0f32",
+      "referenceName": "Blue Pet Toy Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 2.0,
+      "originalPrice": "2",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_choose_3.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_choose_3.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Blue Pet Toy Chest",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/7b12a57fd28e00152c417a90.png",
+        "sha256": "7b12a57fd28e00152c417a902ed58c29a4d144e7fce18addd72b1a7fb17e6131",
+        "width": 96,
+        "height": 83
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "5a34f04d4ee7b526",
+      "referenceName": "Random Blue Pet Toy",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 2.0,
+      "originalPrice": "2",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_drop_3.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_drop_3.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Random Blue Pet Toy",
+      "categoryIds": [
+        "pet"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/f672f9929b554a7e94fbdff5.png",
+        "sha256": "f672f9929b554a7e94fbdff5b13056ec786d9e137e0b9d5d5ee8fd7f0e597e47",
+        "width": 96,
+        "height": 91
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "ca334ea0051e06cc",
+      "referenceName": "Doomsteed Shard",
+      "eventName": null,
+      "group": "Mounts",
+      "referenceValue": 1000.0,
+      "originalPrice": "1000",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/vehicle/jiangshima.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/vehicle/jiangshima.webp",
+      "existingItemIds": [
+        "d12a351e-a28d-46d1-b596-6a618d55117c"
+      ],
+      "existingNames": [
+        "末世战马碎片"
+      ],
+      "name": "Doomsteed Shard",
+      "categoryIds": [
+        "vehicle"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/a688450d8ea8df9a4b53625e.png",
+        "sha256": "a688450d8ea8df9a4b53625ed58958bdc2db8f9c4923cf0d13215b40d04640ea",
+        "width": 96,
+        "height": 93
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "2b77eaa32774a84d",
+      "referenceName": "Tech Hoverboard Shard",
+      "eventName": null,
+      "group": "Mounts",
+      "referenceValue": 300.0,
+      "originalPrice": "300",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/vehicle/penqihuaban.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/vehicle/penqihuaban.webp",
+      "existingItemIds": [
+        "7a833647-1846-455f-8ad4-80f36ecc180f"
+      ],
+      "existingNames": [
+        "科技滑板碎片"
+      ],
+      "name": "Tech Hoverboard Shard",
+      "categoryIds": [
+        "vehicle"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/9307eb5e3f301853164096cd.png",
+        "sha256": "9307eb5e3f301853164096cd270b515a1f951c0b64d0a218216c2bb085aefa91",
+        "width": 96,
+        "height": 93
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "292fa3e8bf05e1f0",
+      "referenceName": "Electric Scooter Shard",
+      "eventName": null,
+      "group": "Mounts",
+      "referenceValue": 200.0,
+      "originalPrice": "200",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/vehicle/pinghengche.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/vehicle/pinghengche.webp",
+      "existingItemIds": [
+        "d50887ad-5085-4bad-af27-2036168a919f"
+      ],
+      "existingNames": [
+        "电动平衡车碎片"
+      ],
+      "name": "Electric Scooter Shard",
+      "categoryIds": [
+        "vehicle"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/e59dd7245326ec1f1eacee29.png",
+        "sha256": "e59dd7245326ec1f1eacee29d5614336392e415a9bd15955c497ed5a555c2fdc",
+        "width": 96,
+        "height": 93
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "839d06de116ebe51",
+      "referenceName": "Component Crate Key",
+      "eventName": null,
+      "group": "Mounts",
+      "referenceValue": 350.0,
+      "originalPrice": "350",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_common/currency_vehicle_box.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_common/currency_vehicle_box.webp",
+      "existingItemIds": [
+        "3f3d798b-fbf6-4d31-8482-439d24cd14ce",
+        "79ae4563-6ae9-4faf-b29a-1ebcd348cbed"
+      ],
+      "existingNames": [
+        "载具零件钥匙",
+        "零件宝箱钥匙"
+      ],
+      "name": "Component Crate Key",
+      "categoryIds": [
+        "key",
+        "vehicle"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/6aacd74205e6edd155028e5c.png",
+        "sha256": "6aacd74205e6edd155028e5c86ff8b5ec7273542f5d55e35444c0d1aab01f500",
+        "width": 85,
+        "height": 96
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "3dbd3c67b29668a0",
+      "referenceName": "Refine Essence",
+      "eventName": null,
+      "group": "Mounts",
+      "referenceValue": 0.5,
+      "originalPrice": "0.5",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/vehicle/xilianshi.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/vehicle/xilianshi.webp",
+      "existingItemIds": [
+        "f6646b43-3582-43ea-bc23-4cfa2a7d2def"
+      ],
+      "existingNames": [
+        "洗炼精华"
+      ],
+      "name": "Refine Essence",
+      "categoryIds": [
+        "vehicle"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/ffb5d4ccf8f46b9fc27b9933.png",
+        "sha256": "ffb5d4ccf8f46b9fc27b99330aa0cd715e0244ddbd81122728003d9b2f2ef544",
+        "width": 96,
+        "height": 83
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "9c7d93f778528af5",
+      "referenceName": "Legend Mount Shard Choice",
+      "eventName": null,
+      "group": "Mounts",
+      "referenceValue": 1500.0,
+      "originalPrice": "1500",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_equip_box/vehicle_choose_8.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_equip_box/vehicle_choose_8.webp",
+      "existingItemIds": [
+        "7329b30a-8385-4359-8285-9301e2c4a42d"
+      ],
+      "existingNames": [
+        "传奇载具碎片自选宝箱"
+      ],
+      "name": "Legend Mount Shard Choice",
+      "categoryIds": [
+        "vehicle"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/5048020dbf3778f710bba672.png",
+        "sha256": "5048020dbf3778f710bba672a92bb5bcebfac57d5284c2f288c462f1494c470b",
+        "width": 96,
+        "height": 95
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "fa2aeb51b0ea7dd2",
+      "referenceName": "Excellent Component Choice",
+      "eventName": null,
+      "group": "Mounts",
+      "referenceValue": 680.0,
+      "originalPrice": "680",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_equip_box/vehicle_choose_3.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_equip_box/vehicle_choose_3.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Excellent Component Choice",
+      "categoryIds": [
+        "vehicle"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/43f441560a00e410d1d87c71.png",
+        "sha256": "43f441560a00e410d1d87c712734eae25845b00f9a667efb7f03cf70e7a3b4c1",
+        "width": 96,
+        "height": 95
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "1b943977ecea6eae",
+      "referenceName": "Mine Challenge Ticket",
+      "eventName": null,
+      "group": "Tickets",
+      "referenceValue": 10.0,
+      "originalPrice": "10",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/daily_ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/daily_ticket.webp",
+      "existingItemIds": [
+        "6a680bde-ce38-44c5-a135-1530b9171881"
+      ],
+      "existingNames": [
+        "矿洞挑战券"
+      ],
+      "name": "Mine Challenge Ticket",
+      "categoryIds": [
+        "general"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": false,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/a07739c85989e915ca561ece.png",
+        "sha256": "a07739c85989e915ca561ece24c60ae837884c3f38e2d309b806b53b8a70f61d",
+        "width": 96,
+        "height": 68
+      },
+      "evidence": "参考站名称、用途及现有已核实中文别名；不同品质/随机/自选不混并"
+    },
+    {
+      "referenceKey": "810589cf45b99404",
+      "referenceName": "Magic Coin",
+      "eventName": "Magic Ladder",
+      "group": "Event Currencies",
+      "referenceValue": 0.82,
+      "originalPrice": "0.82",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/grid_based/point_icon.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/grid_based/point_icon.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Magic Coin · Magic Ladder",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/9746a1ec68f33a20430c26be.png",
+        "sha256": "9746a1ec68f33a20430c26be07d55e4124149b7a8ac0cf22ef71363f47af3b9b",
+        "width": 93,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "5a1dc24fbf0b2fea",
+      "referenceName": "Dice",
+      "eventName": "Magic Ladder",
+      "group": "Event Currencies",
+      "referenceValue": 300.0,
+      "originalPrice": "300",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/grid_based/newticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/grid_based/newticket.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Dice · Magic Ladder",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/127d7ab628554ce01ec55c4e.png",
+        "sha256": "127d7ab628554ce01ec55c4efecbd71aa138193e5dc0998f4f95de2ffcf30914",
+        "width": 88,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "9c6ce5feb670e7ee",
+      "referenceName": "Party Goodwill",
+      "eventName": "Floral Workshop",
+      "group": "Event Currencies",
+      "referenceValue": 0.08,
+      "originalPrice": "0.08",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/gourmet/icon_token.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/gourmet/icon_token.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Party Goodwill · Floral Workshop",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/68b6998f94d9e5901453dc70.png",
+        "sha256": "68b6998f94d9e5901453dc70f5c9822b21319ad0f23112cb130f33cf231e5500",
+        "width": 96,
+        "height": 80
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "c2ea2c8ac203056f",
+      "referenceName": "Flower Coupon",
+      "eventName": "Floral Workshop",
+      "group": "Event Currencies",
+      "referenceValue": 40.0,
+      "originalPrice": "40",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/gourmet/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/gourmet/ticket.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Flower Coupon · Floral Workshop",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/82c638c6da9323b4bcbe49e1.png",
+        "sha256": "82c638c6da9323b4bcbe49e1babd00a8bcf760534899167672d460471d2d90dc",
+        "width": 96,
+        "height": 93
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "22fde0ce954d13b2",
+      "referenceName": "Snack Giftbox",
+      "eventName": "Snack Pinball Treasure",
+      "group": "Event Currencies",
+      "referenceValue": 0.4,
+      "originalPrice": "0.4",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/plinko/token.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/plinko/token.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Snack Giftbox · Snack Pinball Treasure",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/3fea349e64e00abf3d8c6499.png",
+        "sha256": "3fea349e64e00abf3d8c6499ecdb3f1729c761854d132d21dbf195d3e0dbb2ed",
+        "width": 95,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "af22a8b8422988fb",
+      "referenceName": "Snack Ticket",
+      "eventName": "Snack Pinball Treasure",
+      "group": "Event Currencies",
+      "referenceValue": 40.0,
+      "originalPrice": "40",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/plinko/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/plinko/ticket.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Snack Ticket · Snack Pinball Treasure",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/f81fab4eba5ade601391fa10.png",
+        "sha256": "f81fab4eba5ade601391fa10027eeffcc9b86537ea12307b45df295872e1b96d",
+        "width": 96,
+        "height": 89
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "e70ab7c8cb198533",
+      "referenceName": "Candy",
+      "eventName": "Castle Cards",
+      "group": "Event Currencies",
+      "referenceValue": 0.55,
+      "originalPrice": "0.55",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/pokerv1/token.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/pokerv1/token.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Candy · Castle Cards",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/ece3b204c1c6aa462aa4c554.png",
+        "sha256": "ece3b204c1c6aa462aa4c55403d0b508a35ae18c4276b405489d9fec349a1a0a",
+        "width": 96,
+        "height": 95
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "9c85d1d734341b03",
+      "referenceName": "Pumpkin",
+      "eventName": "Castle Cards",
+      "group": "Event Currencies",
+      "referenceValue": 80.0,
+      "originalPrice": "80",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/pokerv1/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/pokerv1/ticket.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Pumpkin · Castle Cards",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/0b19e8fad4ca0d16de06ee1e.png",
+        "sha256": "0b19e8fad4ca0d16de06ee1e00aa079c3fd72409f8601dffae2d4fd606d80062",
+        "width": 96,
+        "height": 90
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "225ccc40e9cd0730",
+      "referenceName": "Drifting Bottle",
+      "eventName": "Beach Treasure Hunt",
+      "group": "Event Currencies",
+      "referenceValue": 1.39,
+      "originalPrice": "1.39",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/roll_grid/token.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/roll_grid/token.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Drifting Bottle · Beach Treasure Hunt",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/e00822d802074d35c10e75b9.png",
+        "sha256": "e00822d802074d35c10e75b927095578a1f1560baaac8f32bddb24b214994a53",
+        "width": 78,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "aa9597fe7882daa5",
+      "referenceName": "Toy Spade",
+      "eventName": "Beach Treasure Hunt",
+      "group": "Event Currencies",
+      "referenceValue": 120.0,
+      "originalPrice": "120",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/roll_grid/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/roll_grid/ticket.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Toy Spade · Beach Treasure Hunt",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/be1c44a36f856470ded24ea6.png",
+        "sha256": "be1c44a36f856470ded24ea6032b8d1f059e94b213465ea68acb341eaa3aaffe",
+        "width": 84,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "3a61a014eb7ded63",
+      "referenceName": "Normal Film",
+      "eventName": "Time Puzzle",
+      "group": "Event Currencies",
+      "referenceValue": 1.33,
+      "originalPrice": "1.33",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/puzzle/token.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/puzzle/token.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Normal Film · Time Puzzle",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/3536ad694650d38a0dc35882.png",
+        "sha256": "3536ad694650d38a0dc3588269ac0ade5ce0ad44a8d2ae850c4c3dcc65289ee8",
+        "width": 92,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "7baaeea218b15250",
+      "referenceName": "Photo Album",
+      "eventName": "Time Puzzle",
+      "group": "Event Currencies",
+      "referenceValue": 100.0,
+      "originalPrice": "100",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/puzzle/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/puzzle/ticket.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Photo Album · Time Puzzle",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/7b85996386a575ae0ee36d36.png",
+        "sha256": "7b85996386a575ae0ee36d36448e19811239a9be7121dd009d9edb9108aeeb58",
+        "width": 96,
+        "height": 89
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "901b045bf3c18684",
+      "referenceName": "Blue Shell",
+      "eventName": "Autumn Seabed Exploration",
+      "group": "Event Currencies",
+      "referenceValue": 2.05,
+      "originalPrice": "2.05",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/diving/tu_biao_bei_ke_lan.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/diving/tu_biao_bei_ke_lan.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Blue Shell · Autumn Seabed Exploration",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/c8004bbd51b3ad579ea175d1.png",
+        "sha256": "c8004bbd51b3ad579ea175d14b120b86346da84fa983ed3ca78b9b158f87746b",
+        "width": 96,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "a4f999d3f4e466ce",
+      "referenceName": "Yellow Shell",
+      "eventName": "Autumn Seabed Exploration",
+      "group": "Event Currencies",
+      "referenceValue": 2.06,
+      "originalPrice": "2.06",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/diving/tu_biao_bei_ke_huang.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/diving/tu_biao_bei_ke_huang.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Yellow Shell · Autumn Seabed Exploration",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/52e8ae15b2011c4f1c92e18b.png",
+        "sha256": "52e8ae15b2011c4f1c92e18b6648b64cfcf5ff84db99a8903a30b8c9f2ef5793",
+        "width": 96,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "3678b2d5b28e2478",
+      "referenceName": "Electro Jellyfish",
+      "eventName": "Autumn Seabed Exploration",
+      "group": "Event Currencies",
+      "referenceValue": 100.0,
+      "originalPrice": "100",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/diving/tubiao.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/diving/tubiao.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Electro Jellyfish · Autumn Seabed Exploration",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/ba5057439dce90ca7e24c93d.png",
+        "sha256": "ba5057439dce90ca7e24c93d8c8bf973939fab45f68a52ad549bf62faaec23b7",
+        "width": 79,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "f6a1101be17e6c35",
+      "referenceName": "Folding Fan",
+      "eventName": "Theater Gala",
+      "group": "Event Currencies",
+      "referenceValue": 3.68,
+      "originalPrice": "3.68",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/golden_autumn_party/icon_guanjunjiangpai.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/golden_autumn_party/icon_guanjunjiangpai.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Folding Fan · Theater Gala",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/f55cdbdbc19f937f66e985bb.png",
+        "sha256": "f55cdbdbc19f937f66e985bb23e6681c1b34cb19f4cc46ca1e42049293e37c6e",
+        "width": 96,
+        "height": 88
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "ed098b6155bb51aa",
+      "referenceName": "Normal Postcard",
+      "eventName": "Cloud Tower",
+      "group": "Event Currencies",
+      "referenceValue": 0.14,
+      "originalPrice": "0.14",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/tower_building/token.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/tower_building/token.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Normal Postcard · Cloud Tower",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/ac1b90a2a4623b3d0d610f82.png",
+        "sha256": "ac1b90a2a4623b3d0d610f82462c7159a25179325bb368ed06f06b348032983f",
+        "width": 96,
+        "height": 79
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "a3c9074c05fae25d",
+      "referenceName": "Exquisite Postcard",
+      "eventName": "Cloud Tower",
+      "group": "Event Currencies",
+      "referenceValue": 134.0,
+      "originalPrice": "134",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/tower_building/token2.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/tower_building/token2.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Exquisite Postcard · Cloud Tower",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/2b810ac9bd4d71bcdbbbb23a.png",
+        "sha256": "2b810ac9bd4d71bcdbbbb23a5439e5ace5f29acf3611f4a15f30ca772fe62849",
+        "width": 96,
+        "height": 79
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "3dd0b9023a775543",
+      "referenceName": "Building Hook",
+      "eventName": "Cloud Tower",
+      "group": "Event Currencies",
+      "referenceValue": 200.0,
+      "originalPrice": "200",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/tower_building/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/tower_building/ticket.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Building Hook · Cloud Tower",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/ba79310ffc8904d64bfa0e19.png",
+        "sha256": "ba79310ffc8904d64bfa0e1961a2d3a89ac383abea24aa4bccc8c25b6a3c8b52",
+        "width": 96,
+        "height": 91
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "9f9ad497a7fea01b",
+      "referenceName": "Broken Fishing Line",
+      "eventName": "Goldfall Coast Carnival",
+      "group": "Event Currencies",
+      "referenceValue": 100.0,
+      "originalPrice": "100",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/fishing/fishing_main/icon_fishline.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/fishing/fishing_main/icon_fishline.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Broken Fishing Line · Goldfall Coast Carnival",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/de0de456fc20d00aa04751f4.png",
+        "sha256": "de0de456fc20d00aa04751f4f7349ce15e9d5050fa2d2a8e887cedc9832d7f08",
+        "width": 96,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "71d25a3f5b1c8299",
+      "referenceName": "Fishing Points",
+      "eventName": "Goldfall Coast Carnival",
+      "group": "Event Currencies",
+      "referenceValue": 0.07,
+      "originalPrice": "0.07",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/fishing/fishing_main/icon_fishpoint.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/fishing/fishing_main/icon_fishpoint.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Fishing Points · Goldfall Coast Carnival",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/711e637bf25a422f69ee9cd8.png",
+        "sha256": "711e637bf25a422f69ee9cd86dd2b27e3ca7a662d43b4b9f2e4c778096f19167",
+        "width": 96,
+        "height": 88
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "0e0428ea88c9435f",
+      "referenceName": "Emperor Fish Proof",
+      "eventName": "Goldfall Coast Carnival",
+      "group": "Event Currencies",
+      "referenceValue": 814.0,
+      "originalPrice": "814",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/fishing/fishing_main/icon_fishking.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/fishing/fishing_main/icon_fishking.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Emperor Fish Proof · Goldfall Coast Carnival",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/582e59859ea4d78b52578ff5.png",
+        "sha256": "582e59859ea4d78b52578ff58662f3c02a5fe07b04d51293605b03c13e12f8e9",
+        "width": 78,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "04e4b554b0671e69",
+      "referenceName": "Fishing Lure",
+      "eventName": "Goldfall Coast Carnival",
+      "group": "Event Currencies",
+      "referenceValue": 100.0,
+      "originalPrice": "100",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/fishing/fishing_main/icon_fishbait.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/fishing/fishing_main/icon_fishbait.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Fishing Lure · Goldfall Coast Carnival",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/7f40f4ddfca3de7bb5ffc312.png",
+        "sha256": "7f40f4ddfca3de7bb5ffc312bf8edddaf875e53c9d600b014d25299d3cc33854",
+        "width": 96,
+        "height": 81
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "bf1df5443b190c06",
+      "referenceName": "Goggles",
+      "eventName": "Water Park Rumble",
+      "group": "Event Currencies",
+      "referenceValue": 0.47,
+      "originalPrice": "0.47",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/random_defeat/token_1.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/random_defeat/token_1.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Goggles · Water Park Rumble",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/fe322a59ef1a85aa33d3ab6b.png",
+        "sha256": "fe322a59ef1a85aa33d3ab6be9a8093cd1955761d1bd2d8630a127887b22e3fb",
+        "width": 96,
+        "height": 82
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "e07646aff9fe559f",
+      "referenceName": "Water Gun",
+      "eventName": "Water Park Rumble",
+      "group": "Event Currencies",
+      "referenceValue": 300.0,
+      "originalPrice": "300",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/random_defeat/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/random_defeat/ticket.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Water Gun · Water Park Rumble",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/b7956ed50c99d2b729f29a1b.png",
+        "sha256": "b7956ed50c99d2b729f29a1bc596d5ea6fc27067d48f2a74f6cc55c784bfb8ca",
+        "width": 86,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "f8aefcf1e5de5746",
+      "referenceName": "Cooking Insights",
+      "eventName": "Soup Kitchen",
+      "group": "Event Currencies",
+      "referenceValue": 0.35,
+      "originalPrice": "0.35",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/kitchen/token.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/kitchen/token.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Cooking Insights · Soup Kitchen",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/bf337ef3dfe519997b13de9e.png",
+        "sha256": "bf337ef3dfe519997b13de9e809146d7c9c14792f7991b162ba826a9028986c0",
+        "width": 75,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "c4ab5f44780c2d01",
+      "referenceName": "Soup Spoon",
+      "eventName": "Soup Kitchen",
+      "group": "Event Currencies",
+      "referenceValue": 300.0,
+      "originalPrice": "300",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/kitchen/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/kitchen/ticket.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Soup Spoon · Soup Kitchen",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/9d87337ab3144e2d38c6de50.png",
+        "sha256": "9d87337ab3144e2d38c6de5020be7e3da45717d324a8697da1bb68456567d6eb",
+        "width": 82,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "61c851f5d13ab3b3",
+      "referenceName": "Music Note",
+      "eventName": "Music Disc Clash",
+      "group": "Event Currencies",
+      "referenceValue": 0.37,
+      "originalPrice": "0.37",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/circular_disk/token.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/circular_disk/token.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Music Note · Music Disc Clash",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/cefda20fd5315f70dd9a7c2e.png",
+        "sha256": "cefda20fd5315f70dd9a7c2ed4ae7e35e9d04db3ff94c41ee3c82056de744a67",
+        "width": 96,
+        "height": 93
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "6af9cb0bbf81240a",
+      "referenceName": "Microphone",
+      "eventName": "Music Disc Clash",
+      "group": "Event Currencies",
+      "referenceValue": 100.0,
+      "originalPrice": "100",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/circular_disk/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/circular_disk/ticket.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Microphone · Music Disc Clash",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/ff8d0d5fd904372d09555f51.png",
+        "sha256": "ff8d0d5fd904372d09555f5102ef183a637bcedc659cc895df8e67181beb079b",
+        "width": 85,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "455afad5726927d9",
+      "referenceName": "Surprise Chain Coupon",
+      "eventName": null,
+      "group": "Event Currencies",
+      "referenceValue": 21.6,
+      "originalPrice": "21.6",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/start_end/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/start_end/ticket.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Surprise Chain Coupon",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/999cc086246760fa68fcbed4.png",
+        "sha256": "999cc086246760fa68fcbed4bc7e22965c4230fa3e61838f8c130362ff8c3409",
+        "width": 96,
+        "height": 64
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "d9fa37096fe8b21c",
+      "referenceName": "Coconut Ticket",
+      "eventName": null,
+      "group": "Event Currencies",
+      "referenceValue": 300.0,
+      "originalPrice": "300",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/golden_autumn_party/guanjunliquan.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/golden_autumn_party/guanjunliquan.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Coconut Ticket",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/7b37f895541a1659d466c4c2.png",
+        "sha256": "7b37f895541a1659d466c4c2bc770c2378c35d9b87708d7301ac222161b5ec3d",
+        "width": 96,
+        "height": 90
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "ce338557d6490a6a",
+      "referenceName": "Time Hourglass",
+      "eventName": null,
+      "group": "Event Currencies",
+      "referenceValue": 80.0,
+      "originalPrice": "80",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/anniversary_order/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/anniversary_order/ticket.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Time Hourglass",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/eafdb69fcb5b9b4b8eae686b.png",
+        "sha256": "eafdb69fcb5b9b4b8eae686b11a41278256fe024da91a51e6b4c1071d263b65a",
+        "width": 86,
+        "height": 96
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    },
+    {
+      "referenceKey": "ace24a133d89eb06",
+      "referenceName": "Birthday Crown Tickets",
+      "eventName": null,
+      "group": "Event Currencies",
+      "referenceValue": 120.0,
+      "originalPrice": "120",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/treasure_hunting/quan.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/treasure_hunting/quan.webp",
+      "existingItemIds": [],
+      "existingNames": [],
+      "name": "Birthday Crown Tickets",
+      "categoryIds": [
+        "event"
+      ],
+      "schemeId": "default",
+      "schemeLabel": "默认单价",
+      "translationPending": true,
+      "asset": {
+        "path": "/uploads/item-icons/reference-gems/7c770d8fa08cdc10fc6ba3d0.png",
+        "sha256": "7c770d8fa08cdc10fc6ba3d0045bfcfe5193ffd0889c8caf6d7af26687d49d49",
+        "width": 96,
+        "height": 79
+      },
+      "evidence": "参考站独立条目，保留英文名及活动名以便核对"
+    }
+  ],
+  "assetCount": 104
+}

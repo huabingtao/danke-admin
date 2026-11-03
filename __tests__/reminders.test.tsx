@@ -1,7 +1,7 @@
 import { describe, test, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, within } from '@testing-library/react';
 import RemindersPage from '../app/reminders/page';
-import { computeRuleStatus, getTodayStr } from '../lib/reminder-status';
+import { computeRuleStatus, getTodayStr, WEEKDAY_NAMES } from '../lib/reminder-status';
 
 const mockUseAuth = vi.fn();
 vi.mock('../context/AuthContext', () => ({
@@ -324,4 +324,27 @@ describe('29-day complete cycle regression', () => {
     expect(screen.getByLabelText('完整周期（含兑换日，天）*')).toBeInvalid();
   });
 
+});
+
+describe('routine status badges', () => {
+  test('shows only numeric countdowns and preserves the non-trigger edit preview', async () => {
+    mockUseAuth.mockReturnValue({user: {role: 'ADMIN'}, hasPermission: () => true, token: 'test'});
+    const today = new Date().getDay();
+    const rules = [
+      {...mockRules[2], id: 'today', name: '今日规则', weeklyDay: today},
+      {...mockRules[2], id: 'waiting', name: '其他日期规则', weeklyDay: (today + 1) % 7},
+    ];
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ok: true, json: async () => rules}));
+    render(<RemindersPage />);
+    expect(await screen.findByText('今日规则')).toBeInTheDocument();
+    const todayRow = screen.getByText('今日规则').closest('tr')!;
+    const waitingRow = screen.getByText('其他日期规则').closest('tr')!;
+    expect(todayRow.querySelectorAll('td')[2]).toHaveTextContent(/^1$/);
+    expect(waitingRow.querySelectorAll('td')[2]).toHaveTextContent(/^1$/);
+    expect(screen.queryByText(/配置循环活动与常规定时/)).not.toBeInTheDocument();
+
+    const row = screen.getByText('其他日期规则').closest('tr')!;
+    fireEvent.click(within(row).getByRole('button', {name: '编辑'}));
+    expect(screen.getByText(`本日不提醒（每${WEEKDAY_NAMES[(today + 1) % 7]}打卡）`)).toBeInTheDocument();
+  });
 });

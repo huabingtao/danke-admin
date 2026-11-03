@@ -1,8 +1,23 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { ResourceViewTabs } from '@/components/ResourceViewTabs';
+
+import { MatrixItemTransfer } from '@/components/MatrixItemTransfer';
+import { matchesResourceView, resourceViews, ALL_RESOURCE_VIEW, type ClassifiedItem, type ClassificationDictionary } from '@/lib/item-classifications';
+
+import Image from 'next/image';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useAuth } from '@/context/AuthContext';
-import { getApiBase } from '@/lib/api';
+import { apiFetch } from '@/lib/api-client';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import { MatrixDefinitionDialog, type MatrixDefinitionAction } from '@/components/MatrixDefinitionDialog';
+import { catalogItemIcon, getItemIconUrl } from '@/lib/item-icons';
+import { latestYieldSnapshot, type YieldPeriod } from '@/lib/yield-snapshot';
+import { buildYieldColumns, yieldItemKey, sortYieldItems } from '@/lib/yield-columns';
+import type { GemValuation } from '@/lib/gem-valuation';
+import { applyColumnOrder, moveColumnOrder, parseColumnOrder, sortColumnsByValue, YIELD_COLUMN_ORDER_STORAGE_KEY, YIELD_ROW_ORDER_STORAGE_KEY, YIELD_VALUE_SORT_STORAGE_KEY, type YieldValueSort } from '@/lib/yield-column-order';
 import {
   Sparkles,
   Filter,
@@ -10,15 +25,15 @@ import {
   Check,
   Search,
   Grid3X3,
-  Calendar,
-  Zap,
+  GripVertical,
+  Trash2,
   Shield,
   Layers,
-  Key,
   ArrowUp,
   ArrowDown,
   ArrowUpDown,
   Edit3,
+  Loader2,
 } from 'lucide-react';
 
 interface Source {
@@ -30,7 +45,8 @@ interface Source {
   description: string | null;
 }
 
-interface Item {
+interface Item extends ClassifiedItem {
+  gemValuation?: GemValuation | null;
   id: string;
   name: string;
   icon?: string | null;
@@ -47,44 +63,6 @@ interface MonthlyYieldRecord {
   year: number;
   notes: string | null;
 }
-
-// 道具图标获取工具（优先使用数据库配置的 icon，支持 OSS 路径，若无则回退到默认文件名）
-export const getItemIconUrl = (itemName: string, iconUrl?: string | null): string => {
-  if (iconUrl && iconUrl.trim()) {
-    return iconUrl.trim();
-  }
-  return `/icons/items/${encodeURIComponent(itemName)}.png`;
-};
-
-// 26 项标准资源排序规则 (含细分 8 类钥匙)
-const STANDARD_ITEM_NAMES = [
-  's杰出装备',
-  '史诗配件',
-  '杰出配件',
-  '史诗宠物',
-  '杰出宠物',
-  '觉醒水晶',
-  'sp特工万能碎片',
-  's特工碎片',
-  '传奇载具碎片',
-  '史诗收藏品',
-  '杰出收藏品',
-  '高级收藏之心',
-  '传奇收藏品',
-  '载具零件钥匙',
-  's级军备钥匙',
-  '收藏品宝箱钥匙',
-  '配件宝箱钥匙',
-  '高级钥匙',
-  '普通钥匙',
-  '宠物钥匙',
-  '高级宠物箱钥匙',
-  '神器核心',
-  '异宠核心',
-  '谐振芯片',
-  '特工核心',
-  '自选核心',
-];
 
 // 26 个标准获取途径排序规则 (已剔除非通用道具的派对/连锁礼包)
 const STANDARD_SOURCE_NAMES = [
@@ -116,66 +94,14 @@ const STANDARD_SOURCE_NAMES = [
   '活动5（四合一）',
 ];
 
-// 玩家 8 大核心培养体系 (多标签 Multi-Tag 筛选)
-const ITEM_CATEGORY_TABS = [
-  { id: 'ALL', label: '全部' },
-  {
-    id: 'KEYS',
-    label: '🔑 钥匙',
-    items: [
-      's级军备钥匙',
-      '高级钥匙',
-      '普通钥匙',
-      '配件宝箱钥匙',
-      '宠物钥匙',
-      '高级宠物箱钥匙',
-      '收藏品宝箱钥匙',
-      '载具零件钥匙',
-    ],
-  },
-  {
-    id: 'VEHICLE',
-    label: '🚗 载具',
-    items: ['传奇载具碎片', '载具零件钥匙'],
-  },
-  {
-    id: 'AGENT',
-    label: '👤 特工',
-    items: ['sp特工万能碎片', 's特工碎片', '觉醒水晶', '特工核心', '自选核心'],
-  },
-  {
-    id: 'EQUIP',
-    label: '🛡️ 装备',
-    items: ['s杰出装备', 's级军备钥匙', '高级钥匙', '普通钥匙', '神器核心', '自选核心'],
-  },
-  {
-    id: 'PET',
-    label: '🐾 宠物',
-    items: ['史诗宠物', '杰出宠物', '宠物钥匙', '高级宠物箱钥匙', '异宠核心', '自选核心'],
-  },
-  {
-    id: 'TECH',
-    label: '⚙️ 配件',
-    items: ['史诗配件', '杰出配件', '配件宝箱钥匙', '谐振芯片', '自选核心'],
-  },
-  {
-    id: 'COLLECT',
-    label: '🏆 收藏品',
-    items: ['史诗收藏品', '杰出收藏品', '高级收藏之心', '传奇收藏品', '收藏品宝箱钥匙'],
-  },
-  {
-    id: 'CORE',
-    label: '🔮 核心',
-    items: ['神器核心', '异宠核心', '谐振芯片', '特工核心', '自选核心'],
-  },
-];
-
 export default function YieldsPage() {
-  const { token } = useAuth();
-  const apiBase = getApiBase();
+  const { token, user, hasPermission } = useAuth();
+  const canEditRows = user?.role === 'ADMIN' || hasPermission?.('yield:edit');
+  const canEditColumns = user?.role === 'ADMIN' || hasPermission?.('item:create');
+  const canDeleteColumns = user?.role === 'ADMIN' || hasPermission?.('item:delete');
+  const [definitionAction, setDefinitionAction] = useState<MatrixDefinitionAction | null>(null);
 
-  const [year, setYear] = useState('2026');
-  const [month, setMonth] = useState('8');
+  const [snapshotPeriod, setSnapshotPeriod] = useState<YieldPeriod | null>(null);
 
   const [sources, setSources] = useState<Source[]>([]);
   const [items, setItems] = useState<Item[]>([]);
@@ -184,62 +110,177 @@ export default function YieldsPage() {
 
   // Filter & Search States
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeItemTab, setActiveItemTab] = useState('ALL');
-  const [hideEmptySources, setHideEmptySources] = useState(false);
+  const [viewId, setViewId] = useState('all');
+  const [dictionary, setDictionary] = useState<ClassificationDictionary>({ categories: [] });
+  const [dictionaryError, setDictionaryError] = useState('');
+  const [transferOpen, setTransferOpen] = useState(false);
+  const [preference, setPreference] = useState<{ owner: string; viewId: string; ids: string[] | null; loaded: boolean; error: string }>({ owner: '', viewId: 'all', ids: null, loaded: false, error: '' });
+  const [preferenceRetry, setPreferenceRetry] = useState(0);
+  const preferenceOwner = user?.id ?? token ?? '';
+
+  useEffect(() => {
+    let active = true;
+    apiFetch('/item-classifications').then((response) => response.json()).then((data) => {
+      if (!data || !Array.isArray(data.categories)) throw new Error('分类数据格式错误');
+      if (active) { setDictionary(data); setDictionaryError(''); }
+    }).catch((cause) => { if (active) setDictionaryError(cause instanceof Error ? cause.message : '分类读取失败'); });
+    return () => { active = false; };
+  }, [preferenceRetry]);
+
+  useEffect(() => {
+    if (!token) return;
+    let active = true;
+    apiFetch(`/me/preferences/yield-matrix?viewId=${encodeURIComponent(viewId)}`, { token }).then((response) => response.json()).then((data) => {
+      if (!data || !(data.selectedItemIds === null || (Array.isArray(data.selectedItemIds) && data.selectedItemIds.every((id: unknown) => typeof id === 'string')))) throw new Error('显示列配置格式错误');
+      if (active) setPreference({ owner: preferenceOwner, viewId, ids: data.selectedItemIds, loaded: true, error: '' });
+    }).catch((cause) => { if (active) setPreference({ owner: preferenceOwner, viewId, ids: null, loaded: false, error: cause instanceof Error ? cause.message : '显示列配置读取失败' }); });
+    return () => { active = false; };
+  }, [token, preferenceOwner, preferenceRetry, viewId]);
+  const [hideEmptySources, setHideEmptySources] = useState(true);
+  const [columnOrder, setColumnOrder] = useState<string[]>([]);
+  const [valueSort, setValueSort] = useState<YieldValueSort>('DESC');
+  const [rowOrder, setRowOrder] = useState<string[]>([]);
+  const [dropRowTarget, setDropRowTarget] = useState<string | null>(null);
+  const draggedRow = useRef<string | null>(null);
+  const [dropTarget, setDropTarget] = useState<string | null>(null);
+  const draggedColumn = useRef<string | null>(null);
+  const matrixScroll = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      try { setColumnOrder(parseColumnOrder(localStorage.getItem(YIELD_COLUMN_ORDER_STORAGE_KEY))); }
+      catch { /* Keep in-memory ordering when storage is unavailable. */ }
+      try {
+        const saved = localStorage.getItem(YIELD_VALUE_SORT_STORAGE_KEY);
+        if (saved === 'ASC' || saved === 'MANUAL') setValueSort(saved);
+      } catch { /* Default to descending value without storage. */ }
+      try { setRowOrder(parseColumnOrder(localStorage.getItem(YIELD_ROW_ORDER_STORAGE_KEY))); }
+      catch { /* Row dragging remains available in memory. */ }
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  function saveValueSort(direction: YieldValueSort) {
+    setValueSort(direction);
+    try { localStorage.setItem(YIELD_VALUE_SORT_STORAGE_KEY, direction); }
+    catch { /* Sorting remains available in memory. */ }
+  }
+
+  function saveColumnOrder(order: string[]) {
+    setColumnOrder(order);
+    saveValueSort(order.length ? 'MANUAL' : 'DESC');
+    try {
+      if (order.length) localStorage.setItem(YIELD_COLUMN_ORDER_STORAGE_KEY, JSON.stringify(order));
+      else localStorage.removeItem(YIELD_COLUMN_ORDER_STORAGE_KEY);
+    } catch { /* Dragging still works without persistence. */ }
+  }
+
+
+  function saveRowOrder(order: string[]) {
+    setRowOrder(order);
+    try {
+      if (order.length) localStorage.setItem(YIELD_ROW_ORDER_STORAGE_KEY, JSON.stringify(order));
+      else localStorage.removeItem(YIELD_ROW_ORDER_STORAGE_KEY);
+    } catch { /* Keep in-memory row ordering. */ }
+  }
 
   // In-place Editing States
   const [editingCell, setEditingCell] = useState<{ itemId: string; sourceId: string } | null>(null);
   const [editValue, setEditValue] = useState<string>('');
   const [saveStatus, setSaveStatus] = useState<string>('');
+  const [savingCells, setSavingCells] = useState<Set<string>>(new Set());
+  const pendingCells = useRef(new Set<string>());
+  const closedCellEdits = useRef(new Set<string>());
+  const failedDrafts = useRef(new Map<string, string>());
+  const [cellErrors, setCellErrors] = useState<Record<string, string>>({});
+  const saveStatusTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [copiedMd, setCopiedMd] = useState(false);
 
+  useEffect(() => () => {
+    if (saveStatusTimer.current) clearTimeout(saveStatusTimer.current);
+  }, []);
+
+  function showSaveStatus(message: string) {
+    if (saveStatusTimer.current) clearTimeout(saveStatusTimer.current);
+    setSaveStatus(message);
+    saveStatusTimer.current = setTimeout(() => setSaveStatus(''), 3000);
+  }
+
   // 途径名称就地双击编辑状态
-  const [editingSourceId, setEditingSourceId] = useState<string | null>(null);
-  const [editSourceName, setEditSourceName] = useState<string>('');
-  const [savingSource, setSavingSource] = useState(false);
+
+
 
   // 排序状态
   // 1. 获取途径按名称拼音首字母排序: 'ASC' (A-Z) | 'DESC' (Z-A)
   const [sourceSortOrder, setSourceSortOrder] = useState<'ASC' | 'DESC'>('ASC');
   // 2. 资源列按产出数量排序: { itemId, direction: 'DESC' | 'ASC' } | null
   const [quantitySort, setQuantitySort] = useState<{ itemId: string; direction: 'DESC' | 'ASC' } | null>(null);
+  const activeView = resourceViews(dictionary).find((view) => view.id === viewId) ?? ALL_RESOURCE_VIEW;
+  const viewItems = useMemo(() => items.filter((item) => matchesResourceView(item, activeView)), [items, activeView]);
+  function changeView(id: string, updateUrl = true) {
+    setViewId(id);
+    setTransferOpen(false);
+    setSearchQuery(''); setQuantitySort(null);
+    if (updateUrl) {
+      const url = new URL(window.location.href);
+      if (id === 'all') url.searchParams.delete('view'); else url.searchParams.set('view', id);
+      window.history.replaceState(null, '', url);
+    }
+  }
+  useEffect(() => {
+    const restore = () => {
+      const requested = new URL(window.location.href).searchParams.get('view') ?? 'all';
+      const next = resourceViews(dictionary).some((view) => view.id === requested) ? requested : 'all';
+      if (next !== viewId) changeView(next, false);
+    };
+    const timer = window.setTimeout(restore, 0);
+    window.addEventListener('popstate', restore);
+    return () => { window.clearTimeout(timer); window.removeEventListener('popstate', restore); };
+  }, [dictionary, viewId]);
+
 
   // 1. Fetch Items
   useEffect(() => {
-    fetch(`${apiBase}/items`)
+    apiFetch('/items')
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) setItems(data);
       })
       .catch((err) => console.error('Failed to fetch items', err));
-  }, [apiBase]);
+  }, []);
 
   // 2. Fetch Sources
   useEffect(() => {
-    fetch(`${apiBase}/sources`)
+    apiFetch('/sources')
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) setSources(data);
       })
       .catch((err) => console.error('Failed to fetch sources', err));
-  }, [apiBase]);
+  }, []);
 
   // 3. Fetch Yields
-  const fetchYields = () => {
+  const fetchYields = useCallback(() => {
     setLoading(true);
-    fetch(`${apiBase}/yields?year=${year}&month=${month}`)
+    apiFetch('/yields')
       .then((res) => res.json())
       .then((data) => {
-        if (Array.isArray(data)) setYields(data);
+        if (Array.isArray(data)) {
+          const snapshot = latestYieldSnapshot<MonthlyYieldRecord>(data);
+          setSnapshotPeriod(snapshot.period);
+          setYields(snapshot.records);
+        }
       })
       .catch((err) => console.error('Failed to fetch yields', err))
       .finally(() => setLoading(false));
-  };
+  }, []);
 
   useEffect(() => {
-    fetchYields();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [year, month, apiBase]);
+    const timer = window.setTimeout(() => {
+      fetchYields();
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, [fetchYields]);
 
   // Yield lookup map: key = `${sourceId}_${itemId}` -> amount
   const yieldLookup = useMemo(() => {
@@ -250,22 +291,13 @@ export default function YieldsPage() {
     return map;
   }, [yields]);
 
-  // Sort and filter columns (Items)
-  const sortedItems = useMemo(() => {
-    const list = [...items].sort((a, b) => {
-      const idxA = STANDARD_ITEM_NAMES.indexOf(a.name);
-      const idxB = STANDARD_ITEM_NAMES.indexOf(b.name);
-      if (idxA !== -1 && idxB !== -1) return idxA - idxB;
-      if (idxA !== -1) return -1;
-      if (idxB !== -1) return 1;
-      return a.name.localeCompare(b.name, 'zh-CN');
-    });
-
-    if (activeItemTab === 'ALL') return list;
-    const tabConfig = ITEM_CATEGORY_TABS.find((t) => t.id === activeItemTab);
-    if (!tabConfig || !tabConfig.items) return list;
-    return list.filter((item) => tabConfig.items.includes(item.name));
-  }, [items, activeItemTab]);
+  const selectedItemIds = preference.owner === preferenceOwner && preference.viewId === viewId ? preference.ids : null;
+  const displayItems = useMemo(() => {
+    const columns = selectedItemIds === null ? buildYieldColumns(viewItems, yields) : sortYieldItems(viewItems.filter((item) => new Set(selectedItemIds).has(item.id)));
+    const ordered = applyColumnOrder(columns, columnOrder);
+    return valueSort === 'MANUAL' ? ordered : sortColumnsByValue(ordered, valueSort);
+  }, [viewItems, yields, columnOrder, selectedItemIds, valueSort]);
+  const sortedItems = displayItems;
 
   // Sort and filter rows (Sources)
   const sortedSources = useMemo(() => {
@@ -281,9 +313,10 @@ export default function YieldsPage() {
     }
 
     if (hideEmptySources) {
+      const visibleIds = new Set(sortedItems.map((item) => item.id));
       list = list.filter((source) => {
         const sourceYields = yields.filter((y) => y.sourceId === source.id);
-        return sourceYields.some((y) => y.amount > 0);
+        return sourceYields.some((y) => visibleIds.has(y.itemId) && y.amount !== 0);
       });
     }
 
@@ -306,11 +339,12 @@ export default function YieldsPage() {
       });
     }
 
-    return list;
-  }, [sources, searchQuery, hideEmptySources, yields, yieldLookup, quantitySort, sourceSortOrder]);
+    return !quantitySort && rowOrder.length ? applyColumnOrder(list, rowOrder) : list;
+  }, [sources, searchQuery, hideEmptySources, yields, yieldLookup, quantitySort, sourceSortOrder, sortedItems, rowOrder]);
 
   // 排序切换处理
   const handleToggleSourceSort = () => {
+    saveRowOrder([]);
     // 切换途径名称拼音首字母排序时，清除资源数量列排序
     setQuantitySort(null);
     setSourceSortOrder((prev) => (prev === 'ASC' ? 'DESC' : 'ASC'));
@@ -331,58 +365,81 @@ export default function YieldsPage() {
     }
   };
 
-  // 途径名称就地双击修改处理器 (保存到数据库)
   const handleSourceDoubleClick = (source: Source) => {
-    setEditingSourceId(source.id);
-    setEditSourceName(source.name);
+    if (canEditRows) setDefinitionAction({ kind: 'row', mode: 'rename', id: source.id, name: source.name, members: [source] });
   };
 
-  const handleSaveSourceName = async (sourceId: string) => {
-    const trimmed = editSourceName.trim();
-    const current = sources.find((s) => s.id === sourceId);
-    if (!trimmed || trimmed === current?.name) {
-      setEditingSourceId(null);
+  function moveSource(fromId: string, toId: string) {
+    const base = [...sources].sort((a, b) => {
+      if (quantitySort) {
+        const difference = (yieldLookup.get(`${a.id}_${quantitySort.itemId}`) ?? 0) - (yieldLookup.get(`${b.id}_${quantitySort.itemId}`) ?? 0);
+        if (difference) return quantitySort.direction === 'DESC' ? -difference : difference;
+        return a.name.localeCompare(b.name, 'zh-CN');
+      }
+      const difference = a.name.localeCompare(b.name, 'zh-CN');
+      return sourceSortOrder === 'ASC' ? difference : -difference;
+    });
+    const allIds = (quantitySort ? base : applyColumnOrder(base, rowOrder)).map((source) => source.id);
+    saveRowOrder(moveColumnOrder(allIds, fromId, toId));
+    setQuantitySort(null);
+  }
+
+  function openColumnAction(item: Item, mode: 'rename' | 'delete') {
+    const original = items.find((entry) => entry.id === item.id) ?? item;
+    const key = yieldItemKey(item.name);
+    const logicalSiblings = displayItems.filter((entry) => yieldItemKey(entry.name) === key);
+    const members = mode === 'delete' && logicalSiblings.length === 1
+      ? items.filter((entry) => yieldItemKey(entry.name) === key)
+      : [original];
+    setDefinitionAction({ kind: 'column', mode, id: original.id, name: original.name, members });
+  }
+
+  async function confirmDefinitionAction(name: string) {
+    const action = definitionAction;
+    if (!action) return;
+    const endpoint = action.kind === 'row' ? '/sources' : '/items';
+    if (action.mode === 'rename') {
+      const response = await apiFetch(`${endpoint}/${encodeURIComponent(action.id)}`, { method: 'PATCH', token, body: JSON.stringify({ name }) });
+      const updated = await response.json();
+      if (action.kind === 'row') setSources((previous) => previous.map((source) => source.id === action.id ? { ...source, name: updated.name } : source));
+      else setItems((previous) => previous.map((item) => item.id === action.id ? { ...item, name: updated.name } : item));
       return;
     }
-
-    setSavingSource(true);
-    try {
-      const res = await fetch(`${apiBase}/sources/${sourceId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        },
-        body: JSON.stringify({ name: trimmed }),
-      });
-
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data.message || '更新途径名称失败');
+    // Fetch all periods immediately before deletion; do not back up only the visible snapshot.
+    const response = await apiFetch('/yields', { token });
+    const records: MonthlyYieldRecord[] = await response.json();
+    if (!Array.isArray(records)) throw new Error('无法读取关联记录，已停止删除');
+    const ids = new Set(action.members.map((member) => member.id));
+    const related = records.filter((record) => ids.has(action.kind === 'row' ? record.sourceId : record.itemId));
+    const blob = new Blob([JSON.stringify({ deletedAt: new Date().toISOString(), kind: action.kind, definitions: action.members, yields: related }, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = `matrix-${action.kind}-backup-${Date.now()}.json`;
+    anchor.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    // Refresh local state after every successful delete; a failure leaves remaining members visible.
+    for (const member of action.members) {
+      const stillPresent = action.kind === 'row' ? sources.some((source) => source.id === member.id) : items.some((item) => item.id === member.id);
+      if (!stillPresent) continue;
+      await apiFetch(`${endpoint}/${encodeURIComponent(member.id)}`, { method: 'DELETE', token });
+      if (action.kind === 'row') {
+        setSources((previous) => previous.filter((source) => source.id !== member.id));
+        setYields((previous) => previous.filter((record) => record.sourceId !== member.id));
+      } else {
+        setItems((previous) => previous.filter((item) => item.id !== member.id));
+        setYields((previous) => previous.filter((record) => record.itemId !== member.id));
       }
-
-      const updated = await res.json();
-      setSources((prev) =>
-        prev.map((s) => (s.id === sourceId ? { ...s, name: updated.name } : s))
-      );
-      setSaveStatus('✅ 途径名称已同步保存');
-      setTimeout(() => setSaveStatus(''), 2500);
-    } catch (err: any) {
-      console.error('Failed to update source name', err);
-      setSaveStatus(`❌ ${err.message || '更新途径名称失败'}`);
-      setTimeout(() => setSaveStatus(''), 3000);
-    } finally {
-      setSavingSource(false);
-      setEditingSourceId(null);
     }
-  };
+    setQuantitySort(null);
+  }
 
   // Compute column totals
   const columnTotals = useMemo(() => {
     const totals: Record<string, number> = {};
     sortedItems.forEach((item) => {
       let sum = 0;
-      sources.forEach((src) => {
+      sortedSources.forEach((src) => {
         const amt = yieldLookup.get(`${src.id}_${item.id}`) || 0;
         sum += amt;
       });
@@ -390,94 +447,92 @@ export default function YieldsPage() {
       totals[item.id] = Math.round(sum * 100) / 100;
     });
     return totals;
-  }, [sortedItems, sources, yieldLookup]);
+  }, [sortedItems, sortedSources, yieldLookup]);
 
   // Core metrics for top stats bar
   const statsOverview = useMemo(() => {
-    const keyItemNames = [
-      's级军备钥匙',
-      '高级钥匙',
-      '普通钥匙',
-      '配件宝箱钥匙',
-      '宠物钥匙',
-      '高级宠物箱钥匙',
-      '收藏品宝箱钥匙',
-      '载具零件钥匙',
-    ];
-
-    const coreItemNames = [
-      '神器核心',
-      '异宠核心',
-      '谐振芯片',
-      '特工核心',
-      '自选核心',
-    ];
-
-    const getItemTotal = (name: string) => {
-      const itm = items.find((i) => i.name === name);
-      return itm ? columnTotals[itm.id] || 0 : 0;
-    };
-
-    const totalKeys = keyItemNames.reduce((sum, name) => sum + getItemTotal(name), 0);
-    const totalCores = coreItemNames.reduce((sum, name) => sum + getItemTotal(name), 0);
-
-    return {
-      totalKeys: Math.round(totalKeys * 100) / 100,
-      totalCores: Math.round(totalCores * 100) / 100,
-      customCores: getItemTotal('自选核心'),
-    };
-  }, [items, columnTotals]);
+    const total = (kind: string) => sortedItems.filter((item) => item.categoryIds?.includes(kind)).reduce((sum, item) => sum + (columnTotals[item.id] ?? 0), 0);
+    return { totalKeys: Math.round(total('key') * 100) / 100, totalCores: sortedItems.filter((item) => item.categoryIds?.includes('core')).length };
+  }, [sortedItems, columnTotals]);
 
   // In-place Cell Edit Save Handler
   const handleCellDoubleClick = (itemId: string, sourceId: string, currentVal: number) => {
+    if (!canEditRows || loading || pendingCells.current.has(`${sourceId}_${itemId}`)) return;
+    closedCellEdits.current.delete(`${sourceId}_${itemId}`);
     setEditingCell({ itemId, sourceId });
-    setEditValue(currentVal === 0 ? '' : currentVal.toString());
+    setEditValue(failedDrafts.current.get(`${sourceId}_${itemId}`) ?? (currentVal === 0 ? '' : currentVal.toString()));
   };
 
   const handleSaveCell = async (itemId: string, sourceId: string) => {
-    const parsed = parseFloat(editValue);
-    const numericValue = isNaN(parsed) ? 0 : parsed;
+    const key = `${sourceId}_${itemId}`;
+    if (!snapshotPeriod || loading || !canEditRows || closedCellEdits.current.has(key) || pendingCells.current.has(key)) return;
+    const draft = editValue;
+    const numericValue = draft.trim() === '' ? 0 : Number(draft);
+    const closeThisEditor = () => {
+      closedCellEdits.current.add(key);
+      setEditingCell((current) => current?.itemId === itemId && current.sourceId === sourceId ? null : current);
+    };
+    const clearError = () => setCellErrors((previous) => { const next = { ...previous }; delete next[key]; return next; });
+    if (!Number.isFinite(numericValue)) {
+      setCellErrors((previous) => ({ ...previous, [key]: '请输入有效数字' }));
+      failedDrafts.current.set(key, draft);
+      return;
+    }
+    if (numericValue === (yieldLookup.get(key) ?? 0)) {
+      failedDrafts.current.delete(key);
+      clearError();
+      closeThisEditor();
+      return;
+    }
+
+    // Ref guards Enter + blur in the same event cycle; different cells may save independently.
+    pendingCells.current.add(key);
+    setSavingCells((previous) => new Set(previous).add(key));
+    clearError();
 
     try {
-      const res = await fetch(`${apiBase}/yields`, {
+      const response = await apiFetch('/yields', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
+        token,
         body: JSON.stringify({
           itemId,
           sourceId,
-          year: parseInt(year, 10),
-          month: parseInt(month, 10),
+          year: snapshotPeriod.year,
+          month: snapshotPeriod.month,
           amount: numericValue,
         }),
       });
-
-      if (!res.ok) throw new Error('保存失败');
-
-      setSaveStatus('✅ 已同步保存');
-      setTimeout(() => setSaveStatus(''), 2000);
-      fetchYields();
+      const saved: MonthlyYieldRecord = await response.json();
+      if (!saved || typeof saved.id !== 'string' || saved.itemId !== itemId || saved.sourceId !== sourceId || saved.year !== snapshotPeriod.year || saved.month !== snapshotPeriod.month || typeof saved.amount !== 'number' || !Number.isFinite(saved.amount)) {
+        throw new Error('保存结果异常，请重试确认');
+      }
+      setYields((previous) => {
+        const matches = (record: MonthlyYieldRecord) => record.id === saved.id || (record.itemId === saved.itemId && record.sourceId === saved.sourceId && record.year === saved.year && record.month === saved.month);
+        return previous.some(matches) ? previous.map((record) => matches(record) ? saved : record) : [...previous, saved];
+      });
+      failedDrafts.current.delete(key);
+      showSaveStatus('已保存');
+      closeThisEditor();
     } catch (err) {
-      console.error(err);
-      setSaveStatus('❌ 保存失败');
-      setTimeout(() => setSaveStatus(''), 2500);
+      failedDrafts.current.set(key, draft);
+      setCellErrors((previous) => ({ ...previous, [key]: err instanceof Error ? err.message : '保存失败，请重试' }));
+      showSaveStatus('保存失败，输入已保留，可重试');
+    } finally {
+      pendingCells.current.delete(key);
+      setSavingCells((previous) => { const next = new Set(previous); next.delete(key); return next; });
     }
-
-    setEditingCell(null);
   };
 
   // Copy as Markdown Table
   const handleExportMarkdown = () => {
-    let md = `### 📊 ${year}年 ${month}月 资源获取统计全景表\n\n`;
+    let md = `### 资源获取统计全景表\n\n`;
     md += `| 获取途径 | ` + sortedItems.map((i) => i.name).join(' | ') + ` |\n`;
     md += `| :--- | ` + sortedItems.map(() => `:---:`).join(' | ') + ` |\n`;
 
     sortedSources.forEach((src) => {
       const rowVals = sortedItems.map((itm) => {
         const v = yieldLookup.get(`${src.id}_${itm.id}`);
-        return v && v > 0 ? v : '-';
+        return v !== undefined && v !== 0 ? v : '-';
       });
       md += `| ${src.name} | ` + rowVals.join(' | ') + ` |\n`;
     });
@@ -502,7 +557,13 @@ export default function YieldsPage() {
 
   return (
     <div className="space-y-6 animate-in fade-in duration-300 pb-12">
-      {/* 顶部标题与月度切换器 */}
+      {transferOpen && <MatrixItemTransfer key={viewId} items={viewItems} dictionary={dictionary} selectedIds={displayItems.map((item) => item.id)} onClose={() => setTransferOpen(false)} onSave={async (ids) => {
+        const response = await apiFetch('/me/preferences/yield-matrix', { method: 'PUT', token, body: JSON.stringify({ selectedItemIds: ids, viewId }) });
+        const saved = await response.json();
+        setPreference((previous) => previous.owner === preferenceOwner && previous.viewId === viewId ? { owner: preferenceOwner, viewId, ids: saved.selectedItemIds, loaded: true, error: '' } : previous);
+      }} />}
+      {definitionAction && <MatrixDefinitionDialog action={definitionAction} onClose={() => setDefinitionAction(null)} onConfirm={confirmDefinitionAction} />}
+      {/* 顶部标题与操作栏 */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div className="space-y-1">
           <div className="flex items-center space-x-3">
@@ -511,43 +572,25 @@ export default function YieldsPage() {
             </div>
             <div>
               <h1 className="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2">
-                全景月度基础资源获取大表
-                <span className="text-xs font-mono font-medium px-2 py-0.5 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20">
-                  {year}年 {month}月
-                </span>
+                基础资源获取大表
               </h1>
-              <p className="text-xs text-zinc-500">
-                共 {sources.length} 大获取途径 × {items.length} 项核心资源全矩阵统计 · 双击途径名称/单元格就地修改保存 · 点击表头智能排序
-              </p>
             </div>
           </div>
         </div>
 
-        {/* 年月选择 & 操作栏 */}
+        {/* 操作栏 */}
         <div className="flex flex-wrap items-center gap-2.5">
-          <div className="flex items-center space-x-2 bg-zinc-900 border border-zinc-800/90 px-3 py-1.5 rounded-2xl shadow-inner">
-            <Calendar className="w-4 h-4 text-orange-400" />
-            <select
-              value={year}
-              onChange={(e) => setYear(e.target.value)}
-              className="bg-transparent text-xs text-zinc-200 font-bold focus:outline-none cursor-pointer"
-            >
-              <option value="2026">2026 年</option>
-              <option value="2025">2025 年</option>
-            </select>
-            <span className="text-zinc-700 font-light">/</span>
-            <select
-              value={month}
-              onChange={(e) => setMonth(e.target.value)}
-              className="bg-transparent text-xs text-zinc-200 font-bold focus:outline-none cursor-pointer"
-            >
-              {Array.from({ length: 12 }, (_, i) => (
-                <option key={i + 1} value={(i + 1).toString()}>
-                  {i + 1} 月
-                </option>
-              ))}
-            </select>
-          </div>
+          <Button variant="outline" disabled={!preference.loaded || preference.owner !== preferenceOwner || preference.viewId !== viewId || !!dictionaryError} onClick={() => setTransferOpen(true)}>管理显示道具</Button>
+          <Button
+            variant="outline"
+            title="按钻石单价排列；优先使用默认单价，无默认单价时取最高方案价，未配置价格置后"
+            onClick={() => saveValueSort(valueSort === 'DESC' ? 'ASC' : 'DESC')}
+          >
+            {valueSort === 'DESC' ? <ArrowDown aria-hidden="true" /> : valueSort === 'ASC' ? <ArrowUp aria-hidden="true" /> : <ArrowUpDown aria-hidden="true" />}
+            {valueSort === 'DESC' ? '价值：高 → 低' : valueSort === 'ASC' ? '价值：低 → 高' : '按价值降序'}
+          </Button>
+          {rowOrder.length > 0 && <Button variant="outline" size="sm" onClick={() => { saveRowOrder([]); setQuantitySort(null); }}>恢复默认行序</Button>}
+          {columnOrder.length > 0 && <Button variant="outline" size="sm" onClick={() => saveColumnOrder([])}>恢复默认列序</Button>}
 
           <button
             onClick={handleExportMarkdown}
@@ -567,7 +610,7 @@ export default function YieldsPage() {
           </button>
 
           {saveStatus && (
-            <span className="text-xs font-bold text-orange-400 bg-orange-500/10 px-3 py-1.5 rounded-xl border border-orange-500/20 animate-in fade-in">
+            <span role="status" className="text-xs font-bold text-orange-400 bg-orange-500/10 px-3 py-1.5 rounded-xl border border-orange-500/20">
               {saveStatus}
             </span>
           )}
@@ -579,10 +622,10 @@ export default function YieldsPage() {
         <div className="bg-zinc-900/70 border border-zinc-800/80 p-4 rounded-3xl flex items-center justify-between shadow-lg shadow-amber-500/5">
           <div className="space-y-1">
             <div className="text-xs text-zinc-400 font-semibold flex items-center gap-1.5">
-              <Key className="w-4 h-4 text-amber-400" /> 钥匙
+              <Image unoptimized width={24} height={24} src={catalogItemIcon('s级军备钥匙')} alt="S级军备钥匙" className="size-6 object-contain" /> 钥匙
             </div>
             <p className="text-[11px] text-zinc-500">
-              包含S军备、高级、普通、配件、宠物、收藏品及载具钥匙等
+              已显示道具中的钥匙数量
             </p>
           </div>
           <div className="text-2xl font-black text-amber-400 font-mono">
@@ -593,35 +636,23 @@ export default function YieldsPage() {
         <div className="bg-zinc-900/70 border border-zinc-800/80 p-4 rounded-3xl flex items-center justify-between shadow-lg shadow-cyan-500/5">
           <div className="space-y-1">
             <div className="text-xs text-zinc-400 font-semibold flex items-center gap-1.5">
-              <Zap className="w-4 h-4 text-cyan-400" /> 核心
+              <Image unoptimized width={24} height={24} src={catalogItemIcon('神器核心')} alt="武器核心" className="size-6 object-contain" /> 核心
             </div>
             <p className="text-[11px] text-zinc-500">
-              包含自选核心 ({statsOverview.customCores}个) 及各类专属突破重铸核心
+              当前显示的核心类道具种类
             </p>
           </div>
           <div className="text-2xl font-black text-cyan-400 font-mono">
-            {statsOverview.totalCores} <span className="text-xs text-zinc-500 font-normal">个</span>
+            {statsOverview.totalCores} <span className="text-xs text-zinc-500 font-normal">种</span>
           </div>
         </div>
       </div>
 
       {/* 筛选与搜索工具条 */}
       <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 bg-zinc-900/50 border border-zinc-800/80 p-3 rounded-2xl">
-        {/* 资源列维度 Tab 切换 */}
-        <div className="flex flex-wrap items-center gap-1 bg-zinc-950 p-1 rounded-xl border border-zinc-800/60">
-          {ITEM_CATEGORY_TABS.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveItemTab(tab.id)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                activeItemTab === tab.id
-                  ? 'bg-orange-500 text-zinc-950 shadow-md shadow-orange-500/20'
-                  : 'text-zinc-400 hover:text-white hover:bg-zinc-900'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+        <div className="flex min-w-0 flex-1 flex-col gap-2">
+          <ResourceViewTabs dictionary={dictionary} value={viewId} onChange={changeView} />
+          {(dictionaryError || preference.error) && <div role="alert" className="text-sm text-destructive">{dictionaryError || preference.error}<Button variant="outline" size="sm" onClick={() => setPreferenceRetry((value) => value + 1)}>重试读取</Button></div>}
         </div>
 
         {/* 途径搜索 & 零产出过滤开关 */}
@@ -649,9 +680,29 @@ export default function YieldsPage() {
         </div>
       </div>
 
+      {!loading && displayItems.length === 0 && <p role="status">请通过管理显示道具选择资源</p>}
       {/* 全景主矩阵大表 */}
       <div className="bg-zinc-900/80 border border-zinc-800/80 rounded-3xl overflow-hidden shadow-2xl">
-        <div className="overflow-x-auto custom-scrollbar max-h-[68vh]">
+        <div
+          ref={matrixScroll}
+          className="yield-matrix-scroll overflow-x-auto max-h-[68vh]"
+          tabIndex={0}
+          aria-label="资源产出表格滚动区域"
+          onDragOver={(event) => {
+            if ((!draggedColumn.current && !draggedRow.current) || !matrixScroll.current) return;
+            event.preventDefault();
+            const container = matrixScroll.current;
+            const rect = container.getBoundingClientRect();
+            if (draggedRow.current) {
+              if (event.clientY < rect.top + 100) container.scrollTop -= 24;
+              else if (event.clientY > rect.bottom - 56) container.scrollTop += 24;
+              return;
+            }
+            // Include the sticky source column in the left-edge scrolling zone.
+            if (event.clientX > rect.right - 56) container.scrollLeft += 24;
+            else if (event.clientX < rect.left + 250) container.scrollLeft -= 24;
+          }}
+        >
           <table className="w-full text-left border-collapse font-sans text-xs">
             {/* 表头 (Sticky) */}
             <thead className="bg-zinc-950/95 sticky top-0 z-30 backdrop-blur-md border-b border-zinc-800">
@@ -665,7 +716,7 @@ export default function YieldsPage() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-1.5">
                       <span className="group-hover:text-orange-400 transition-colors">获取途径 / 来源</span>
-                      {!quantitySort && (
+                      {!quantitySort && rowOrder.length === 0 && (
                         <span className="text-[10px] text-orange-400 font-mono font-bold flex items-center bg-orange-500/10 px-1.5 py-0.5 rounded border border-orange-500/20">
                           {sourceSortOrder === 'ASC' ? (
                             <>
@@ -679,6 +730,7 @@ export default function YieldsPage() {
                         </span>
                       )}
                     </div>
+                    {!quantitySort && rowOrder.length > 0 && <Badge variant="secondary">自定义行序</Badge>}
                     <span className="text-[10px] text-zinc-500 font-normal">
                       共 {sortedSources.length} 途径
                     </span>
@@ -691,8 +743,24 @@ export default function YieldsPage() {
                   return (
                     <th
                       key={item.id}
+                      data-column-id={item.id}
+                      data-drop-target={dropTarget === item.id || undefined}
+                      onDragOver={(event) => {
+                        if (!draggedColumn.current) return;
+                        event.preventDefault();
+                        event.dataTransfer.dropEffect = 'move';
+                        setDropTarget(item.id);
+
+                      }}
+                      onDrop={(event) => {
+                        if (!draggedColumn.current) return;
+                        event.preventDefault();
+                        saveColumnOrder(moveColumnOrder(displayItems.map((column) => column.id), draggedColumn.current, item.id));
+                        draggedColumn.current = null;
+                        setDropTarget(null);
+                      }}
                       onClick={() => handleToggleQuantitySort(item.id)}
-                      className={`py-2 px-2 font-bold text-center min-w-[110px] border-r border-zinc-800/50 whitespace-nowrap cursor-pointer select-none transition-colors group ${
+                      className={`relative py-2 px-2 font-bold text-center min-w-[110px] data-[drop-target=true]:outline-2 data-[drop-target=true]:outline-orange-400 data-[drop-target=true]:-outline-offset-2 border-r border-zinc-800/50 whitespace-nowrap cursor-pointer select-none transition-colors group ${
                         isSorted
                           ? 'bg-orange-500/15 text-orange-400 border-b-2 border-orange-500'
                           : 'text-zinc-300 hover:bg-zinc-900/90'
@@ -705,6 +773,36 @@ export default function YieldsPage() {
                           : '未排序，点击按数量从高到低'
                       })`}
                     >
+                      <div className="flex justify-center gap-1">
+                      <Button
+                        variant="ghost"
+                        size="icon-xs"
+                        className="cursor-grab active:cursor-grabbing"
+                        aria-label={`拖动${item.name}列调整顺序`}
+                        title="拖动调整列序，也可按 Alt + 左右方向键移动"
+                        draggable
+                        onClick={(event) => event.stopPropagation()}
+                        onDragStart={(event) => {
+                          event.stopPropagation();
+                          draggedColumn.current = item.id;
+                          event.dataTransfer.effectAllowed = 'move';
+                          event.dataTransfer.setData('text/plain', item.id);
+                        }}
+                        onDragEnd={() => { draggedColumn.current = null; setDropTarget(null); }}
+                        onKeyDown={(event) => {
+                          if (!event.altKey || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+                          event.preventDefault();
+                          event.stopPropagation();
+                          const index = sortedItems.findIndex((column) => column.id === item.id);
+                          const target = sortedItems[index + (event.key === 'ArrowLeft' ? -1 : 1)];
+                          if (target) saveColumnOrder(moveColumnOrder(displayItems.map((column) => column.id), item.id, target.id));
+                        }}
+                      >
+                        <GripVertical />
+                      </Button>
+                        {canEditColumns && <Button variant="ghost" size="icon-xs" aria-label={`编辑${item.name}列名称`} onClick={(event) => { event.stopPropagation(); openColumnAction(item, 'rename'); }}><Edit3 /></Button>}
+                        {canDeleteColumns && <Button variant="ghost" size="icon-xs" aria-label={`删除${item.name}列`} onClick={(event) => { event.stopPropagation(); openColumnAction(item, 'delete'); }}><Trash2 /></Button>}
+                      </div>
                       <div className="flex flex-col items-center gap-1 py-0.5">
                         {/* 道具图标 */}
                         <div className="w-7 h-7 rounded-lg bg-zinc-900/90 border border-zinc-700/60 p-0.5 flex items-center justify-center shadow-sm shrink-0 group-hover:border-orange-500/60 group-hover:scale-105 transition-all">
@@ -753,7 +851,7 @@ export default function YieldsPage() {
                     colSpan={sortedItems.length + 1}
                     className="py-16 text-center text-zinc-500 font-mono"
                   >
-                    加载月度产出矩阵中...
+                    加载资源产出矩阵中...
                   </td>
                 </tr>
               ) : sortedSources.length === 0 ? (
@@ -762,16 +860,27 @@ export default function YieldsPage() {
                     colSpan={sortedItems.length + 1}
                     className="py-16 text-center text-zinc-500 font-mono"
                   >
-                    未找到符合条件的途径或产出数据
+                    <p>未找到符合条件的途径或产出数据</p>
+                    <Button variant="outline" onClick={() => { setSearchQuery(''); setHideEmptySources(false); }}>清除筛选并查看全部来源</Button>
+                    <Button variant="outline" disabled={!preference.loaded || preference.viewId !== viewId} onClick={() => setTransferOpen(true)}>调整显示道具</Button>
                   </td>
                 </tr>
               ) : (
                 sortedSources.map((source, rIdx) => {
-                  const isEditingSource = editingSourceId === source.id;
                   return (
                     <tr
                       key={source.id}
-                      className="hover:bg-zinc-800/40 transition-colors group"
+                      data-source-id={source.id}
+                      data-drop-target={dropRowTarget === source.id || undefined}
+                      onDragOver={(event) => { if (draggedRow.current) { event.preventDefault(); setDropRowTarget(source.id); } }}
+                      onDrop={(event) => {
+                        if (!draggedRow.current) return;
+                        event.preventDefault();
+                        moveSource(draggedRow.current, source.id);
+                        draggedRow.current = null;
+                        setDropRowTarget(null);
+                      }}
+                      className="hover:bg-zinc-800/40 transition-colors group data-[drop-target=true]:outline-2 data-[drop-target=true]:outline-orange-400 data-[drop-target=true]:-outline-offset-2"
                     >
                       {/* 途径名称 (Sticky Left) - 支持双击就地修改并保存至数据库 */}
                       <td
@@ -779,37 +888,40 @@ export default function YieldsPage() {
                         onDoubleClick={() => handleSourceDoubleClick(source)}
                         title="双击就地修改途径名称"
                       >
-                        {isEditingSource ? (
-                          <div className="flex items-center space-x-1.5 py-0.5">
-                            <input
-                              autoFocus
-                              type="text"
-                              value={editSourceName}
-                              onChange={(e) => setEditSourceName(e.target.value)}
-                              onBlur={() => handleSaveSourceName(source.id)}
-                              onKeyDown={(e) => {
-                                if (e.key === 'Enter') handleSaveSourceName(source.id);
-                                if (e.key === 'Escape') setEditingSourceId(null);
-                              }}
-                              disabled={savingSource}
-                              className="w-full bg-zinc-950 border border-orange-500 rounded px-2 py-0.5 text-xs text-orange-400 font-bold focus:outline-none shadow-sm"
-                            />
-                          </div>
-                        ) : (
                           <div className="flex items-center justify-between">
                             <div className="flex items-center space-x-2 truncate">
-                              <span className="text-[10px] font-mono text-zinc-500 w-4 shrink-0">
-                                {rIdx + 1}
-                              </span>
-                              <span className="font-semibold text-zinc-200 group-hover:text-orange-400 transition-colors truncate cursor-pointer">
+                              <Button
+                                variant="ghost" size="icon-xs"
+                                className="cursor-grab active:cursor-grabbing"
+                                aria-label={`拖动${source.name}行调整顺序`}
+                                title="拖动调整行序，也可按 Alt + 上下方向键移动"
+                                draggable
+                                onClick={(event) => event.stopPropagation()}
+                                onDoubleClick={(event) => event.stopPropagation()}
+                                onDragStart={(event) => {
+                                  event.stopPropagation();
+                                  draggedRow.current = source.id;
+                                  event.dataTransfer.effectAllowed = 'move';
+                                  event.dataTransfer.setData('text/plain', source.id);
+                                }}
+                                onDragEnd={() => { draggedRow.current = null; setDropRowTarget(null); }}
+                                onKeyDown={(event) => {
+                                  if (!event.altKey || !['ArrowUp', 'ArrowDown'].includes(event.key)) return;
+                                  event.preventDefault();
+                                  event.stopPropagation();
+                                  const target = sortedSources[rIdx + (event.key === 'ArrowUp' ? -1 : 1)];
+                                  if (target) moveSource(source.id, target.id);
+                                }}
+                              ><GripVertical /></Button>
+                              <span title={source.name} className="font-semibold text-zinc-200 group-hover:text-orange-400 transition-colors truncate cursor-pointer">
                                 {source.name}
                               </span>
                             </div>
-                            <span className="text-[10px] text-zinc-600 opacity-0 group-hover:opacity-100 transition-opacity ml-1 shrink-0 font-normal">
-                              双击修改
-                            </span>
+                            {canEditRows && <div className="flex shrink-0 gap-0.5" onDoubleClick={(event) => event.stopPropagation()}>
+                              <Button variant="ghost" size="icon-xs" aria-label={`编辑${source.name}行名称`} onClick={() => setDefinitionAction({ kind: 'row', mode: 'rename', id: source.id, name: source.name, members: [source] })}><Edit3 /></Button>
+                              <Button variant="ghost" size="icon-xs" aria-label={`删除${source.name}行`} onClick={() => setDefinitionAction({ kind: 'row', mode: 'delete', id: source.id, name: source.name, members: [source] })}><Trash2 /></Button>
+                            </div>}
                           </div>
-                        )}
                       </td>
 
                       {/* 资源数值单元格 */}
@@ -822,25 +934,37 @@ export default function YieldsPage() {
                         return (
                           <td
                             key={item.id}
+                            aria-busy={savingCells.has(cellKey)}
+                            data-error={!!cellErrors[cellKey]}
                             onDoubleClick={() => handleCellDoubleClick(item.id, source.id, amount)}
-                            className="py-2 px-2 text-center border-r border-zinc-800/30 cursor-pointer hover:bg-orange-500/5 transition-all select-none"
-                            title="双击就地修改"
+                            className="relative py-2 px-2 text-center border-r border-zinc-800/30 cursor-pointer hover:bg-orange-500/5 transition-colors select-none data-[error=true]:outline data-[error=true]:-outline-offset-1 data-[error=true]:outline-destructive"
+                            title={cellErrors[cellKey] || '双击就地修改'}
                           >
                             {isEditing ? (
-                              <input
+                              <Input
                                 autoFocus
+                                aria-label={`${source.name}的${item.name}产出数量`}
+                                aria-invalid={!!cellErrors[cellKey]}
+                                aria-describedby={cellErrors[cellKey] ? `cell-error-${cellKey}` : undefined}
+                                disabled={savingCells.has(cellKey)}
                                 type="number"
                                 step="any"
                                 value={editValue}
                                 onChange={(e) => setEditValue(e.target.value)}
                                 onBlur={() => handleSaveCell(item.id, source.id)}
                                 onKeyDown={(e) => {
-                                  if (e.key === 'Enter') handleSaveCell(item.id, source.id);
-                                  if (e.key === 'Escape') setEditingCell(null);
+                                  if (e.key === 'Enter') { e.preventDefault(); handleSaveCell(item.id, source.id); }
+                                  if (e.key === 'Escape') {
+                                    e.preventDefault();
+                                    closedCellEdits.current.add(cellKey);
+                                    failedDrafts.current.delete(cellKey);
+                                    setCellErrors((previous) => { const next = { ...previous }; delete next[cellKey]; return next; });
+                                    setEditingCell(null);
+                                  }
                                 }}
-                                className="w-16 bg-zinc-950 border border-orange-500 rounded px-1.5 py-0.5 text-center text-xs text-orange-400 font-bold focus:outline-none"
+                                className="mx-auto h-6 w-20 text-center"
                               />
-                            ) : amount > 0 ? (
+                            ) : amount !== 0 ? (
                               <span
                                 className={`inline-block font-mono font-bold px-2 py-0.5 rounded-lg text-xs ${
                                   item.name.includes('核心')
@@ -857,6 +981,8 @@ export default function YieldsPage() {
                             ) : (
                               <span className="text-zinc-700 text-xs font-mono">-</span>
                             )}
+                            {savingCells.has(cellKey) && <Loader2 aria-label="正在保存此单元格" className="absolute right-1 top-1/2 size-3 -translate-y-1/2 motion-safe:animate-spin text-primary" />}
+                            {cellErrors[cellKey] && <span id={`cell-error-${cellKey}`} role="alert" className="sr-only">{source.name} / {item.name}：{cellErrors[cellKey]}</span>}
                           </td>
                         );
                       })}
@@ -935,18 +1061,7 @@ export default function YieldsPage() {
         </div>
       </div>
 
-      {/* 底部使用提示与说明 */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[11px] text-zinc-500 bg-zinc-900/30 border border-zinc-800/60 p-4 rounded-2xl">
-        <div className="flex items-center space-x-2">
-          <Sparkles className="w-4 h-4 text-orange-400 shrink-0" />
-          <span>
-            提示：表格支持<strong>双击途径名称或任意数值单元格就地编辑</strong>并回车即时保存至数据库；支持点击「获取途径」按拼音首字母排序，点击任意道具列头按产出数量升降序排序。
-          </span>
-        </div>
-        <div className="font-mono text-zinc-600">
-          矩阵规模：{sortedSources.length} 途径 × {sortedItems.length} 资源
-        </div>
-      </div>
+
     </div>
   );
 }

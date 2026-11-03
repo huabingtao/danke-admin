@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { getApiBase } from '@/lib/api';
+import { apiFetch, AUTH_EXPIRED_EVENT } from '@/lib/api-client';
 
 export type UserRole = 'ADMIN' | 'ASSISTANT';
 
@@ -41,10 +41,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-      const res = await fetch(`${getApiBase()}/auth/profile`, {
-        headers: {
-          'Authorization': `Bearer ${authToken}`,
-        },
+      const res = await apiFetch('/auth/profile', {
+        token: authToken,
         signal: controller.signal,
       });
       clearTimeout(timeoutId);
@@ -90,6 +88,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
+    const handleAuthExpired = () => {
+      localStorage.removeItem('danke_admin_token');
+      setUser(null);
+      setPermissions([]);
+      setMenuTree([]);
+      setToken(null);
+      if (pathname !== '/login') router.replace('/login');
+    };
+
+    window.addEventListener(AUTH_EXPIRED_EVENT, handleAuthExpired);
+    return () => window.removeEventListener(AUTH_EXPIRED_EVENT, handleAuthExpired);
+  }, [pathname, router]);
+
+  useEffect(() => {
     // Router guard: redirect to login if not logged in
     if (!isLoading) {
       const isPublicPage = pathname === '/login';
@@ -103,17 +115,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (username: string, pass: string): Promise<boolean> => {
     try {
-      const res = await fetch(`${getApiBase()}/auth/login`, {
+      const res = await apiFetch('/auth/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify({ username, password: pass }),
       });
-
-      if (!res.ok) {
-        return false;
-      }
 
       const data = await res.json();
       const authToken = data.access_token;
@@ -153,23 +158,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return { success: false, message: '未登录' };
     }
     try {
-      const res = await fetch(`${getApiBase()}/auth/change-password`, {
+      const res = await apiFetch('/auth/change-password', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
+        token,
         body: JSON.stringify({ oldPassword: oldPass, newPassword: newPass }),
       });
 
       const data = await res.json().catch(() => ({}));
-      if (res.ok) {
-        return { success: true, message: data.message || '密码修改成功' };
-      } else {
-        return { success: false, message: data.message || '密码修改失败' };
-      }
-    } catch (err: any) {
-      return { success: false, message: err.message || '网络连接异常' };
+      return { success: true, message: data.message || '密码修改成功' };
+    } catch (err) {
+      return { success: false, message: err instanceof Error ? err.message : '网络连接异常' };
     }
   };
 

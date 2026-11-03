@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { useAuth } from '@/context/AuthContext';
-import { getApiBase } from '@/lib/api';
+import { apiFetch } from '@/lib/api-client';
 import { computeRuleStatus, getTodayStr, WEEKDAY_NAMES } from '@/lib/reminder-status';
 import { Input } from '@/components/ui/input';
 
@@ -91,23 +91,22 @@ export default function RemindersPage() {
     try {
       setLoading(true);
       setError(null);
-      const url =
-        activeCategory === 'ALL'
-          ? `${getApiBase()}/reminders`
-          : `${getApiBase()}/reminders?category=${activeCategory}`;
-      const res = await fetch(url);
-      if (!res.ok) throw new Error('获取提醒规则失败');
+      const query = activeCategory === 'ALL' ? '' : `?category=${encodeURIComponent(activeCategory)}`;
+      const res = await apiFetch(`/reminders${query}`);
       const data = await res.json();
       setRules(data);
-    } catch (err: any) {
-      setError(err.message || '获取规则失败');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : '获取规则失败');
     } finally {
       setLoading(false);
     }
   }, [activeCategory]);
 
   useEffect(() => {
-    fetchRules();
+    const timer = window.setTimeout(() => {
+      void fetchRules();
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, [fetchRules]);
 
   // Column Resizing Logic
@@ -124,15 +123,6 @@ export default function RemindersPage() {
   const startX = useRef<number>(0);
   const startWidth = useRef<number>(0);
 
-  const onMouseDownResize = (e: React.MouseEvent, colKey: string) => {
-    resizingCol.current = colKey;
-    startX.current = e.clientX;
-    startWidth.current = colWidths[colKey] || 120;
-    document.addEventListener('mousemove', onMouseMoveResize);
-    document.addEventListener('mouseup', onMouseUpResize);
-    e.preventDefault();
-  };
-
   const onMouseMoveResize = useCallback((e: MouseEvent) => {
     if (!resizingCol.current) return;
     const diff = e.clientX - startX.current;
@@ -146,8 +136,16 @@ export default function RemindersPage() {
   const onMouseUpResize = useCallback(() => {
     resizingCol.current = null;
     document.removeEventListener('mousemove', onMouseMoveResize);
-    document.removeEventListener('mouseup', onMouseUpResize);
   }, [onMouseMoveResize]);
+
+  const onMouseDownResize = (e: React.MouseEvent, colKey: string) => {
+    resizingCol.current = colKey;
+    startX.current = e.clientX;
+    startWidth.current = colWidths[colKey] || 120;
+    document.addEventListener('mousemove', onMouseMoveResize);
+    document.addEventListener('mouseup', onMouseUpResize, { once: true });
+    e.preventDefault();
+  };
 
   // Modal Handlers
   const handleOpenAddModal = () => {
@@ -216,62 +214,48 @@ export default function RemindersPage() {
 
     try {
       if (editingId) {
-        const res = await fetch(`${getApiBase()}/reminders/${editingId}`, {
+        await apiFetch(`/reminders/${encodeURIComponent(editingId)}`, {
           method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
+          token,
           body: JSON.stringify(payload),
         });
-        if (!res.ok) throw new Error('更新规则失败');
       } else {
-        const res = await fetch(`${getApiBase()}/reminders`, {
+        await apiFetch('/reminders', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
+          token,
           body: JSON.stringify(payload),
         });
-        if (!res.ok) throw new Error('创建规则失败');
       }
 
       setShowModal(false);
       fetchRules();
-    } catch (err: any) {
-      alert(err.message || '操作失败');
+    } catch (err) {
+      alert(err instanceof Error ? err.message : '操作失败');
     }
   };
 
   const handleToggleEnabled = async (id: string) => {
     try {
-      const res = await fetch(`${getApiBase()}/reminders/${id}/toggle`, {
+      await apiFetch(`/reminders/${encodeURIComponent(id)}/toggle`, {
         method: 'PATCH',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        token,
       });
-      if (!res.ok) throw new Error('切换状态失败');
       fetchRules();
-    } catch (err: any) {
-      alert(err.message || '操作失败');
+    } catch (err) {
+      alert(err instanceof Error ? err.message : '操作失败');
     }
   };
 
   const handleDeleteRule = async (id: string) => {
     if (!confirm('确定要删除这条提醒规则吗？')) return;
     try {
-      const res = await fetch(`${getApiBase()}/reminders/${id}`, {
+      await apiFetch(`/reminders/${encodeURIComponent(id)}`, {
         method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        token,
       });
-      if (!res.ok) throw new Error('删除规则失败');
       fetchRules();
-    } catch (err: any) {
-      alert(err.message || '删除失败');
+    } catch (err) {
+      alert(err instanceof Error ? err.message : '删除失败');
     }
   };
 
@@ -372,12 +356,7 @@ export default function RemindersPage() {
               活动提醒与倒计时规则
             </h1>
           </div>
-          <p className="text-zinc-400 text-xs mt-1">
-            配置循环活动与常规定时，支持自定义模板（占位符{' '}
-            <code className="text-orange-400 font-mono">&#123;name&#125;</code>、
-            <code className="text-orange-400 font-mono">&#123;days&#125;</code>
-            ），为每日提醒接口提供精准聚合数据。
-          </p>
+
         </div>
 
         {isAdmin ? (
@@ -601,27 +580,9 @@ export default function RemindersPage() {
 
                       {/* Days Remaining / Status Badge */}
                       <td className="px-3.5 py-2.5 whitespace-nowrap">
-                        {statusResult.isRedeemDay ? (
-                          <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold bg-purple-500/15 text-purple-300 border border-purple-500/30">
-                            🎁 今日兑换日
-                          </span>
-                        ) : statusResult.status === 'ROUTINE_TRIGGER' ? (
-                          <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-                            ✅ 今日打卡
-                          </span>
-                        ) : statusResult.daysRemaining === 1 ? (
-                          <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold bg-rose-500/15 text-rose-400 border border-rose-500/30">
-                            🔥 剩 1 天
-                          </span>
-                        ) : statusResult.daysRemaining <= 3 ? (
-                          <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30">
-                            ⚡ 剩 {statusResult.daysRemaining} 天
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-zinc-800/80 text-zinc-300 border border-zinc-700/50">
-                            ⏳ 剩 {statusResult.daysRemaining} 天
-                          </span>
-                        )}
+                        <span className="font-mono text-sm tabular-nums">
+                          {statusResult.daysRemaining}
+                        </span>
                       </td>
 
                       {/* Digest Note */}

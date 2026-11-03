@@ -1,0 +1,1116 @@
+{
+  "sourceUrl": "https://sio-tools.exp0.dev/gems",
+  "capturedAt": "2026-11-02",
+  "entries": [
+    {
+      "referenceKey": "5ab95351a879cbd6",
+      "referenceName": "Relic Core",
+      "eventName": null,
+      "group": "Core Equivalents",
+      "referenceValue": 15100.0,
+      "originalPrice": "15100",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/equip_ssstone.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/equip_ssstone.webp"
+    },
+    {
+      "referenceKey": "aa11950eacaacbee",
+      "referenceName": "Awakening Core",
+      "eventName": null,
+      "group": "Core Equivalents",
+      "referenceValue": 15200.0,
+      "originalPrice": "15200",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/player_icon_ui/wake_core.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/player_icon_ui/wake_core.webp"
+    },
+    {
+      "referenceKey": "2bd204b849483876",
+      "referenceName": "Resonance Chip",
+      "eventName": null,
+      "group": "Core Equivalents",
+      "referenceValue": 16300.0,
+      "originalPrice": "16300",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/harmony_chip.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/harmony_chip.webp"
+    },
+    {
+      "referenceKey": "f46fbcdc6962eaea",
+      "referenceName": "Legendary Collectible Selector",
+      "eventName": null,
+      "group": "Core Equivalents",
+      "referenceValue": 17000.0,
+      "originalPrice": "17000",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_collection/collection_choose_11.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_collection/collection_choose_11.webp"
+    },
+    {
+      "referenceKey": "5478953f5477244e",
+      "referenceName": "Xeno Pet Core",
+      "eventName": null,
+      "group": "Core Equivalents",
+      "referenceValue": 17200.0,
+      "originalPrice": "17200",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/spet_core.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/spet_core.webp"
+    },
+    {
+      "referenceKey": "95ba747698093cba",
+      "referenceName": "Core Chest",
+      "eventName": null,
+      "group": "Core Equivalents",
+      "referenceValue": 17200.0,
+      "originalPrice": "17200",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/seniorselect_box1.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/seniorselect_box1.webp"
+    },
+    {
+      "referenceKey": "e780b7f795dc903f",
+      "referenceName": "Core Chest Essence",
+      "eventName": null,
+      "group": "Core Equivalents",
+      "referenceValue": 1720.0,
+      "originalPrice": "1720",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/seniorselect_box1_shard.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/seniorselect_box1_shard.webp"
+    },
+    {
+      "referenceKey": "e78a40db6d4d82ed",
+      "referenceName": "Xeno Transmute Core",
+      "eventName": null,
+      "group": "Core Equivalents",
+      "referenceValue": 21200.0,
+      "originalPrice": "21200",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/equip_refinement/surpass_core.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/equip_refinement/surpass_core.webp"
+    },
+    {
+      "referenceKey": "397582b76858fe4e",
+      "referenceName": "S Choice",
+      "eventName": null,
+      "group": "S Gear",
+      "referenceValue": 2000.0,
+      "originalPrice": "2000",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_choose_s_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_choose_s_4.webp"
+    },
+    {
+      "referenceKey": "1d8bbd6fae9e9da2",
+      "referenceName": "Eternal Selector",
+      "eventName": null,
+      "group": "S Gear",
+      "referenceValue": 1700.0,
+      "originalPrice": "1700",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_choose_s1_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_choose_s1_4.webp"
+    },
+    {
+      "referenceKey": "9237b863e615a0d2",
+      "referenceName": "Void Selector",
+      "eventName": null,
+      "group": "S Gear",
+      "referenceValue": 1700.0,
+      "originalPrice": "1700",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_choose_s2_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_choose_s2_4.webp"
+    },
+    {
+      "referenceKey": "c35de20a041464c8",
+      "referenceName": "Chaos Selector",
+      "eventName": null,
+      "group": "S Gear",
+      "referenceValue": 1900.0,
+      "originalPrice": "1900",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_choose_s3_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_choose_s3_4.webp"
+    },
+    {
+      "referenceKey": "6b78d03938cbdb32",
+      "referenceName": "Random S",
+      "eventName": null,
+      "group": "S Gear",
+      "referenceValue": 1600.0,
+      "originalPrice": "1600",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_drop_s.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_equip_box/equip_drop_s.webp"
+    },
+    {
+      "referenceKey": "aad5615bc0ad5116",
+      "referenceName": "Eternal Core",
+      "eventName": null,
+      "group": "S Gear",
+      "referenceValue": 170.0,
+      "originalPrice": "170",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/equip_remould_eternity_stone.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/equip_remould_eternity_stone.webp"
+    },
+    {
+      "referenceKey": "414f508c887ee529",
+      "referenceName": "Void Core",
+      "eventName": null,
+      "group": "S Gear",
+      "referenceValue": 170.0,
+      "originalPrice": "170",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/equip_remould_destory_stone.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/equip_remould_destory_stone.webp"
+    },
+    {
+      "referenceKey": "0200871af5927781",
+      "referenceName": "Chaos Core",
+      "eventName": null,
+      "group": "S Gear",
+      "referenceValue": 180.0,
+      "originalPrice": "180",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/equip_remould_chaosl_stone.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/equip_remould_chaosl_stone.webp"
+    },
+    {
+      "referenceKey": "61f36263b1c1f9cb",
+      "referenceName": "Red Resonance Core Choice",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 17000.0,
+      "originalPrice": "17000",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/select_box1_resonance_accessory.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/select_box1_resonance_accessory.webp"
+    },
+    {
+      "referenceKey": "b582430c25639664",
+      "referenceName": "Resonance Chip Choice",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 16300.0,
+      "originalPrice": "16300",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/select_box_resonance_accessory.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/select_box_resonance_accessory.webp"
+    },
+    {
+      "referenceKey": "7e92600e08f3a615",
+      "referenceName": "Epic Choice",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 2500.0,
+      "originalPrice": "2500",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_choose_7.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_choose_7.webp"
+    },
+    {
+      "referenceKey": "f70df8db010de907",
+      "referenceName": "Random Epic Part",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 2000.0,
+      "originalPrice": "2000",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop.webp"
+    },
+    {
+      "referenceKey": "d0a5821f72f386cd",
+      "referenceName": "Excellent Tech Selector",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 500.0,
+      "originalPrice": "500",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_choose_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_choose_4.webp"
+    },
+    {
+      "referenceKey": "a8b6b6393fdda76d",
+      "referenceName": "Random Excellent Tech",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 420.0,
+      "originalPrice": "420",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop.webp"
+    },
+    {
+      "referenceKey": "8de54c432c3f0889",
+      "referenceName": "Random Blue Tech",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 140.0,
+      "originalPrice": "140",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop.webp"
+    },
+    {
+      "referenceKey": "a93a4f485f310f93",
+      "referenceName": "Random Green Tech",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 46.0,
+      "originalPrice": "46",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop.webp"
+    },
+    {
+      "referenceKey": "a2efc011fc1371c8",
+      "referenceName": "Random Parts Crate (Master)",
+      "eventName": null,
+      "group": "Tech",
+      "referenceValue": 230.0,
+      "originalPrice": "230",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop3.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_accessory/accessory_drop3.webp"
+    },
+    {
+      "referenceKey": "bca63a9bca8a0971",
+      "referenceName": "Advanced Collectors Heart",
+      "eventName": null,
+      "group": "Collectibles",
+      "referenceValue": 500.0,
+      "originalPrice": "500",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/collection_piece/shoucangpinhuangxin.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/collection_piece/shoucangpinhuangxin.webp"
+    },
+    {
+      "referenceKey": "86cb5254fef755bb",
+      "referenceName": "Specific Legendary Collectible",
+      "eventName": null,
+      "group": "Collectibles",
+      "referenceValue": 15100.0,
+      "originalPrice": "15100",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_collection/collection_drop_11.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_collection/collection_drop_11.webp"
+    },
+    {
+      "referenceKey": "39aca68d60ec55d7",
+      "referenceName": "Epic Collectible Selector",
+      "eventName": null,
+      "group": "Collectibles",
+      "referenceValue": 2000.0,
+      "originalPrice": "2000",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_collection/collection_choose_7.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_collection/collection_choose_7.webp"
+    },
+    {
+      "referenceKey": "90fccbc3be31482c",
+      "referenceName": "Random Epic Collectible",
+      "eventName": null,
+      "group": "Collectibles",
+      "referenceValue": 1750.0,
+      "originalPrice": "1750",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_collection/collection_drop_7.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_collection/collection_drop_7.webp"
+    },
+    {
+      "referenceKey": "7496305b4ac4e227",
+      "referenceName": "Event Collectible",
+      "eventName": null,
+      "group": "Collectibles",
+      "referenceValue": 630.0,
+      "originalPrice": "630",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/collection_icon/34_shenmixing.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/collection_icon/34_shenmixing.webp"
+    },
+    {
+      "referenceKey": "b84948f5fff459af",
+      "referenceName": "Excellent Collectible Selector",
+      "eventName": null,
+      "group": "Collectibles",
+      "referenceValue": 330.0,
+      "originalPrice": "330",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_collection/collection_choose_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_collection/collection_choose_4.webp"
+    },
+    {
+      "referenceKey": "2103494dd92e998e",
+      "referenceName": "Random Excellent Collectible",
+      "eventName": null,
+      "group": "Collectibles",
+      "referenceValue": 330.0,
+      "originalPrice": "330",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_collection/collection_drop_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_collection/collection_drop_4.webp"
+    },
+    {
+      "referenceKey": "bc7123985e0e6c4f",
+      "referenceName": "Legend Collectible Deconstructor",
+      "eventName": null,
+      "group": "Collectibles",
+      "referenceValue": 10000.0,
+      "originalPrice": "10000",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/collection_piece/collection_red_reset.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/collection_piece/collection_red_reset.webp"
+    },
+    {
+      "referenceKey": "3c6f01091387d1a3",
+      "referenceName": "Awakening Core Chest",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 15200.0,
+      "originalPrice": "15200",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/select_box_agent_awaken.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/select_box_agent_awaken.webp"
+    },
+    {
+      "referenceKey": "98aaf5038e643971",
+      "referenceName": "S Shard",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 100.0,
+      "originalPrice": "100",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/player_icon_ui/frag_9.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/player_icon_ui/frag_9.webp"
+    },
+    {
+      "referenceKey": "6250b93751693eb6",
+      "referenceName": "SP Survivor Omnishard",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 260.0,
+      "originalPrice": "260",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/player_icon_ui/frag_21.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/player_icon_ui/frag_21.webp"
+    },
+    {
+      "referenceKey": "f2d5b60bafb37ad2",
+      "referenceName": "Reset Vial",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 1800.0,
+      "originalPrice": "1800",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/hero_reset.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/hero_reset.webp"
+    },
+    {
+      "referenceKey": "a3fab19dee75aba4",
+      "referenceName": "Survivor Shard Selector",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 40.0,
+      "originalPrice": "40",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/player_icon_ui/frag_s.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/player_icon_ui/frag_s.webp"
+    },
+    {
+      "referenceKey": "4b7bd7c22c655434",
+      "referenceName": "Random Survivor Shard",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 20.0,
+      "originalPrice": "20",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/player_icon_ui/frag_r.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/player_icon_ui/frag_r.webp"
+    },
+    {
+      "referenceKey": "4437b601584a802d",
+      "referenceName": "Oil (Pre-Synergy)",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 0.12,
+      "originalPrice": "0.12",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/hero_exp.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/hero_exp.webp"
+    },
+    {
+      "referenceKey": "89a6cc1b3cf5d303",
+      "referenceName": "Oil (Post-Synergy)",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 0.02,
+      "originalPrice": "0.02",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/hero_exp.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/hero_exp.webp"
+    },
+    {
+      "referenceKey": "de1d571450a0028c",
+      "referenceName": "Survivor Outfit (Full Set)",
+      "eventName": null,
+      "group": "Survivor",
+      "referenceValue": 1300.0,
+      "originalPrice": "1300",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/attachment_ui/head_5091.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/attachment_ui/head_5091.webp"
+    },
+    {
+      "referenceKey": "1162174aa135a418",
+      "referenceName": "Army Crate Key",
+      "eventName": null,
+      "group": "Keys",
+      "referenceValue": 35.0,
+      "originalPrice": "35",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_common/currency_diamond_box_small.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_common/currency_diamond_box_small.webp"
+    },
+    {
+      "referenceKey": "90e046a8c644c62f",
+      "referenceName": "S Key",
+      "eventName": null,
+      "group": "Keys",
+      "referenceValue": 68.0,
+      "originalPrice": "68",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_common/currency_diamond_box_special.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_common/currency_diamond_box_special.webp"
+    },
+    {
+      "referenceKey": "74dde80f5cd09b79",
+      "referenceName": "Collectible Key",
+      "eventName": null,
+      "group": "Keys",
+      "referenceValue": 170.0,
+      "originalPrice": "170",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_common/collection_key.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_common/collection_key.webp"
+    },
+    {
+      "referenceKey": "e92c4125bc9d369f",
+      "referenceName": "Tech Part Key",
+      "eventName": null,
+      "group": "Keys",
+      "referenceValue": 190.0,
+      "originalPrice": "190",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_common/accessory_key.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_common/accessory_key.webp"
+    },
+    {
+      "referenceKey": "36408d2cb66d1460",
+      "referenceName": "EDF Key",
+      "eventName": null,
+      "group": "Keys",
+      "referenceValue": 40.0,
+      "originalPrice": "40",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_common/currency_diamond_box_large.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_common/currency_diamond_box_large.webp"
+    },
+    {
+      "referenceKey": "4d13325213a918fe",
+      "referenceName": "Pet Key",
+      "eventName": null,
+      "group": "Keys",
+      "referenceValue": 65.0,
+      "originalPrice": "65",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_common/pet_key_small.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_common/pet_key_small.webp"
+    },
+    {
+      "referenceKey": "5befcadd5dcb1a9e",
+      "referenceName": "Pawerful Pet Key",
+      "eventName": null,
+      "group": "Keys",
+      "referenceValue": 140.0,
+      "originalPrice": "140",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_common/pet_key_large.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_common/pet_key_large.webp"
+    },
+    {
+      "referenceKey": "2d8760b6a193f7d4",
+      "referenceName": "Xeno Pet Elixir",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 10000.0,
+      "originalPrice": "10000",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/spet_assist_reset.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/spet_assist_reset.webp"
+    },
+    {
+      "referenceKey": "a53fa42af28dad49",
+      "referenceName": "Xeno Core Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 17200.0,
+      "originalPrice": "17200",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/hero_petselect_box.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/hero_petselect_box.webp"
+    },
+    {
+      "referenceKey": "9af9318f8ebae5ed",
+      "referenceName": "Awakening Crystal Choice Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 4400.0,
+      "originalPrice": "4400",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/select_box_pet_awaken.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/select_box_pet_awaken.webp"
+    },
+    {
+      "referenceKey": "8fa02ffb4448eafd",
+      "referenceName": "Xeno Pet Crystal",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 1.7,
+      "originalPrice": "1.7",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/spet_gem.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/spet_gem.webp"
+    },
+    {
+      "referenceKey": "c4a7d23f0c76bb2a",
+      "referenceName": "Awakening Crystal",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 400.0,
+      "originalPrice": "400",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/pet_icon/pet_stone.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/pet_icon/pet_stone.webp"
+    },
+    {
+      "referenceKey": "601095d04da3dc5a",
+      "referenceName": "Xeno Pet Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 1400.0,
+      "originalPrice": "1400",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_choose_16.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_choose_16.webp"
+    },
+    {
+      "referenceKey": "8fdea2348953a528",
+      "referenceName": "Epic Pet Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 1500.0,
+      "originalPrice": "1500",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_choose_7.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_choose_7.webp"
+    },
+    {
+      "referenceKey": "ec6d38c4d78c8ea7",
+      "referenceName": "Random Epic Pet",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 1500.0,
+      "originalPrice": "1500",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_drop_0.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_drop_0.webp"
+    },
+    {
+      "referenceKey": "5a2d65ac37477c0c",
+      "referenceName": "Excellent Pet Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 275.0,
+      "originalPrice": "275",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_choose_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_choose_4.webp"
+    },
+    {
+      "referenceKey": "d0791b80d7fe158e",
+      "referenceName": "Random Better Pet",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 87.0,
+      "originalPrice": "87",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_drop_0.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_drop_0.webp"
+    },
+    {
+      "referenceKey": "97bd3252f6f39abc",
+      "referenceName": "Random Good Pet",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 29.0,
+      "originalPrice": "29",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_drop_0.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_drop_0.webp"
+    },
+    {
+      "referenceKey": "59c4190e9a08ea60",
+      "referenceName": "Better Pet Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 92.0,
+      "originalPrice": "92",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_choose_3.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_choose_3.webp"
+    },
+    {
+      "referenceKey": "c5baeed71ada9ef2",
+      "referenceName": "Random Excellent Pet",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 275.0,
+      "originalPrice": "275",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_drop_0.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_drop_0.webp"
+    },
+    {
+      "referenceKey": "9c04396fe6d1b06b",
+      "referenceName": "Pet Cookie",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 0.06,
+      "originalPrice": "0.06",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/peti_ui_merchant_pet_exp_item1.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/main_uitop_currency/peti_ui_merchant_pet_exp_item1.webp"
+    },
+    {
+      "referenceKey": "27f4437518b5ec89",
+      "referenceName": "Epic Pet Toy Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 30.0,
+      "originalPrice": "30",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_choose_7.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_choose_7.webp"
+    },
+    {
+      "referenceKey": "ca5b0f8741a12edc",
+      "referenceName": "Random Epic Pet Toy",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 30.0,
+      "originalPrice": "30",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_drop_7.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_drop_7.webp"
+    },
+    {
+      "referenceKey": "8d1f6975ecf5f5d4",
+      "referenceName": "Random Pet Toy (Master)",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 6.3,
+      "originalPrice": "6.3",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_drop.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_drop.webp"
+    },
+    {
+      "referenceKey": "49e3313290eb6d3f",
+      "referenceName": "Excellent Pet Toy Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 10.0,
+      "originalPrice": "10",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_choose_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_choose_4.webp"
+    },
+    {
+      "referenceKey": "6cbfc667f554af5f",
+      "referenceName": "Random Excellent Pet Toy",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 10.0,
+      "originalPrice": "10",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_drop_4.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_drop_4.webp"
+    },
+    {
+      "referenceKey": "c5499c3b658a0f32",
+      "referenceName": "Blue Pet Toy Chest",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 2.0,
+      "originalPrice": "2",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_choose_3.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_choose_3.webp"
+    },
+    {
+      "referenceKey": "5a34f04d4ee7b526",
+      "referenceName": "Random Blue Pet Toy",
+      "eventName": null,
+      "group": "Pets",
+      "referenceValue": 2.0,
+      "originalPrice": "2",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_drop_3.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_pet/pet_toy_drop_3.webp"
+    },
+    {
+      "referenceKey": "ca334ea0051e06cc",
+      "referenceName": "Doomsteed Shard",
+      "eventName": null,
+      "group": "Mounts",
+      "referenceValue": 1000.0,
+      "originalPrice": "1000",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/vehicle/jiangshima.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/vehicle/jiangshima.webp"
+    },
+    {
+      "referenceKey": "2b77eaa32774a84d",
+      "referenceName": "Tech Hoverboard Shard",
+      "eventName": null,
+      "group": "Mounts",
+      "referenceValue": 300.0,
+      "originalPrice": "300",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/vehicle/penqihuaban.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/vehicle/penqihuaban.webp"
+    },
+    {
+      "referenceKey": "292fa3e8bf05e1f0",
+      "referenceName": "Electric Scooter Shard",
+      "eventName": null,
+      "group": "Mounts",
+      "referenceValue": 200.0,
+      "originalPrice": "200",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/vehicle/pinghengche.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/vehicle/pinghengche.webp"
+    },
+    {
+      "referenceKey": "839d06de116ebe51",
+      "referenceName": "Component Crate Key",
+      "eventName": null,
+      "group": "Mounts",
+      "referenceValue": 350.0,
+      "originalPrice": "350",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_common/currency_vehicle_box.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_common/currency_vehicle_box.webp"
+    },
+    {
+      "referenceKey": "3dbd3c67b29668a0",
+      "referenceName": "Refine Essence",
+      "eventName": null,
+      "group": "Mounts",
+      "referenceValue": 0.5,
+      "originalPrice": "0.5",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/vehicle/xilianshi.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/vehicle/xilianshi.webp"
+    },
+    {
+      "referenceKey": "9c7d93f778528af5",
+      "referenceName": "Legend Mount Shard Choice",
+      "eventName": null,
+      "group": "Mounts",
+      "referenceValue": 1500.0,
+      "originalPrice": "1500",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_equip_box/vehicle_choose_8.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_equip_box/vehicle_choose_8.webp"
+    },
+    {
+      "referenceKey": "fa2aeb51b0ea7dd2",
+      "referenceName": "Excellent Component Choice",
+      "eventName": null,
+      "group": "Mounts",
+      "referenceValue": 680.0,
+      "originalPrice": "680",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/item_equip_box/vehicle_choose_3.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/item_equip_box/vehicle_choose_3.webp"
+    },
+    {
+      "referenceKey": "1b943977ecea6eae",
+      "referenceName": "Mine Challenge Ticket",
+      "eventName": null,
+      "group": "Tickets",
+      "referenceValue": 10.0,
+      "originalPrice": "10",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/uicommon/daily_ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/uicommon/daily_ticket.webp"
+    },
+    {
+      "referenceKey": "810589cf45b99404",
+      "referenceName": "Magic Coin",
+      "eventName": "Magic Ladder",
+      "group": "Event Currencies",
+      "referenceValue": 0.82,
+      "originalPrice": "0.82",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/grid_based/point_icon.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/grid_based/point_icon.webp"
+    },
+    {
+      "referenceKey": "5a1dc24fbf0b2fea",
+      "referenceName": "Dice",
+      "eventName": "Magic Ladder",
+      "group": "Event Currencies",
+      "referenceValue": 300.0,
+      "originalPrice": "300",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/grid_based/newticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/grid_based/newticket.webp"
+    },
+    {
+      "referenceKey": "9c6ce5feb670e7ee",
+      "referenceName": "Party Goodwill",
+      "eventName": "Floral Workshop",
+      "group": "Event Currencies",
+      "referenceValue": 0.08,
+      "originalPrice": "0.08",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/gourmet/icon_token.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/gourmet/icon_token.webp"
+    },
+    {
+      "referenceKey": "c2ea2c8ac203056f",
+      "referenceName": "Flower Coupon",
+      "eventName": "Floral Workshop",
+      "group": "Event Currencies",
+      "referenceValue": 40.0,
+      "originalPrice": "40",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/gourmet/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/gourmet/ticket.webp"
+    },
+    {
+      "referenceKey": "22fde0ce954d13b2",
+      "referenceName": "Snack Giftbox",
+      "eventName": "Snack Pinball Treasure",
+      "group": "Event Currencies",
+      "referenceValue": 0.4,
+      "originalPrice": "0.4",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/plinko/token.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/plinko/token.webp"
+    },
+    {
+      "referenceKey": "af22a8b8422988fb",
+      "referenceName": "Snack Ticket",
+      "eventName": "Snack Pinball Treasure",
+      "group": "Event Currencies",
+      "referenceValue": 40.0,
+      "originalPrice": "40",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/plinko/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/plinko/ticket.webp"
+    },
+    {
+      "referenceKey": "e70ab7c8cb198533",
+      "referenceName": "Candy",
+      "eventName": "Castle Cards",
+      "group": "Event Currencies",
+      "referenceValue": 0.55,
+      "originalPrice": "0.55",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/pokerv1/token.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/pokerv1/token.webp"
+    },
+    {
+      "referenceKey": "9c85d1d734341b03",
+      "referenceName": "Pumpkin",
+      "eventName": "Castle Cards",
+      "group": "Event Currencies",
+      "referenceValue": 80.0,
+      "originalPrice": "80",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/pokerv1/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/pokerv1/ticket.webp"
+    },
+    {
+      "referenceKey": "225ccc40e9cd0730",
+      "referenceName": "Drifting Bottle",
+      "eventName": "Beach Treasure Hunt",
+      "group": "Event Currencies",
+      "referenceValue": 1.39,
+      "originalPrice": "1.39",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/roll_grid/token.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/roll_grid/token.webp"
+    },
+    {
+      "referenceKey": "aa9597fe7882daa5",
+      "referenceName": "Toy Spade",
+      "eventName": "Beach Treasure Hunt",
+      "group": "Event Currencies",
+      "referenceValue": 120.0,
+      "originalPrice": "120",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/roll_grid/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/roll_grid/ticket.webp"
+    },
+    {
+      "referenceKey": "3a61a014eb7ded63",
+      "referenceName": "Normal Film",
+      "eventName": "Time Puzzle",
+      "group": "Event Currencies",
+      "referenceValue": 1.33,
+      "originalPrice": "1.33",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/puzzle/token.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/puzzle/token.webp"
+    },
+    {
+      "referenceKey": "7baaeea218b15250",
+      "referenceName": "Photo Album",
+      "eventName": "Time Puzzle",
+      "group": "Event Currencies",
+      "referenceValue": 100.0,
+      "originalPrice": "100",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/puzzle/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/puzzle/ticket.webp"
+    },
+    {
+      "referenceKey": "901b045bf3c18684",
+      "referenceName": "Blue Shell",
+      "eventName": "Autumn Seabed Exploration",
+      "group": "Event Currencies",
+      "referenceValue": 2.05,
+      "originalPrice": "2.05",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/diving/tu_biao_bei_ke_lan.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/diving/tu_biao_bei_ke_lan.webp"
+    },
+    {
+      "referenceKey": "a4f999d3f4e466ce",
+      "referenceName": "Yellow Shell",
+      "eventName": "Autumn Seabed Exploration",
+      "group": "Event Currencies",
+      "referenceValue": 2.06,
+      "originalPrice": "2.06",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/diving/tu_biao_bei_ke_huang.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/diving/tu_biao_bei_ke_huang.webp"
+    },
+    {
+      "referenceKey": "3678b2d5b28e2478",
+      "referenceName": "Electro Jellyfish",
+      "eventName": "Autumn Seabed Exploration",
+      "group": "Event Currencies",
+      "referenceValue": 100.0,
+      "originalPrice": "100",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/diving/tubiao.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/diving/tubiao.webp"
+    },
+    {
+      "referenceKey": "f6a1101be17e6c35",
+      "referenceName": "Folding Fan",
+      "eventName": "Theater Gala",
+      "group": "Event Currencies",
+      "referenceValue": 3.68,
+      "originalPrice": "3.68",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/golden_autumn_party/icon_guanjunjiangpai.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/golden_autumn_party/icon_guanjunjiangpai.webp"
+    },
+    {
+      "referenceKey": "ed098b6155bb51aa",
+      "referenceName": "Normal Postcard",
+      "eventName": "Cloud Tower",
+      "group": "Event Currencies",
+      "referenceValue": 0.14,
+      "originalPrice": "0.14",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/tower_building/token.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/tower_building/token.webp"
+    },
+    {
+      "referenceKey": "a3c9074c05fae25d",
+      "referenceName": "Exquisite Postcard",
+      "eventName": "Cloud Tower",
+      "group": "Event Currencies",
+      "referenceValue": 134.0,
+      "originalPrice": "134",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/tower_building/token2.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/tower_building/token2.webp"
+    },
+    {
+      "referenceKey": "3dd0b9023a775543",
+      "referenceName": "Building Hook",
+      "eventName": "Cloud Tower",
+      "group": "Event Currencies",
+      "referenceValue": 200.0,
+      "originalPrice": "200",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/tower_building/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/tower_building/ticket.webp"
+    },
+    {
+      "referenceKey": "9f9ad497a7fea01b",
+      "referenceName": "Broken Fishing Line",
+      "eventName": "Goldfall Coast Carnival",
+      "group": "Event Currencies",
+      "referenceValue": 100.0,
+      "originalPrice": "100",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/fishing/fishing_main/icon_fishline.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/fishing/fishing_main/icon_fishline.webp"
+    },
+    {
+      "referenceKey": "71d25a3f5b1c8299",
+      "referenceName": "Fishing Points",
+      "eventName": "Goldfall Coast Carnival",
+      "group": "Event Currencies",
+      "referenceValue": 0.07,
+      "originalPrice": "0.07",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/fishing/fishing_main/icon_fishpoint.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/fishing/fishing_main/icon_fishpoint.webp"
+    },
+    {
+      "referenceKey": "0e0428ea88c9435f",
+      "referenceName": "Emperor Fish Proof",
+      "eventName": "Goldfall Coast Carnival",
+      "group": "Event Currencies",
+      "referenceValue": 814.0,
+      "originalPrice": "814",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/fishing/fishing_main/icon_fishking.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/fishing/fishing_main/icon_fishking.webp"
+    },
+    {
+      "referenceKey": "04e4b554b0671e69",
+      "referenceName": "Fishing Lure",
+      "eventName": "Goldfall Coast Carnival",
+      "group": "Event Currencies",
+      "referenceValue": 100.0,
+      "originalPrice": "100",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/fishing/fishing_main/icon_fishbait.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/fishing/fishing_main/icon_fishbait.webp"
+    },
+    {
+      "referenceKey": "bf1df5443b190c06",
+      "referenceName": "Goggles",
+      "eventName": "Water Park Rumble",
+      "group": "Event Currencies",
+      "referenceValue": 0.47,
+      "originalPrice": "0.47",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/random_defeat/token_1.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/random_defeat/token_1.webp"
+    },
+    {
+      "referenceKey": "e07646aff9fe559f",
+      "referenceName": "Water Gun",
+      "eventName": "Water Park Rumble",
+      "group": "Event Currencies",
+      "referenceValue": 300.0,
+      "originalPrice": "300",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/random_defeat/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/random_defeat/ticket.webp"
+    },
+    {
+      "referenceKey": "f8aefcf1e5de5746",
+      "referenceName": "Cooking Insights",
+      "eventName": "Soup Kitchen",
+      "group": "Event Currencies",
+      "referenceValue": 0.35,
+      "originalPrice": "0.35",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/kitchen/token.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/kitchen/token.webp"
+    },
+    {
+      "referenceKey": "c4ab5f44780c2d01",
+      "referenceName": "Soup Spoon",
+      "eventName": "Soup Kitchen",
+      "group": "Event Currencies",
+      "referenceValue": 300.0,
+      "originalPrice": "300",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/kitchen/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/kitchen/ticket.webp"
+    },
+    {
+      "referenceKey": "61c851f5d13ab3b3",
+      "referenceName": "Music Note",
+      "eventName": "Music Disc Clash",
+      "group": "Event Currencies",
+      "referenceValue": 0.37,
+      "originalPrice": "0.37",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/circular_disk/token.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/circular_disk/token.webp"
+    },
+    {
+      "referenceKey": "6af9cb0bbf81240a",
+      "referenceName": "Microphone",
+      "eventName": "Music Disc Clash",
+      "group": "Event Currencies",
+      "referenceValue": 100.0,
+      "originalPrice": "100",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/circular_disk/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/circular_disk/ticket.webp"
+    },
+    {
+      "referenceKey": "455afad5726927d9",
+      "referenceName": "Surprise Chain Coupon",
+      "eventName": null,
+      "group": "Event Currencies",
+      "referenceValue": 21.6,
+      "originalPrice": "21.6",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/start_end/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/start_end/ticket.webp"
+    },
+    {
+      "referenceKey": "d9fa37096fe8b21c",
+      "referenceName": "Coconut Ticket",
+      "eventName": null,
+      "group": "Event Currencies",
+      "referenceValue": 300.0,
+      "originalPrice": "300",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/golden_autumn_party/guanjunliquan.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/golden_autumn_party/guanjunliquan.webp"
+    },
+    {
+      "referenceKey": "ce338557d6490a6a",
+      "referenceName": "Time Hourglass",
+      "eventName": null,
+      "group": "Event Currencies",
+      "referenceValue": 80.0,
+      "originalPrice": "80",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/anniversary_order/ticket.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/anniversary_order/ticket.webp"
+    },
+    {
+      "referenceKey": "ace24a133d89eb06",
+      "referenceName": "Birthday Crown Tickets",
+      "eventName": null,
+      "group": "Event Currencies",
+      "referenceValue": 120.0,
+      "originalPrice": "120",
+      "iconSource": "https://sio-cdn.exp0.dev/icons/game/treasure_hunting/quan.webp",
+      "imageProxy": "https://wsrv.nl/?url=https://sio-cdn.exp0.dev/icons/game/treasure_hunting/quan.webp"
+    }
+  ]
+}

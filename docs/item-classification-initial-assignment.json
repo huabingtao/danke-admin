@@ -1,0 +1,670 @@
+[
+  {
+    "id": "79ae4563-6ae9-4faf-b29a-1ebcd348cbed",
+    "name": "零件宝箱钥匙",
+    "categoryIds": [
+      "vehicle"
+    ],
+    "resourceTypeId": "key",
+    "evidence": "载具零件箱钥匙与旧别名"
+  },
+  {
+    "id": "3ce14131-750c-484b-99c4-6f249f801a8d",
+    "name": "随机传奇收藏品宝箱",
+    "categoryIds": [
+      "collection"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "收藏品箱或已核实旧名称"
+  },
+  {
+    "id": "4b20edb4-8832-4f6c-ad29-4ab9d5ea5210",
+    "name": "钻石",
+    "categoryIds": [
+      "general"
+    ],
+    "resourceTypeId": "currency",
+    "evidence": "明确货币名称"
+  },
+  {
+    "id": "d41518ff-1753-4c14-a47c-4fad9fe56a76",
+    "name": "金币",
+    "categoryIds": [
+      "general"
+    ],
+    "resourceTypeId": "currency",
+    "evidence": "明确货币名称"
+  },
+  {
+    "id": "a2acc9d0-4edb-4f44-a567-a041135bd4ab",
+    "name": "谐振芯片自选宝箱",
+    "categoryIds": [
+      "tech"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "配件自选箱或已核实旧名称"
+  },
+  {
+    "id": "33c17721-424b-47fc-ab82-21f4baa7a3a1",
+    "name": "谐振芯片与传奇收藏品自选宝箱",
+    "categoryIds": [
+      "tech",
+      "collection"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "箱名明确包含配件与收藏品两种选择"
+  },
+  {
+    "id": "9fb820e5-01bc-486a-87a5-0fc133c2dfff",
+    "name": "觉醒水晶自选宝箱",
+    "categoryIds": [
+      "agent"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "特工觉醒资源箱"
+  },
+  {
+    "id": "af8c977c-e6da-427e-9e31-2b87573d9fb1",
+    "name": "自选特工碎片",
+    "categoryIds": [
+      "agent"
+    ],
+    "resourceTypeId": "fragment",
+    "evidence": "特工碎片"
+  },
+  {
+    "id": "7a833647-1846-455f-8ad4-80f36ecc180f",
+    "name": "科技滑板碎片",
+    "categoryIds": [
+      "vehicle"
+    ],
+    "resourceTypeId": "fragment",
+    "evidence": "载具碎片"
+  },
+  {
+    "id": "b1d604ae-5498-4596-862f-16c31fb5d29b",
+    "name": "科技核心自选宝箱",
+    "categoryIds": [
+      "tech"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "名称明确为科技配件核心箱"
+  },
+  {
+    "id": "403b9b55-5450-455c-89dc-d40cd43ae910",
+    "name": "神炼核心",
+    "categoryIds": [
+      "equipment"
+    ],
+    "resourceTypeId": "core",
+    "evidence": "装备神铸/神炼核心"
+  },
+  {
+    "id": "aaafc1f2-6b57-473c-b400-0e1f804b67dd",
+    "name": "神器核心自选宝箱",
+    "categoryIds": [
+      "equipment"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "装备或装备核心宝箱"
+  },
+  {
+    "id": "8349ba3f-82e3-41e3-8f1c-4eb33a8f5480",
+    "name": "破坏之石",
+    "categoryIds": [
+      "equipment"
+    ],
+    "resourceTypeId": "material",
+    "evidence": "装备养成材料；大表默认仍隐藏"
+  },
+  {
+    "id": "6a680bde-ce38-44c5-a135-1530b9171881",
+    "name": "矿洞挑战券",
+    "categoryIds": [
+      "event"
+    ],
+    "resourceTypeId": "consumable",
+    "evidence": "玩法挑战券"
+  },
+  {
+    "id": "d50887ad-5085-4bad-af27-2036168a919f",
+    "name": "电动平衡车碎片",
+    "categoryIds": [
+      "vehicle"
+    ],
+    "resourceTypeId": "fragment",
+    "evidence": "载具碎片"
+  },
+  {
+    "id": "6fb6ec1c-9727-4e17-b5d6-4b845dca107c",
+    "name": "狼碎片",
+    "categoryIds": [
+      "pet"
+    ],
+    "resourceTypeId": "fragment",
+    "evidence": "宠物碎片"
+  },
+  {
+    "id": "cb6c286b-32e2-4770-a32c-a3a037828c28",
+    "name": "特工觉醒核心",
+    "categoryIds": [
+      "agent"
+    ],
+    "resourceTypeId": "core",
+    "evidence": "特工觉醒核心及已核实旧别名"
+  },
+  {
+    "id": "935c6c85-9cd9-4205-95a7-4408a6ed7ab0",
+    "name": "特工升级精油_经验",
+    "categoryIds": [
+      "agent"
+    ],
+    "resourceTypeId": "material",
+    "evidence": "特工养成材料"
+  },
+  {
+    "id": "e67ee95f-2e81-49bb-80e8-24883585783c",
+    "name": "特别行动券",
+    "categoryIds": [
+      "event"
+    ],
+    "resourceTypeId": "consumable",
+    "evidence": "玩法挑战券"
+  },
+  {
+    "id": "5b1b7e55-4ffd-48cf-ae97-98e04926b738",
+    "name": "混沌之石",
+    "categoryIds": [
+      "equipment"
+    ],
+    "resourceTypeId": "material",
+    "evidence": "装备养成材料；大表默认仍隐藏"
+  },
+  {
+    "id": "f6646b43-3582-43ea-bc23-4cfa2a7d2def",
+    "name": "洗炼精华",
+    "categoryIds": [],
+    "resourceTypeId": "material",
+    "evidence": "仅明确为洗炼材料，适用体系暂未确认"
+  },
+  {
+    "id": "059e2379-700d-416e-9fd8-1f3f446c66db",
+    "name": "永恒之石",
+    "categoryIds": [
+      "equipment"
+    ],
+    "resourceTypeId": "material",
+    "evidence": "装备养成材料；大表默认仍隐藏"
+  },
+  {
+    "id": "d51f171c-6544-48a7-90a1-b2a73dcd6276",
+    "name": "核心自选宝箱精华",
+    "categoryIds": [],
+    "resourceTypeId": "material",
+    "evidence": "仅明确为精华材料，适用体系暂未确认"
+  },
+  {
+    "id": "d001906f-e94b-4e84-9a42-378df58a79ee",
+    "name": "核心自选宝箱",
+    "categoryIds": [],
+    "resourceTypeId": "chest",
+    "evidence": "通用核心自选箱，具体适用体系待核对，不自动猜测"
+  },
+  {
+    "id": "68ea270d-85d4-4c2f-8d71-331234d8d114",
+    "name": "杰出配件自选宝箱",
+    "categoryIds": [
+      "tech"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "配件自选箱或已核实旧名称"
+  },
+  {
+    "id": "5586bccc-269e-4cd3-97d3-90975824ac9d",
+    "name": "杰出装备自选宝箱",
+    "categoryIds": [
+      "equipment"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "装备或装备核心宝箱"
+  },
+  {
+    "id": "8a6ea1fc-1b4d-45b8-8859-91cafcf27598",
+    "name": "杰出收藏品自选宝箱",
+    "categoryIds": [
+      "collection"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "收藏品箱或已核实旧名称"
+  },
+  {
+    "id": "9dee770a-f5df-43c6-a246-23e881a1315b",
+    "name": "杰出收藏品宝箱",
+    "categoryIds": [
+      "collection"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "收藏品箱或已核实旧名称"
+  },
+  {
+    "id": "d12a351e-a28d-46d1-b596-6a618d55117c",
+    "name": "末世战马碎片",
+    "categoryIds": [
+      "pet"
+    ],
+    "resourceTypeId": "fragment",
+    "evidence": "宠物碎片"
+  },
+  {
+    "id": "810ebfcf-3b51-475f-8505-65279a0cfc2a",
+    "name": "普通宠物钥匙",
+    "categoryIds": [
+      "pet"
+    ],
+    "resourceTypeId": "key",
+    "evidence": "宠物箱钥匙"
+  },
+  {
+    "id": "f4140866-95fc-4734-934d-5da593d2c20d",
+    "name": "异宠灵药",
+    "categoryIds": [
+      "pet"
+    ],
+    "resourceTypeId": "material",
+    "evidence": "宠物养成材料"
+  },
+  {
+    "id": "c8470f26-d18e-4037-bb9e-2e05353166b6",
+    "name": "异宠核心自选宝箱",
+    "categoryIds": [
+      "pet"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "宠物/宠物核心宝箱，既有旧名称保留"
+  },
+  {
+    "id": "a2035351-a0d1-4dd9-bbca-2810a301f5ed",
+    "name": "异宠晶石",
+    "categoryIds": [
+      "pet"
+    ],
+    "resourceTypeId": "material",
+    "evidence": "宠物养成材料"
+  },
+  {
+    "id": "aa671460-ba10-4bea-bc48-7f2351661e02",
+    "name": "异世宠物自选宝箱",
+    "categoryIds": [
+      "pet"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "宠物/宠物核心宝箱，既有旧名称保留"
+  },
+  {
+    "id": "84d889b2-6e20-45fd-9267-525ae3fe7deb",
+    "name": "幽焰逐影碎片",
+    "categoryIds": [
+      "vehicle"
+    ],
+    "resourceTypeId": "fragment",
+    "evidence": "载具碎片"
+  },
+  {
+    "id": "1214a30c-2f38-4e66-bb10-d9defcb097e4",
+    "name": "宠物饼干",
+    "categoryIds": [
+      "pet"
+    ],
+    "resourceTypeId": "material",
+    "evidence": "宠物养成材料"
+  },
+  {
+    "id": "68c271c6-262a-488e-972b-fd0aaa6dcb31",
+    "name": "复活币",
+    "categoryIds": [
+      "general"
+    ],
+    "resourceTypeId": "consumable",
+    "evidence": "通用消耗资源"
+  },
+  {
+    "id": "54cf9f77-304a-467e-aa21-06050c973ac3",
+    "name": "基因改造DNA精华",
+    "categoryIds": [
+      "agent"
+    ],
+    "resourceTypeId": "material",
+    "evidence": "特工养成材料"
+  },
+  {
+    "id": "574cb3db-6c45-428a-b11f-937d00dbef8e",
+    "name": "史诗配件自选宝箱",
+    "categoryIds": [
+      "tech"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "配件自选箱或已核实旧名称"
+  },
+  {
+    "id": "77f42275-e656-4e25-b1de-1f3af1c9d751",
+    "name": "史诗收藏品宝箱",
+    "categoryIds": [
+      "collection"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "收藏品箱或已核实旧名称"
+  },
+  {
+    "id": "5b0fc228-4a22-4055-a048-bed9d9141dcd",
+    "name": "史诗宠物自选宝箱",
+    "categoryIds": [
+      "pet"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "宠物/宠物核心宝箱，既有旧名称保留"
+  },
+  {
+    "id": "20eba2fc-6424-466a-b12a-237383374aff",
+    "name": "史诗宠物宝箱",
+    "categoryIds": [
+      "pet"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "宠物/宠物核心宝箱，既有旧名称保留"
+  },
+  {
+    "id": "da62e07a-48a1-4859-b17a-c61e74c69021",
+    "name": "公会币",
+    "categoryIds": [
+      "general"
+    ],
+    "resourceTypeId": "currency",
+    "evidence": "明确货币名称"
+  },
+  {
+    "id": "974d1692-073d-436f-a600-cfe0c2f3e317",
+    "name": "体力_能量",
+    "categoryIds": [
+      "general"
+    ],
+    "resourceTypeId": "consumable",
+    "evidence": "通用消耗资源"
+  },
+  {
+    "id": "f50df580-dd69-4d3e-ae3c-48c7bdfa0379",
+    "name": "传奇配件自选宝箱",
+    "categoryIds": [
+      "tech"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "配件自选箱或已核实旧名称"
+  },
+  {
+    "id": "cff6ee9f-88b3-42da-9c51-ec73842a8b79",
+    "name": "传奇收藏品解构机",
+    "categoryIds": [
+      "collection"
+    ],
+    "resourceTypeId": "material",
+    "evidence": "收藏品养成/解构资源"
+  },
+  {
+    "id": "031ff11a-81be-48c5-be89-ebace12597d0",
+    "name": "传奇收藏品碎片自选",
+    "categoryIds": [
+      "collection"
+    ],
+    "resourceTypeId": "fragment",
+    "evidence": "收藏品碎片"
+  },
+  {
+    "id": "e042db30-cd81-4c16-b6f2-0b7baa48b9c8",
+    "name": "传奇收藏品宝箱",
+    "categoryIds": [
+      "collection"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "收藏品箱或已核实旧名称"
+  },
+  {
+    "id": "7329b30a-8385-4359-8285-9301e2c4a42d",
+    "name": "传奇载具碎片自选宝箱",
+    "categoryIds": [
+      "vehicle"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "载具碎片自选箱"
+  },
+  {
+    "id": "0f02c065-600c-41de-a061-0c62e4c3537f",
+    "name": "载具核心",
+    "categoryIds": [
+      "vehicle"
+    ],
+    "resourceTypeId": "core",
+    "evidence": "载具核心"
+  },
+  {
+    "id": "b6d98def-2a6b-490c-8684-2d3b55346c31",
+    "name": "高级宠物箱钥匙",
+    "categoryIds": [
+      "pet"
+    ],
+    "resourceTypeId": "key",
+    "evidence": "宠物箱钥匙"
+  },
+  {
+    "id": "0c9cbfc6-7288-4e91-a1fe-77c3f9a56a8d",
+    "name": "宠物钥匙",
+    "categoryIds": [
+      "pet"
+    ],
+    "resourceTypeId": "key",
+    "evidence": "宠物箱钥匙"
+  },
+  {
+    "id": "0ef97418-0303-40ee-9f22-ac410874a450",
+    "name": "配件宝箱钥匙",
+    "categoryIds": [
+      "tech"
+    ],
+    "resourceTypeId": "key",
+    "evidence": "配件箱钥匙"
+  },
+  {
+    "id": "300b257c-461f-4c77-90d8-3ec2808db8d5",
+    "name": "高级钥匙",
+    "categoryIds": [
+      "equipment"
+    ],
+    "resourceTypeId": "key",
+    "evidence": "装备箱钥匙"
+  },
+  {
+    "id": "07391bda-cca0-46f6-8fc1-6a8f2c713dc7",
+    "name": "普通钥匙",
+    "categoryIds": [
+      "equipment"
+    ],
+    "resourceTypeId": "key",
+    "evidence": "装备箱钥匙"
+  },
+  {
+    "id": "e70fc54d-f393-4e4b-aa73-0303b1e5691a",
+    "name": "s级军备钥匙",
+    "categoryIds": [
+      "equipment"
+    ],
+    "resourceTypeId": "key",
+    "evidence": "装备箱钥匙"
+  },
+  {
+    "id": "786d73fb-7237-410b-af03-0b22650db980",
+    "name": "收藏品宝箱钥匙",
+    "categoryIds": [
+      "collection"
+    ],
+    "resourceTypeId": "key",
+    "evidence": "收藏品箱钥匙"
+  },
+  {
+    "id": "5d42f7e8-a8aa-4b7e-ae15-107ecbc422c7",
+    "name": "自选核心",
+    "categoryIds": [],
+    "resourceTypeId": "core",
+    "evidence": "旧版汇总核心条目，具体可选体系尚未确认；仅归核心类型，不假设可用于全部体系"
+  },
+  {
+    "id": "7f95f73b-dc5d-42b1-b596-4e4f19497b00",
+    "name": "异宠核心",
+    "categoryIds": [
+      "pet"
+    ],
+    "resourceTypeId": "core",
+    "evidence": "宠物核心"
+  },
+  {
+    "id": "08d226e6-8e65-4ac1-8c4f-ca04a1057b4e",
+    "name": "谐振芯片",
+    "categoryIds": [
+      "tech"
+    ],
+    "resourceTypeId": "core",
+    "evidence": "配件谐振资源"
+  },
+  {
+    "id": "11f6d296-c6f8-4091-b74c-5102fee98990",
+    "name": "特工核心",
+    "categoryIds": [
+      "agent"
+    ],
+    "resourceTypeId": "core",
+    "evidence": "特工觉醒核心及已核实旧别名"
+  },
+  {
+    "id": "e75700c8-8aee-41a1-956c-21ab59744ea1",
+    "name": "神器核心",
+    "categoryIds": [
+      "equipment"
+    ],
+    "resourceTypeId": "core",
+    "evidence": "装备神铸/神炼核心"
+  },
+  {
+    "id": "e4b2965f-f04d-4e96-97c8-b55658921c4b",
+    "name": "传奇收藏品",
+    "categoryIds": [
+      "collection"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "收藏品箱或已核实旧名称"
+  },
+  {
+    "id": "3f3d798b-fbf6-4d31-8482-439d24cd14ce",
+    "name": "载具零件钥匙",
+    "categoryIds": [
+      "vehicle"
+    ],
+    "resourceTypeId": "key",
+    "evidence": "载具零件箱钥匙与旧别名"
+  },
+  {
+    "id": "cbc00d67-8336-4efb-b3eb-dcfa8b4b4449",
+    "name": "史诗收藏品",
+    "categoryIds": [
+      "collection"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "收藏品箱或已核实旧名称"
+  },
+  {
+    "id": "b736c3a2-c86f-4d7c-ac83-aae8b5416106",
+    "name": "杰出收藏品",
+    "categoryIds": [
+      "collection"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "收藏品箱或已核实旧名称"
+  },
+  {
+    "id": "9500c871-f06a-47e1-a5ff-92f727999a72",
+    "name": "高级收藏之心",
+    "categoryIds": [
+      "collection"
+    ],
+    "resourceTypeId": "material",
+    "evidence": "收藏品养成/解构资源"
+  },
+  {
+    "id": "02efbef7-d9a3-4dd1-8ee1-7f80c7e14fdd",
+    "name": "s特工碎片",
+    "categoryIds": [
+      "agent"
+    ],
+    "resourceTypeId": "fragment",
+    "evidence": "特工碎片"
+  },
+  {
+    "id": "f549584f-2b8c-475b-90ed-fc99e9396f0e",
+    "name": "传奇载具碎片",
+    "categoryIds": [
+      "vehicle"
+    ],
+    "resourceTypeId": "fragment",
+    "evidence": "载具碎片"
+  },
+  {
+    "id": "a3d13eb7-f45b-4de0-b020-d1b59157ad47",
+    "name": "觉醒水晶",
+    "categoryIds": [
+      "agent"
+    ],
+    "resourceTypeId": "material",
+    "evidence": "特工养成材料"
+  },
+  {
+    "id": "6f28747e-2ffe-407b-97b8-06d3556425f4",
+    "name": "sp特工万能碎片",
+    "categoryIds": [
+      "agent"
+    ],
+    "resourceTypeId": "fragment",
+    "evidence": "特工碎片"
+  },
+  {
+    "id": "72fa0a3a-c3fa-41e3-8b4f-497867c75851",
+    "name": "杰出配件",
+    "categoryIds": [
+      "tech"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "配件自选箱或已核实旧名称"
+  },
+  {
+    "id": "faabd4f7-4b3f-4f75-ad1f-d8d1b05644d8",
+    "name": "史诗宠物",
+    "categoryIds": [
+      "pet"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "宠物/宠物核心宝箱，既有旧名称保留"
+  },
+  {
+    "id": "db755159-d911-43c8-bba5-f64726ccd9db",
+    "name": "史诗配件",
+    "categoryIds": [
+      "tech"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "配件自选箱或已核实旧名称"
+  },
+  {
+    "id": "dcd1f97b-8b24-49f1-865b-b59defbf7a0a",
+    "name": "s杰出装备",
+    "categoryIds": [
+      "equipment"
+    ],
+    "resourceTypeId": "chest",
+    "evidence": "装备或装备核心宝箱"
+  }
+]

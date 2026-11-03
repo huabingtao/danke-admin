@@ -101,10 +101,10 @@ export function computeRuleStatus(
   } else if (rule.ruleType === 'ROUTINE') {
     if (rule.routineType === 'DAILY') {
       const tpl = rule.routineTemplate?.trim() || '今日【{name}】记得打卡';
-      const text = tpl.replace(/\{name\}/g, rule.name || '打卡项目').replace(/\{days\}/g, '0');
+      const text = tpl.replace(/\{name\}/g, rule.name || '打卡项目').replace(/\{days\}/g, '1');
       return {
-        status: 'ACTIVE',
-        daysRemaining: 0,
+        status: 'ROUTINE_TRIGGER',
+        daysRemaining: 1,
         text,
         isRedeemDay: false,
         dayInCycle: 0,
@@ -113,18 +113,17 @@ export function computeRuleStatus(
       const currentWeekday = normalizedTarget.getDay();
       if (currentWeekday === rule.weeklyDay) {
         const tpl = rule.routineTemplate?.trim() || '今天是【{name}】打卡日';
-        const text = tpl.replace(/\{name\}/g, rule.name || '打卡项目').replace(/\{days\}/g, '0');
+        const text = tpl.replace(/\{name\}/g, rule.name || '打卡项目').replace(/\{days\}/g, '1');
         return {
-          status: 'ACTIVE',
-          daysRemaining: 0,
+          status: 'ROUTINE_TRIGGER',
+          daysRemaining: 1,
           text,
           isRedeemDay: false,
           dayInCycle: 0,
         };
       } else {
         const daysUntil = (rule.weeklyDay - currentWeekday + 7) % 7;
-        const tpl = rule.digestTemplate?.trim() || '离本周【{name}】打卡还剩 {days} 天';
-        const text = tpl.replace(/\{name\}/g, rule.name || '打卡项目').replace(/\{days\}/g, String(daysUntil));
+        const text = `本日不提醒（每${WEEKDAY_NAMES[rule.weeklyDay]}打卡）`;
         return {
           status: 'ACTIVE',
           daysRemaining: daysUntil,

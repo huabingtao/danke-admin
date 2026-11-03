@@ -1,0 +1,875 @@
+{
+  "translations": [
+    {
+      "id": "1b03f87a-252a-5bf9-ac93-b2bd91f1eebe",
+      "before": "Eternal Selector",
+      "name": "永恒杰出军备自选宝箱",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "31211"
+      ],
+      "referenceKey": "1d8bbd6fae9e9da2"
+    },
+    {
+      "id": "31092961-53c7-581d-948e-3a3e0c8eb519",
+      "before": "Void Selector",
+      "name": "破坏者杰出军备自选宝箱",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "31212"
+      ],
+      "referenceKey": "9237b863e615a0d2"
+    },
+    {
+      "id": "08eae8cd-8de3-5138-a823-7c3083ae8ea1",
+      "before": "Chaos Selector",
+      "name": "混沌杰出军备自选宝箱",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "31213"
+      ],
+      "referenceKey": "c35de20a041464c8"
+    },
+    {
+      "id": "5b2b6a04-7978-5b86-9900-7ce7f4bd4fbd",
+      "before": "Random S",
+      "name": "S级杰出军备宝箱",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "30207",
+        "31207"
+      ],
+      "referenceKey": "6b78d03938cbdb32"
+    },
+    {
+      "id": "375b70ba-6f8b-574d-9d9f-004adb9451c9",
+      "before": "Random Epic Part",
+      "name": "史诗配件宝箱",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "30305"
+      ],
+      "referenceKey": "f70df8db010de907"
+    },
+    {
+      "id": "cb7eae27-e860-58ed-865f-82f8abb40b3b",
+      "before": "Random Excellent Tech",
+      "name": "杰出配件宝箱",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "30304"
+      ],
+      "referenceKey": "a8b6b6393fdda76d"
+    },
+    {
+      "id": "6050e88d-b666-50da-8737-fc12efeccc00",
+      "before": "Random Blue Tech",
+      "name": "优秀配件宝箱",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "30303"
+      ],
+      "referenceKey": "8de54c432c3f0889"
+    },
+    {
+      "id": "3cf44a8c-b119-5b48-82f8-0f36ebb7326c",
+      "before": "Random Green Tech",
+      "name": "精良配件宝箱",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "30302"
+      ],
+      "referenceKey": "a93a4f485f310f93"
+    },
+    {
+      "id": "34a979be-1487-52ff-9d7a-57cb48640fcd",
+      "before": "Random Parts Crate (Master)",
+      "name": "随机配件宝箱（顶级）",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "30310"
+      ],
+      "referenceKey": "a2efc011fc1371c8"
+    },
+    {
+      "id": "4a11e1ef-313b-52de-91ad-d9755c4ddad0",
+      "before": "Specific Legendary Collectible",
+      "name": "指定传奇收藏品",
+      "eventName": null,
+      "method": "按参考内容翻译，避免将共用贴图误认为同一具体物品",
+      "officialItemIds": [
+        "32205",
+        "32240",
+        "32260",
+        "32280",
+        "32295",
+        "32310",
+        "32330",
+        "32345",
+        "32360",
+        "32375",
+        "32390",
+        "32405",
+        "32420",
+        "32435"
+      ],
+      "referenceKey": "86cb5254fef755bb"
+    },
+    {
+      "id": "a9f88151-0b88-5ae8-b25c-7ae3deea7edf",
+      "before": "Random Epic Collectible",
+      "name": "随机史诗收藏品宝箱",
+      "eventName": null,
+      "method": "按参考内容翻译，避免将共用贴图误认为同一具体物品",
+      "officialItemIds": [
+        "32204",
+        "32239",
+        "32259",
+        "32279",
+        "32294",
+        "32309",
+        "32329",
+        "32344",
+        "32359",
+        "32374",
+        "32389",
+        "32404",
+        "32419",
+        "32434"
+      ],
+      "referenceKey": "90fccbc3be31482c"
+    },
+    {
+      "id": "602d93d3-559e-5c45-b522-a5ab2787791f",
+      "before": "Event Collectible",
+      "name": "神秘星",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "7034"
+      ],
+      "referenceKey": "7496305b4ac4e227"
+    },
+    {
+      "id": "a179f9d8-0a42-5ecd-9306-e2258c9a8ef7",
+      "before": "Awakening Core Chest",
+      "name": "特工觉醒核心自选宝箱",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "83"
+      ],
+      "referenceKey": "3c6f01091387d1a3"
+    },
+    {
+      "id": "af9b6646-926a-5267-98ae-2cadc9f10f6c",
+      "before": "Reset Vial",
+      "name": "特工重置药水",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "61"
+      ],
+      "referenceKey": "f2d5b60bafb37ad2"
+    },
+    {
+      "id": "9bc6a2df-aace-5475-8c31-18b54d27c553",
+      "before": "Random Survivor Shard",
+      "name": "随机特工碎片",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "6100"
+      ],
+      "referenceKey": "4b7bd7c22c655434"
+    },
+    {
+      "id": "44f85c69-5e90-5c22-89fb-19eaceee3b0b",
+      "before": "Survivor Outfit (Full Set)",
+      "name": "特工整套时装",
+      "eventName": null,
+      "method": "按参考内容翻译，避免将共用贴图误认为同一具体物品",
+      "officialItemIds": [
+        "5098"
+      ],
+      "referenceKey": "de1d571450a0028c"
+    },
+    {
+      "id": "a598f7bd-9320-50ae-9702-b790f2e0f9b5",
+      "before": "Excellent Pet Chest",
+      "name": "杰出宠物自选礼包",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "33104"
+      ],
+      "referenceKey": "5a2d65ac37477c0c"
+    },
+    {
+      "id": "6578e6a5-27c9-5371-93b2-c9c56fa91b37",
+      "before": "Random Better Pet",
+      "name": "优秀宠物宝箱",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "4009",
+        "30403"
+      ],
+      "referenceKey": "d0791b80d7fe158e"
+    },
+    {
+      "id": "53df3575-5a68-5976-ae02-891aef86d51a",
+      "before": "Random Good Pet",
+      "name": "精良宠物宝箱",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "4008",
+        "30402"
+      ],
+      "referenceKey": "97bd3252f6f39abc"
+    },
+    {
+      "id": "5680c648-8cc7-53dc-909f-b4412ba86248",
+      "before": "Better Pet Chest",
+      "name": "优秀宠物自选礼包",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "33103"
+      ],
+      "referenceKey": "59c4190e9a08ea60"
+    },
+    {
+      "id": "12b8a7e2-36c3-511d-a189-29aa7461e948",
+      "before": "Random Excellent Pet",
+      "name": "杰出宠物宝箱",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "4010",
+        "30404"
+      ],
+      "referenceKey": "c5baeed71ada9ef2"
+    },
+    {
+      "id": "b55fe8d1-def6-568e-9089-5a900e77b8ac",
+      "before": "Epic Pet Toy Chest",
+      "name": "自选史诗宠物玩具",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "32303"
+      ],
+      "referenceKey": "27f4437518b5ec89"
+    },
+    {
+      "id": "f0220907-3f77-5a64-8c1f-9d4bfd48701f",
+      "before": "Random Epic Pet Toy",
+      "name": "随机史诗宠物玩具",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "32313"
+      ],
+      "referenceKey": "ca5b0f8741a12edc"
+    },
+    {
+      "id": "f158e199-0f07-5799-8c95-fdadaf70c606",
+      "before": "Random Pet Toy (Master)",
+      "name": "随机宠物玩具",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "32314"
+      ],
+      "referenceKey": "8d1f6975ecf5f5d4"
+    },
+    {
+      "id": "5d1d28d1-0e0b-5480-a9fd-f6a3bea2166d",
+      "before": "Excellent Pet Toy Chest",
+      "name": "自选杰出宠物玩具",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "32302"
+      ],
+      "referenceKey": "49e3313290eb6d3f"
+    },
+    {
+      "id": "04631dcf-a2e6-5f14-9d4f-e223f8d82ee5",
+      "before": "Random Excellent Pet Toy",
+      "name": "随机杰出宠物玩具",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "32312"
+      ],
+      "referenceKey": "6cbfc667f554af5f"
+    },
+    {
+      "id": "28502255-316d-5a34-8876-9d5068469629",
+      "before": "Blue Pet Toy Chest",
+      "name": "自选优秀宠物玩具",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "32301"
+      ],
+      "referenceKey": "c5499c3b658a0f32"
+    },
+    {
+      "id": "3d50b876-e3d9-551f-a6ca-97c086b2c61f",
+      "before": "Random Blue Pet Toy",
+      "name": "随机优秀宠物玩具",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "32311"
+      ],
+      "referenceKey": "5a34f04d4ee7b526"
+    },
+    {
+      "id": "91e794a8-3f65-5830-81b6-1a7488f4df26",
+      "before": "Excellent Component Choice",
+      "name": "杰出零件自选宝箱",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "9020"
+      ],
+      "referenceKey": "fa2aeb51b0ea7dd2"
+    },
+    {
+      "id": "7389f387-00d4-5282-9216-87915c36fb55",
+      "before": "Magic Coin · Magic Ladder",
+      "name": "魔法硬币 · 魔法阶梯",
+      "eventName": "魔法阶梯",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1383",
+        "1492",
+        "1668",
+        "1818",
+        "2059",
+        "2333"
+      ],
+      "referenceKey": "810589cf45b99404"
+    },
+    {
+      "id": "5248ef52-27be-5f36-99aa-93ddd6ab7662",
+      "before": "Dice · Magic Ladder",
+      "name": "骰子 · 魔法阶梯",
+      "eventName": "魔法阶梯",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "971",
+        "1111",
+        "1382",
+        "1491",
+        "1667",
+        "1817",
+        "2058",
+        "2332"
+      ],
+      "referenceKey": "5a1dc24fbf0b2fea"
+    },
+    {
+      "id": "99197123-7c0d-5823-b80a-5c5de0b4492f",
+      "before": "Party Goodwill · Floral Workshop",
+      "name": "聚会好感度 · 鲜花手工坊",
+      "eventName": "鲜花手工坊",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1278",
+        "1442",
+        "1550",
+        "1715",
+        "1832",
+        "2045",
+        "2194",
+        "2330"
+      ],
+      "referenceKey": "9c6ce5feb670e7ee"
+    },
+    {
+      "id": "d2561524-606c-5b25-a014-8d5427c33d55",
+      "before": "Flower Coupon · Floral Workshop",
+      "name": "鲜花礼券 · 鲜花手工坊",
+      "eventName": "鲜花手工坊",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1110",
+        "1279",
+        "1443",
+        "1551",
+        "1716",
+        "1833",
+        "2046",
+        "2195",
+        "2331"
+      ],
+      "referenceKey": "c2ea2c8ac203056f"
+    },
+    {
+      "id": "bce79418-4fca-50d4-bdbd-ddc4592d51ca",
+      "before": "Snack Giftbox · Snack Pinball Treasure",
+      "name": "甜品礼盒 · 甜品弹球宝藏",
+      "eventName": "甜品弹球宝藏",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1537",
+        "1695",
+        "1910",
+        "2323"
+      ],
+      "referenceKey": "22fde0ce954d13b2"
+    },
+    {
+      "id": "867274ca-948a-58d3-a3c3-bdbdea2afa54",
+      "before": "Snack Ticket · Snack Pinball Treasure",
+      "name": "甜品券 · 甜品弹球宝藏",
+      "eventName": "甜品弹球宝藏",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1534",
+        "1692",
+        "1907",
+        "2320"
+      ],
+      "referenceKey": "af22a8b8422988fb"
+    },
+    {
+      "id": "4d759a32-cc9e-5efd-a7c7-afc350c95a29",
+      "before": "Candy · Castle Cards",
+      "name": "糖果 · 古堡卡牌",
+      "eventName": "古堡卡牌",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "2319"
+      ],
+      "referenceKey": "e70ab7c8cb198533"
+    },
+    {
+      "id": "d85b2f4d-1eef-547e-ac27-b5cf9261bc03",
+      "before": "Pumpkin · Castle Cards",
+      "name": "南瓜 · 古堡卡牌",
+      "eventName": "古堡卡牌",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "2318"
+      ],
+      "referenceKey": "9c85d1d734341b03"
+    },
+    {
+      "id": "6516471e-7657-5759-ba6c-f7bd406b0b80",
+      "before": "Drifting Bottle · Beach Treasure Hunt",
+      "name": "漂流瓶 · 沙滩寻宝",
+      "eventName": "沙滩寻宝",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1661",
+        "1862",
+        "2052",
+        "2305"
+      ],
+      "referenceKey": "225ccc40e9cd0730"
+    },
+    {
+      "id": "d2e0bfe8-559e-5839-a786-ad8bf5f34d18",
+      "before": "Toy Spade · Beach Treasure Hunt",
+      "name": "玩具铲 · 沙滩寻宝",
+      "eventName": "沙滩寻宝",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1660",
+        "1861",
+        "2051",
+        "2304"
+      ],
+      "referenceKey": "aa9597fe7882daa5"
+    },
+    {
+      "id": "ee01ae9d-2ef6-5f58-ac47-6b90fe27be08",
+      "before": "Normal Film · Time Puzzle",
+      "name": "普通胶卷 · 时光拼图",
+      "eventName": "时光拼图",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1805",
+        "2081",
+        "2303"
+      ],
+      "referenceKey": "3a61a014eb7ded63"
+    },
+    {
+      "id": "4031f15b-1856-592f-9f39-25b28ea81e6f",
+      "before": "Photo Album · Time Puzzle",
+      "name": "影集 · 时光拼图",
+      "eventName": "时光拼图",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1804",
+        "2080",
+        "2302"
+      ],
+      "referenceKey": "7baaeea218b15250"
+    },
+    {
+      "id": "ab068c88-225d-5cf2-ac1e-086786b334dd",
+      "before": "Blue Shell · Autumn Seabed Exploration",
+      "name": "蓝色贝壳 · 秋日海底探险",
+      "eventName": "秋日海底探险",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "838",
+        "1067",
+        "1378",
+        "1482",
+        "1652",
+        "2072",
+        "2300"
+      ],
+      "referenceKey": "901b045bf3c18684"
+    },
+    {
+      "id": "7ffdda98-ba24-574d-8a16-604e1c0a580d",
+      "before": "Yellow Shell · Autumn Seabed Exploration",
+      "name": "黄色贝壳 · 秋日海底探险",
+      "eventName": "秋日海底探险",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "839",
+        "1068",
+        "1379",
+        "1483",
+        "1653",
+        "2073",
+        "2301"
+      ],
+      "referenceKey": "a4f999d3f4e466ce"
+    },
+    {
+      "id": "a2afe345-4776-59e3-90be-0d95c82652b2",
+      "before": "Electro Jellyfish · Autumn Seabed Exploration",
+      "name": "电光水母 · 秋日海底探险",
+      "eventName": "秋日海底探险",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "835",
+        "1064",
+        "1375",
+        "1479",
+        "1649",
+        "2069",
+        "2297"
+      ],
+      "referenceKey": "3678b2d5b28e2478"
+    },
+    {
+      "id": "9b4f490a-2d4d-570c-a69e-fef900fee519",
+      "before": "Folding Fan · Theater Gala",
+      "name": "折扇 · 戏院盛典",
+      "eventName": "戏院盛典",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1174",
+        "1337",
+        "1493",
+        "1654",
+        "2074",
+        "2291"
+      ],
+      "referenceKey": "f6a1101be17e6c35"
+    },
+    {
+      "id": "820b41ed-56b6-5093-be2a-c7d60617e48f",
+      "before": "Normal Postcard · Cloud Tower",
+      "name": "普通明信片 · 云中塔",
+      "eventName": "云中塔",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1485",
+        "1672",
+        "1811",
+        "2065",
+        "2287"
+      ],
+      "referenceKey": "ed098b6155bb51aa"
+    },
+    {
+      "id": "d1e652e0-6c0b-5289-8f08-8b35c99f04ba",
+      "before": "Exquisite Postcard · Cloud Tower",
+      "name": "精致明信片 · 云中塔",
+      "eventName": "云中塔",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1487",
+        "1674",
+        "1813",
+        "2067",
+        "2289"
+      ],
+      "referenceKey": "a3c9074c05fae25d"
+    },
+    {
+      "id": "b7c7fed4-5c71-5352-82eb-84ba3fa75745",
+      "before": "Building Hook · Cloud Tower",
+      "name": "建筑吊钩 · 云中塔",
+      "eventName": "云中塔",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1484",
+        "1671",
+        "1810",
+        "2064",
+        "2286"
+      ],
+      "referenceKey": "3dd0b9023a775543"
+    },
+    {
+      "id": "648d10ec-0270-5c24-b365-022b883f9e5e",
+      "before": "Broken Fishing Line · Goldfall Coast Carnival",
+      "name": "断了的线 · 金秋海岸狂欢",
+      "eventName": "金秋海岸狂欢",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "375",
+        "821",
+        "911",
+        "1010",
+        "1142",
+        "1236",
+        "1412",
+        "1525",
+        "1640",
+        "1758",
+        "1899",
+        "2031",
+        "2148",
+        "2275"
+      ],
+      "referenceKey": "9f9ad497a7fea01b"
+    },
+    {
+      "id": "7be197eb-43bf-5237-a21d-c74533fd29d6",
+      "before": "Fishing Points · Goldfall Coast Carnival",
+      "name": "钓鱼积分 · 金秋海岸狂欢",
+      "eventName": "金秋海岸狂欢",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "374",
+        "820",
+        "910",
+        "1009",
+        "1141",
+        "1235",
+        "1411",
+        "1524",
+        "1639",
+        "1757",
+        "1898",
+        "2030",
+        "2147",
+        "2274"
+      ],
+      "referenceKey": "71d25a3f5b1c8299"
+    },
+    {
+      "id": "245d3e1c-723a-52b2-85a4-c86e2068ece4",
+      "before": "Emperor Fish Proof · Goldfall Coast Carnival",
+      "name": "鱼王之证 · 金秋海岸狂欢",
+      "eventName": "金秋海岸狂欢",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "382",
+        "828",
+        "918",
+        "1017",
+        "1149",
+        "1243",
+        "1419",
+        "1532",
+        "1647",
+        "1765",
+        "1906",
+        "2038",
+        "2155",
+        "2282"
+      ],
+      "referenceKey": "0e0428ea88c9435f"
+    },
+    {
+      "id": "26fb142b-f6bd-54a5-9df5-f1b7e5d6eccd",
+      "before": "Fishing Lure · Goldfall Coast Carnival",
+      "name": "鱼饵 · 金秋海岸狂欢",
+      "eventName": "金秋海岸狂欢",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "373",
+        "819",
+        "909",
+        "1008",
+        "1140",
+        "1234",
+        "1410",
+        "1523",
+        "1638",
+        "1756",
+        "1897",
+        "2029",
+        "2146",
+        "2273"
+      ],
+      "referenceKey": "04e4b554b0671e69"
+    },
+    {
+      "id": "115077db-bdcf-5a16-a24a-dac09cd40c73",
+      "before": "Goggles · Water Park Rumble",
+      "name": "泳镜 · 水上乐园大乱斗",
+      "eventName": "水上乐园大乱斗",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1993",
+        "2242"
+      ],
+      "referenceKey": "bf1df5443b190c06"
+    },
+    {
+      "id": "5f4ca38e-6361-5932-b858-94844223ccf3",
+      "before": "Water Gun · Water Park Rumble",
+      "name": "水枪 · 水上乐园大乱斗",
+      "eventName": "水上乐园大乱斗",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1992",
+        "2241"
+      ],
+      "referenceKey": "e07646aff9fe559f"
+    },
+    {
+      "id": "4da97b06-6e3c-548b-a970-edbbcf20a71b",
+      "before": "Cooking Insights · Soup Kitchen",
+      "name": "烹饪心得 · 煲汤厨房",
+      "eventName": "煲汤厨房",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1589",
+        "1770",
+        "2048",
+        "2240"
+      ],
+      "referenceKey": "f8aefcf1e5de5746"
+    },
+    {
+      "id": "cc981370-f41e-541e-8e9a-05f11edba689",
+      "before": "Soup Spoon · Soup Kitchen",
+      "name": "汤勺 · 煲汤厨房",
+      "eventName": "煲汤厨房",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1588",
+        "1769",
+        "2047",
+        "2239"
+      ],
+      "referenceKey": "c4ab5f44780c2d01"
+    },
+    {
+      "id": "603a7c0a-c5d9-5624-8302-3a8df228c945",
+      "before": "Music Note · Music Disc Clash",
+      "name": "音符 · 音乐圆盘大作战",
+      "eventName": "音乐圆盘大作战",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1825",
+        "2234"
+      ],
+      "referenceKey": "61c851f5d13ab3b3"
+    },
+    {
+      "id": "a6f99935-898b-51af-bc42-f36e5312d058",
+      "before": "Microphone · Music Disc Clash",
+      "name": "麦克风 · 音乐圆盘大作战",
+      "eventName": "音乐圆盘大作战",
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1824",
+        "2233"
+      ],
+      "referenceKey": "6af9cb0bbf81240a"
+    },
+    {
+      "id": "ac580ec2-ebd6-555e-bf85-81d8093b388d",
+      "before": "Surprise Chain Coupon",
+      "name": "惊喜连锁礼券",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1868",
+        "2061",
+        "2335"
+      ],
+      "referenceKey": "455afad5726927d9"
+    },
+    {
+      "id": "fa92dc5e-04df-52c9-b8a0-94a0c26acb01",
+      "before": "Coconut Ticket",
+      "name": "椰子券",
+      "eventName": null,
+      "method": "按参考内容翻译，避免将共用贴图误认为同一具体物品",
+      "officialItemIds": [
+        "928",
+        "1057",
+        "1175",
+        "1338",
+        "1494",
+        "1655",
+        "2075",
+        "2292"
+      ],
+      "referenceKey": "d9fa37096fe8b21c"
+    },
+    {
+      "id": "c453d0c0-ce51-5ceb-9df2-00a2dace1b58",
+      "before": "Time Hourglass",
+      "name": "时光沙漏",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1249",
+        "1834",
+        "2092"
+      ],
+      "referenceKey": "ce338557d6490a6a"
+    },
+    {
+      "id": "749d1eec-7407-540a-873f-1ca1812dd201",
+      "before": "Birthday Crown Tickets",
+      "name": "生日皇冠券",
+      "eventName": null,
+      "method": "本地官方 Item 图集/图标及品质匹配，再读取 Language 中文名",
+      "officialItemIds": [
+        "1317",
+        "1587",
+        "1697",
+        "1934",
+        "2121"
+      ],
+      "referenceKey": "ace24a133d89eb06"
+    }
+  ],
+  "tableHashes": {
+    "Item": "e85816787a5183438b15b54953ee6166aa2ebdfc753615b339bb52f748756ddb",
+    "Language": "15ea88915f77ee9841c27a639ab1f56d05cc9ad7e14f461ced88fd17e387170a"
+  }
+}

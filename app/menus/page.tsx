@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
-import { getApiBase } from '@/lib/api';
+import { apiFetch } from '@/lib/api-client';
 import {
   ChevronDown,
   ChevronRight,
@@ -93,8 +93,6 @@ export default function MenusPage() {
     return result;
   };
 
-  const apiBase = getApiBase();
-
   // Authorization Redirect
   useEffect(() => {
     if (!isLoading) {
@@ -111,17 +109,14 @@ export default function MenusPage() {
   const fetchMenus = async () => {
     try {
       setLoadingMenus(true);
-      const res = await fetch(`${apiBase}/menus`);
-      if (!res.ok) {
-        throw new Error('无法拉取菜单数据');
-      }
+      const res = await apiFetch('/menus');
       const data = await res.json();
       if (Array.isArray(data)) {
         setMenus(data);
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
-      setErrorMessage(err.message || '获取菜单列表失败，请检查后端服务是否启动');
+      setErrorMessage(err instanceof Error ? err.message : '获取菜单列表失败，请检查后端服务是否启动');
     } finally {
       setLoadingMenus(false);
     }
@@ -176,24 +171,14 @@ export default function MenusPage() {
     };
 
     try {
-      const url = editingMenu 
-        ? `${apiBase}/menus/${editingMenu.id}` 
-        : `${apiBase}/menus`;
+      const url = editingMenu ? `/menus/${encodeURIComponent(editingMenu.id)}` : '/menus';
       const method = editingMenu ? 'PATCH' : 'POST';
 
-      const res = await fetch(url, {
+      await apiFetch(url, {
         method,
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
+        token,
         body: JSON.stringify(payload),
       });
-
-      if (!res.ok) {
-        const errData = await res.json();
-        throw new Error(errData.message || '操作失败');
-      }
 
       setSaveStatus(editingMenu ? '修改成功 ✅' : '添加成功 ✅');
       setTimeout(() => setSaveStatus(''), 2000);
@@ -201,8 +186,8 @@ export default function MenusPage() {
 
       // Refresh list & dynamic layout sidebar
       await fetchMenus();
-    } catch (err: any) {
-      setErrorMessage(err.message || '网络请求错误，请重试');
+    } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : '网络请求错误，请重试');
     }
   };
 
@@ -214,25 +199,18 @@ export default function MenusPage() {
     setErrorMessage('');
 
     try {
-      const res = await fetch(`${apiBase}/menus/${id}`, {
+      await apiFetch(`/menus/${encodeURIComponent(id)}`, {
         method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
+        token,
       });
-
-      if (!res.ok) {
-        const errData = await res.json();
-        throw new Error(errData.message || '删除失败');
-      }
 
       setSaveStatus('删除成功 🗑️');
       setTimeout(() => setSaveStatus(''), 2000);
 
       // Refresh list & sidebar
       await fetchMenus();
-    } catch (err: any) {
-      setErrorMessage(err.message || '网络错误，删除失败');
+    } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : '网络错误，删除失败');
     }
   };
 

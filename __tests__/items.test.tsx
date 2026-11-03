@@ -1,7 +1,10 @@
+import { dictionary } from './fixtures/classifications';
+import catalog from '../lib/web-item-catalog.json';
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import ItemsPage, { getItemDisplayIcon, PRESET_ITEM_ICONS } from '../app/items/page';
+import ItemsPage from '../app/items/page';
+import { getItemDisplayIcon, PRESET_ITEM_ICONS } from '../lib/item-display';
 
 // Mock AuthContext
 const mockUseAuth = vi.fn();
@@ -38,6 +41,8 @@ describe('ItemsPage & Item Icon Configuration Workflow Tests', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+    URL.createObjectURL = vi.fn(() => 'blob:backup');
+    URL.revokeObjectURL = vi.fn();
     mockUseAuth.mockReturnValue({
       user: { id: 'admin-1', role: 'ADMIN', username: 'admin' },
       token: 'fake-jwt-token',
@@ -45,7 +50,9 @@ describe('ItemsPage & Item Icon Configuration Workflow Tests', () => {
     });
 
     global.fetch = vi.fn().mockImplementation((url: string, options?: any) => {
+      if (url.includes('/item-classifications')) return Promise.resolve({ ok: true, json: async () => dictionary });
       const method = (options?.method || 'GET').toUpperCase();
+      if (url.endsWith('/yields')) return Promise.resolve({ ok: true, json: async () => [] });
       if (url.endsWith('/items') && method === 'GET') {
         return Promise.resolve({
           ok: true,
@@ -57,6 +64,14 @@ describe('ItemsPage & Item Icon Configuration Workflow Tests', () => {
         json: async () => ({ success: true }),
       });
     });
+  });
+
+  it('keeps removed duplicate equipment chests out of future imports and the picker', () => {
+    for (const name of ['s级杰出装备宝箱', 's级杰出装备自选宝箱']) {
+      expect(PRESET_ITEM_ICONS).not.toContain(name);
+      expect(catalog.some((entry) => entry.name === name)).toBe(false);
+    }
+    expect(catalog.some((entry) => entry.name === 's杰出装备')).toBe(true);
   });
 
   it('getItemDisplayIcon correctly returns configured icon or falls back to standard path', () => {
@@ -144,7 +159,8 @@ describe('ItemsPage & Item Icon Configuration Workflow Tests', () => {
     expect(screen.getAllByText('自选核心').length).toBeGreaterThanOrEqual(2);
 
     // Submit save
-    const saveBtn = screen.getByText('确认保存');
+    fireEvent.click(screen.getByRole('button', { name: '下一步确认' }));
+    const saveBtn = screen.getByRole('button', { name: '确认保存' });
     fireEvent.click(saveBtn);
 
     await waitFor(() => {
@@ -154,7 +170,8 @@ describe('ItemsPage & Item Icon Configuration Workflow Tests', () => {
           method: 'PATCH',
           body: JSON.stringify({
             name: 's杰出装备',
-            icon: '/icons/items/自选核心.png',
+            icon: catalog.find((item) => item.name === '自选核心')!.icon,
+            categoryIds: [],
           }),
         })
       );

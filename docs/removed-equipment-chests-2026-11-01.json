@@ -1,0 +1,25 @@
+{
+  "backup": "/home/guagua/workspace/backups/danke-core/before-remove-equipment-chests-20261101-203237.db",
+  "deleted": [
+    {
+      "id": "f149c099-ece0-4c9d-92dc-378eca8bd11f",
+      "name": "s级杰出装备自选宝箱",
+      "icon": "/uploads/item-icons/bd2378b528531ebb7ec73764.png",
+      "type": "RESOURCE",
+      "description": null,
+      "stats": null,
+      "createdAt": "2026-11-01T11:47:11.466Z",
+      "updatedAt": "2026-11-01T11:47:11.466Z"
+    },
+    {
+      "id": "cacc3126-ba16-488e-8e9e-837ce7b6a39c",
+      "name": "s级杰出装备宝箱",
+      "icon": "/uploads/item-icons/167c11aaec0bd07f37746997.png",
+      "type": "RESOURCE",
+      "description": null,
+      "stats": null,
+      "createdAt": "2026-11-01T11:47:11.463Z",
+      "updatedAt": "2026-11-01T11:47:11.463Z"
+    }
+  ]
+}

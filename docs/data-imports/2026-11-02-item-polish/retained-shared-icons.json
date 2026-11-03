@@ -1,0 +1,169 @@
+[
+  {
+    "items": [
+      {
+        "id": "375b70ba-6f8b-574d-9d9f-004adb9451c9",
+        "name": "史诗配件宝箱",
+        "values": [
+          {
+            "id": "default",
+            "label": "单价",
+            "value": 2000,
+            "referenceValue": 2000
+          }
+        ]
+      },
+      {
+        "id": "cb7eae27-e860-58ed-865f-82f8abb40b3b",
+        "name": "杰出配件宝箱",
+        "values": [
+          {
+            "id": "default",
+            "label": "单价",
+            "value": 420,
+            "referenceValue": 420
+          }
+        ]
+      },
+      {
+        "id": "6050e88d-b666-50da-8737-fc12efeccc00",
+        "name": "优秀配件宝箱",
+        "values": [
+          {
+            "id": "default",
+            "label": "单价",
+            "value": 140,
+            "referenceValue": 140
+          }
+        ]
+      },
+      {
+        "id": "3cf44a8c-b119-5b48-82f8-0f36ebb7326c",
+        "name": "精良配件宝箱",
+        "values": [
+          {
+            "id": "default",
+            "label": "单价",
+            "value": 46,
+            "referenceValue": 46
+          }
+        ]
+      }
+    ],
+    "reason": "品质、用途或参考身份不同/不明，不能只凭图标合并"
+  },
+  {
+    "items": [
+      {
+        "id": "6578e6a5-27c9-5371-93b2-c9c56fa91b37",
+        "name": "优秀宠物宝箱",
+        "values": [
+          {
+            "id": "default",
+            "label": "单价",
+            "value": 87,
+            "referenceValue": 87
+          }
+        ]
+      },
+      {
+        "id": "53df3575-5a68-5976-ae02-891aef86d51a",
+        "name": "精良宠物宝箱",
+        "values": [
+          {
+            "id": "default",
+            "label": "单价",
+            "value": 29,
+            "referenceValue": 29
+          }
+        ]
+      },
+      {
+        "id": "12b8a7e2-36c3-511d-a189-29aa7461e948",
+        "name": "杰出宠物宝箱",
+        "values": [
+          {
+            "id": "default",
+            "label": "单价",
+            "value": 275,
+            "referenceValue": 275
+          }
+        ]
+      }
+    ],
+    "reason": "品质、用途或参考身份不同/不明，不能只凭图标合并"
+  },
+  {
+    "items": [
+      {
+        "id": "9dee770a-f5df-43c6-a246-23e881a1315b",
+        "name": "杰出收藏品宝箱",
+        "values": [
+          {
+            "id": "default",
+            "label": "单价",
+            "value": 330,
+            "referenceValue": 330
+          }
+        ]
+      },
+      {
+        "id": "b736c3a2-c86f-4d7c-ac83-aae8b5416106",
+        "name": "杰出收藏品",
+        "values": [
+          {
+            "id": "default",
+            "label": "单价",
+            "value": 330,
+            "referenceValue": 330
+          }
+        ]
+      }
+    ],
+    "reason": "品质、用途或参考身份不同/不明，不能只凭图标合并"
+  },
+  {
+    "items": [
+      {
+        "id": "d12a351e-a28d-46d1-b596-6a618d55117c",
+        "name": "末世战马碎片",
+        "values": [
+          {
+            "id": "default",
+            "label": "单价",
+            "value": 1000,
+            "referenceValue": 1000
+          }
+        ]
+      },
+      {
+        "id": "f549584f-2b8c-475b-90ed-fc99e9396f0e",
+        "name": "传奇载具碎片",
+        "values": null
+      }
+    ],
+    "reason": "品质、用途或参考身份不同/不明，不能只凭图标合并"
+  },
+  {
+    "items": [
+      {
+        "id": "20eba2fc-6424-466a-b12a-237383374aff",
+        "name": "史诗宠物宝箱",
+        "values": [
+          {
+            "id": "default",
+            "label": "单价",
+            "value": 1500,
+            "referenceValue": 1500
+          }
+        ]
+      },
+      {
+        "id": "faabd4f7-4b3f-4f75-ad1f-d8d1b05644d8",
+        "name": "史诗宠物",
+        "values": null
+      }
+    ],
+    "reason": "品质、用途或参考身份不同/不明，不能只凭图标合并"
+  }
+]

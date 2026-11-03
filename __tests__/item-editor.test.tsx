@@ -1,0 +1,33 @@
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { expect, test, vi } from 'vitest';
+import { ItemEditorDialog } from '../components/ItemEditorDialog';
+import { ItemClassificationDialog } from '../components/ItemClassificationDialog';
+import { apiFetch } from '../lib/api-client';
+import { dictionary } from './fixtures/classifications';
+vi.mock('../lib/api-client', () => ({ apiFetch: vi.fn() }));
+test('one editor atomically saves name icon multi-system classification and type only after review', async () => {
+  const request = vi.mocked(apiFetch); request.mockReset(); request.mockResolvedValue({ ok: true } as Response);
+  const saved = vi.fn().mockResolvedValue(undefined); const close = vi.fn();
+  render(<ItemEditorDialog item={{ id: 'core', name: '旧核心', icon: '/icons/items/神器核心.png', categoryIds: ['equipment'] }} dictionary={dictionary} token="token" onClose={close} onSaved={saved} />);
+  fireEvent.change(screen.getByLabelText('道具名称'), { target: { value: '  新核心  ' } });
+  fireEvent.click(screen.getByRole('button', { name: '宠物' }));
+  fireEvent.click(screen.getByRole('button', { name: '下一步确认' }));
+  expect(request).not.toHaveBeenCalled();
+  expect(screen.getByText('新名称：新核心')).toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: '确认保存' }));
+  await waitFor(() => expect(close).toHaveBeenCalled());
+  expect(request).toHaveBeenCalledWith('/items/core', expect.objectContaining({ method: 'PATCH', body: JSON.stringify({ name: '新核心', icon: '/icons/items/神器核心.png', categoryIds: ['equipment', 'pet'] }) }));
+});
+test('batch edits keep unoperated fields out of the request', async () => {
+  const request = vi.mocked(apiFetch); request.mockReset(); request.mockResolvedValue({ ok: true } as Response);
+  render(<ItemClassificationDialog items={[{ id: 'a', name: 'A' }, { id: 'b', name: 'B' }]} dictionary={dictionary} token="token" onClose={vi.fn()} onSaved={vi.fn().mockResolvedValue(undefined)} />);
+  expect(screen.getByRole('button', { name: '下一步确认' })).toBeDisabled();
+  fireEvent.click(screen.getByRole('button', { name: '设置一级分类' }));
+  fireEvent.click(screen.getByRole('button', { name: '宠物' }));
+  fireEvent.click(screen.getByRole('button', { name: '下一步确认' }));
+  expect(screen.queryByRole('group', { name: '二级资源类型' })).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: '确认保存分类' }));
+  await waitFor(() => expect(request).toHaveBeenCalled());
+  const payload = JSON.parse(String(request.mock.calls[0][1]?.body));
+  expect(payload).toEqual({ itemIds: ['a', 'b'], categoryIds: ['pet'] });
+});
