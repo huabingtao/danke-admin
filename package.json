@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -H 0.0.0.0 -p 8004",
+    "dev": "node scripts/local-next.cjs dev",
     "build": "next build",
-    "start": "next start -H 0.0.0.0 -p 8004",
+    "start": "python3 -m http.server 6103 --directory out",
     "lint": "eslint",
     "test": "vitest run"
   },

@@ -8,9 +8,9 @@ export const getApiBase = (): string => {
       return 'https://dankecore.guaguahub.cn';
     }
     // Local dev fallback:
-    // Core backend runs on port 3001 by default
-    const port = process.env.NEXT_PUBLIC_CORE_PORT || '3001';
+    // Core backend runs on port 6101 by default
+    const port = process.env.NEXT_PUBLIC_CORE_PORT || '6101';
     return `${window.location.protocol}//${window.location.hostname}:${port}`;
   }
-  return 'http://localhost:3001';
+  return 'http://localhost:6101';
 };

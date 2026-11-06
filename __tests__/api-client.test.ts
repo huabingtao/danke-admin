@@ -11,7 +11,7 @@ describe('apiFetch', () => {
     await apiFetch('/items', { method: 'POST', token: 'test-token', body: JSON.stringify({ name: '宝石' }) });
 
     const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit];
-    expect(url).toBe('http://localhost:3001/items');
+    expect(url).toBe('http://localhost:6101/items');
     expect(new Headers(init.headers).get('Authorization')).toBe('Bearer test-token');
     expect(new Headers(init.headers).get('Content-Type')).toBe('application/json');
   });
